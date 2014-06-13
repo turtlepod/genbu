@@ -2,7 +2,7 @@
  * Theme Name:  Genbu
  * Theme URI:   http://shellcreeper.com/genbu-theme-responsive
  * Description: Perfect theme for custom site.
- * Version:     0.1.0
+ * Version:     0.1.1
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
  * Tags:        black, gray, light, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-menu, editor-style, threaded-comments, translation-ready
@@ -836,10 +836,10 @@ pre code{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 /* Page links */
-.page-links{
+.wp-link-pages{
 }
-.page-links .page-numbers,
-.page-links a{
+.wp-link-pages .page-numbers,
+.wp-link-pages a{
 	color: #ccc;
 	background: #fafafa;
 	padding: 5px 10px;
@@ -852,11 +852,11 @@ pre code{
 	-moz-border-radius: 3px;
 	-moz-border-radius: 0.3rem;
 }
-.page-links a{
+.wp-link-pages a{
 	color: #444;
 	border: 1px solid #ccc;
 }
-.page-links a:hover{
+.wp-link-pages a:hover{
 	border: 1px solid #aaa;
 }
 
@@ -1483,20 +1483,23 @@ span#footer-links a:before{
 /* === #17 JETPACK === */
 
 /* Blog Subscribe Widget */
-#sidebar-primary .jetpack_subscription_widget{
+.jetpack_subscription_widget{
 	background: #444;
 	color: #999;
-	padding: 30px;
-	padding: 3rem;
+	padding: 10px;
+	padding: 1rem;
 }
-#sidebar-primary .jetpack_subscription_widget .widget-title{
+.jetpack_subscription_widget .widget-title{
 	color: #fff;
 }
-#sidebar-primary .jetpack_subscription_widget p{
+.jetpack_subscription_widget p{
 	font-size: 14px;
 	font-size: 1.4rem;
 }
-#sidebar-primary .jetpack_subscription_widget input{
+.jetpack_subscription_widget #subscribe-text a{
+	color: #fff;
+}
+.jetpack_subscription_widget input{
 	color: #999;
 	text-align: center;
 	padding: 5px;
@@ -1507,17 +1510,21 @@ span#footer-links a:before{
 	-moz-border-radius: 0;
 	width: 100%;
 }
-#sidebar-primary .jetpack_subscription_widget p#subscribe-submit{
+.jetpack_subscription_widget #subscribe-email input{
+	width: 100%;
+}
+.jetpack_subscription_widget p#subscribe-submit{
 	margin-bottom: 0;
 }
-#sidebar-primary .jetpack_subscription_widget input[type="submit"]{
+.jetpack_subscription_widget input[type="submit"]{
 	color: #fff;
 	background: #21759B;
 	text-transform: uppercase;
 }
-#sidebar-primary .jetpack_subscription_widget input[type="submit"]:hover{
+.jetpack_subscription_widget input[type="submit"]:hover{
 	color: #444;
 	background: #fff;
+	border: none;
 }
 
 /* Jetpack Comments */
