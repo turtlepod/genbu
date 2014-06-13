@@ -1,0 +1,287 @@
+/**
+ * Media Queries CSS
+******************************************/
+
+/*****************************************
+ * TABLE OF CONTENTS:
+ * 
+ * #00 - VIEWPORT FIX
+ * #01 - LAYOUTS       (max-width: 1000px)
+ *                     (max-width:  700px)
+ * #02 - MENU          (max-width:  700px)
+ * #03 - ENTRY         (max-width:  600px)
+ * #04 - LOOP-NAV      (max-width:  450px)
+ * #05 - COMMENTS      (max-width:  700px)
+ * #06 - JETPACK       (max-width:  450px)
+ * 
+ *****************************************/
+
+ /* Make Responsive */
+#container{
+	max-width: 95%;
+}
+ 
+/* === #00 - VIEWPORT FIX === 
+ * Does the same thing as <meta name="viewport" content="width=device-width">
+ * for Windows 8 "Snapped" views in IE10+
+ * @link http://core.trac.wordpress.org/ticket/25888
+ * @link http://blog.teamtreehouse.com/thinking-ahead-css-device-adaptation-with-viewport
+ */
+@-ms-viewport {
+	width: device-width;
+}
+@viewport {
+	width: device-width;
+}
+
+
+/* === #01 - LAYOUTS === */
+@media screen and (max-width: 1000px){
+	.wordpress .main-wrap{
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.wordpress #sidebar-primary-wrap{
+		margin-right: 0;
+		margin-left: 0;
+		float: left;
+		width: 100%;
+	}
+	.wordpress #sidebar-primary-wrap .widget{
+		width: 45%;
+		min-width: 270px;
+		min-width: 27rem;
+		margin-right: 10px;
+		margin-right: 1rem;
+		margin-left: 10px;
+		margin-left: 1rem;
+		display: inline-block;
+		float: left;
+	}
+}
+@media screen and (max-width: 700px){
+	.wordpress .main-inner{
+		float: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.wordpress #sidebar-primary-wrap .widget{
+		width: 100%;
+	}
+	.wordpress #sidebar-secondary-wrap{
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+
+/* === #02 - MENU ===  */
+@media screen and (max-width: 700px){
+	/* Display sub menu */
+	.mobile-menu-active .menu-dropdown li:hover > .sub-menu{
+		left: auto;
+	}
+
+	/* Menu Primary 1st Level */
+	#menu-primary li a{
+		background: #444;
+	}
+
+	/* Menu Toggle */
+	.menu-toggle{
+		display: block;
+	}
+	.menu-toggle .menu-toggle-close{
+		display: none;
+	}
+
+	/* === Menu Toggle: no-js === */
+
+	#menu-primary:target #menu-primary-items{
+		display: block;
+	}
+	#menu-primary:target .menu-toggle-open{
+		display: none;
+	}
+	#menu-primary:target .menu-toggle-close{
+		display: inline;
+	}
+
+
+	/* === Menu Toggle: "js" enabled === */
+
+	/* Hide Menu */
+	.menu-dropdown .menu-items{
+		display: none;
+	}
+
+	/* Display Menu */
+	.menu-dropdown.menu-toggle-active .menu-items{
+		display: block;
+	}
+	.menu-dropdown.menu-toggle-active .menu-toggle{
+		border-bottom: 1px solid #ccc;
+	}
+	.menu-dropdown.menu-toggle-active > .wrap{
+		display: block;
+	}
+
+	/* === Drop Down Style === */
+
+	/* Clear Dropdown */
+	.menu-dropdown:after{
+		content:".";display:block;height:0;clear:both;visibility:hidden;
+	}
+	.menu-dropdown > .wrap{
+		display: block;
+		margin-right: 0;
+		width: 100%;
+	}
+
+	/* Level Deep */
+	.menu-dropdown .sub-menu .menu-item-open-children > a:before, .menu-dropdown .sub-menu .menu-item-has-children > a:before{
+		content: "";
+	}
+
+	/* Has Children Position Fix */
+	.menu-dropdown ul li.menu-item-open-children > a:before,
+	.menu-dropdown ul li.menu-item-has-children > a:before{
+		position: inherit;
+		right: auto;
+	}
+
+	/* Mobile Menu Style */
+	.menu-dropdown li{
+		display: block;
+		width: 100%;
+	}
+	.menu-dropdown .sub-menu{
+		width: 100%;
+		border: none;
+	}
+	.menu-dropdown li a,
+	.menu-dropdown .sub-menu li a{
+		width: 100%;
+		border: none;
+		border-bottom: 1px solid #ccc;
+		background: #eee;
+	}
+	.menu-dropdown .sub-menu li a{
+		background: transparent;
+	}
+	.menu-dropdown .sub-menu li:hover > .sub-menu,
+	.menu-dropdown li:hover > .sub-menu,
+	.menu-dropdown .sub-menu{
+		opacity: 1;
+		left: auto;
+		top: auto;
+		position: inherit;
+	}
+	.menu-dropdown .sub-menu .sub-menu,
+	.menu-dropdown .sub-menu .sub-menu{
+	}
+	.menu-dropdown .sub-menu .sub-menu{
+	}
+	.menu-dropdown ul li.menu-item-open-children > a:before,
+	.menu-dropdown ul li.menu-item-has-children > a:before{
+		content: "";
+	}
+	/* .sub-menu .sub-menu */
+	.menu-dropdown .sub-menu .sub-menu li a:before{
+		content:"\f460 ";
+		font-family: 'dashicons';
+		vertical-align: top;
+		padding: 0;
+		margin-right: 5px;
+		margin-right: 0.5rem;
+		float: none;
+		-webkit-font-smoothing: antialiased;
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 \f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 \f460 \f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 \f460 \f460 \f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 \f460 \f460 \f460 \f460 \f460 ";
+	}
+	.menu-dropdown .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu .sub-menu li a:before{
+		content:"\f460 \f460 \f460 \f460 \f460 \f460 \f460 \f460 \f460 ";
+	}
+
+}
+
+
+/* === #03 - ENTRY === */
+@media screen and (max-width: 600px) {
+	.entry-byline .entry-author{
+		display: block;
+	}
+	.entry-byline .entry-published:before{
+		content: "";
+	}
+	.entry-byline .post-edit-link{
+		display: block;
+	}
+	.entry-byline .post-edit-link:before{
+		content: "";
+	}
+}
+
+
+/* === #04 - LOOP-NAV === */
+@media screen and (max-width: 450px) {
+	.loop-nav .prev{
+		width: 100%;
+	}
+	.loop-nav .next{
+		width: 100%;
+		padding-right: 0;
+		padding-left: 30px;
+		padding-left: 3rem;
+		text-align: left;
+	}
+	.loop-nav .next a:after{
+		right: auto;
+		left: 0;
+	}
+}
+
+
+/* === #05 - COMMENTS === */
+@media screen and (max-width: 700px) {
+	#respond .comment-form-author,
+	#respond .comment-form-email,
+	#respond .comment-form-url{
+		width: 100%;
+		margin-right: 0;
+		float: none;
+	}
+	#respond #submit{
+		float: none;
+	}
+}
+
+
+/* === #06 - JETPACK === */
+/* Related Posts */
+@media only screen and (max-width: 450px) {
+	div.jp-relatedposts .jp-relatedposts-post {
+		width: auto;
+		clear: both;
+		margin: 0 0 1em;
+	}
+}
