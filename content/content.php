@@ -7,7 +7,7 @@
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
-			<?php edit_post_link( penny_string( 'edit' ), '<p class="edit-this">', '</p>' ); ?>
+			<?php edit_post_link( genbu_string( 'edit' ), '<p class="edit-this">', '</p>' ); ?>
 		</div><!-- .entry-summary -->
 
 	</div><!-- .entry-wrap -->
