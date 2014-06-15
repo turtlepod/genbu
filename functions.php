@@ -63,7 +63,6 @@ function genbu_setup(){
 
 	/* === Load Stylesheet === */
 	add_theme_support( 'hybrid-core-styles', array( 'theme-open-sans-font', 'dashicons', 'parent', 'style', 'media-queries' ) );
-	//add_theme_support( 'hybrid-core-styles', array( 'theme-open-sans-font', 'dashicons', 'parent', 'style' ) );
 
 
 	/* === Editor Style === */
