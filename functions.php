@@ -74,8 +74,168 @@ function genbu_setup(){
 	/* === Custom Background === */
 	add_theme_support( 'custom-background', array( 'default-color' => 'e6e6e6' ) );
 
+	/* === Custom Header === */
+	$header_args = array(
+		'default-text-color'     => '444444',
+		'wp-head-callback'       => 'genbu_custom_header_wp_head_callback',
+		'admin-head-callback'    => 'genbu_custom_header_admin_head_callback',
+		'admin-preview-callback' => 'genbu_custom_header_admin_preview_callback',
+	);
+	add_theme_support( 'custom-header', $header_args );
+	remove_theme_support( 'custom-header' );
+
 	/* === Set Content Width === */
 	hybrid_set_content_width( 1200 );
+}
+
+/**
+ * Custom Header WP Head Callback
+ * @since 0.1.1
+ */
+function genbu_custom_header_wp_head_callback(){
+
+	/* Default value */
+	$style = '';
+
+	/* If display header text, display as background to #header */
+	if ( display_header_text() ){
+
+		/* Use Header Text Color */
+		if ( get_header_textcolor() ){
+			$style .= '.custom-header #site-title a,';
+			$style .= '.custom-header #site-title a:hover';
+			$style .= '{color:#' . get_header_textcolor() . ';}';
+		}
+	}
+
+	/* If header Image is set */
+	if ( get_header_image() ) {
+		$style .= '#site-logo{ max-width:' . get_custom_header()->width . 'px; }';
+	}
+
+	/* Print */
+	if ( !empty( $style ) ){
+		echo "\n" . '<style type="text/css" id="custom-header-css">' . trim( $style ) . '</style>' . "\n";
+	}
+}
+
+/**
+ * Custom Header Admin Head Callback
+ * @since 0.1.1
+ */
+function genbu_custom_header_admin_head_callback(){
+	$hex = get_header_textcolor();
+	if ( empty( $hex ) )
+		return;
+	$text_color_style = "#site-title a, #site-title a:hover { color: #{$hex}; }";
+?>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
+<style type="text/css" id="custom-header-css">
+#fake-body{
+	background: #e6e6e6;
+	padding: 20px;
+	padding-bottom: 0;
+}
+#header{
+	background: #fff;
+	border-bottom: 1px solid #ededed;
+	padding: 20px;
+}
+#branding:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+#site-title{
+	font-size: 25px;
+	margin:0;
+}
+#site-title a{
+	font-weight: 800;
+	color: #444;
+	text-decoration: none;
+}
+#site-title a:hover{
+	color: #444;
+	opacity: 0.8;
+}
+#site-description{
+	font-size: 17px;
+	color: #6A6A6A;
+	margin-bottom: 0;
+}
+	/* == Custom Header Image == */
+
+	/* No text, use as logo */
+	#site-logo{
+		margin: 0;
+		width: 100%;
+	}
+	#site-logo img.header-image{
+		display: block;
+	}
+	/* Text with image, use as banner */
+	#fake-body.custom-header.custom-header-image.custom-header-text #header{
+		padding: 0;
+		border: none;
+	}
+	#fake-body.custom-header.custom-header-image.custom-header-text #branding{
+		padding: 20px;
+	}
+	#fake-body.custom-header.custom-header-image.custom-header-text #header-image-banner img.header-image{
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+<?php echo trim( $text_color_style ); ?>
+</style>
+<?php
+}
+
+/**
+ * Custom Header Admin Preview Callback
+ * @since 0.1.1
+ */
+function genbu_custom_header_admin_preview_callback(){
+?>
+<div id="fake-body" <?php hybrid_attr( 'body' ); // Fake <body> class. ?>>
+<header <?php hybrid_attr( 'header' ); ?>>
+
+	<?php if ( get_header_image() ) { /* Use Header Image */ ?>
+
+		<?php if ( display_header_text() ){ /* Using Header Text, use image as banner */ ?>
+
+			<div id="branding">
+
+				<?php hybrid_site_title(); ?>
+				<?php hybrid_site_description(); ?>
+
+			</div><!-- #branding -->
+
+			<div id="header-image-banner">
+				<img class="header-image" src="<?php header_image(); ?>" alt="<?php esc_attr( get_bloginfo( 'name' ) ); ?>" title="<?php esc_attr( get_bloginfo( 'name' ) ); ?>"/>
+			</div>
+
+		<?php } else { /* No Header Text, use as logo */ ?>
+
+				<div id="branding">
+					<h1 id="site-logo"><a href="<?php echo home_url(); ?>" rel="home"><img class="header-image" src="<?php header_image(); ?>" alt="<?php esc_attr( get_bloginfo( 'name' ) ); ?>" title="<?php esc_attr( get_bloginfo( 'name' ) ); ?>"/></a></h1>
+				</div><!-- #branding -->
+
+		<?php } /* End Header Text Check */ ?>
+
+	<?php } else { /* No Header Image, always display text */ ?>
+
+		<div id="branding">
+
+			<?php hybrid_site_title(); ?>
+			<?php hybrid_site_description(); ?>
+
+		</div><!-- #branding -->
+
+	<?php } /* End Header Image Check */ ?>
+
+</header><!-- #header-->
+</div>
+<?php
 }
 
 do_action( 'genbu_after_theme_setup' );

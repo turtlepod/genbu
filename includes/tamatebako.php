@@ -325,7 +325,7 @@ function tamatebako_register_css(){
 
 
 /**
- * Adds the <body> class to the visual editor.
+ * Add TinyMCE Body Class
  * @since  0.1.0
  */
 function tamatebako_tinymce_body_class( $settings ){
@@ -335,7 +335,7 @@ function tamatebako_tinymce_body_class( $settings ){
 }
 
 /**
- * Body Classes
+ * Add Body Class
  * @since 0.1.0
  */
 function tamatebako_body_class( $classes ){
@@ -384,6 +384,33 @@ function tamatebako_body_class( $classes ){
 	else{
 		$classes[] = 'wp-is-not-mobile';
 	}
+
+	/* Custom header */
+	if ( current_theme_supports( 'custom-header' ) ){
+
+		/* Header Image */
+		if ( get_header_image() ) {
+			$classes[] = 'custom-header-image';
+		}
+		else{
+			$classes[] = 'custom-header-no-image';
+		}
+		/* Header Text */
+		if ( display_header_text() ){
+			$classes[] = 'custom-header-text';
+		}
+		else{
+			$classes[] = 'custom-header-no-text';
+		}
+		/* Header Text Color */
+		if ( get_header_textcolor() ) {
+			$classes[] = 'custom-header-text-color';
+		}
+		else{
+			$classes[] = 'custom-header-no-text-color';
+		}
+	}
+
 
 	/* Make it unique */
 	$classes = array_unique( $classes );

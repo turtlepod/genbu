@@ -352,7 +352,8 @@ pre code{
 	color: #444;
 }
 #site-title a:hover{
-	color: #21759B;
+	color: #444;
+	opacity: 0.8;
 }
 #site-description{
 	font-size: 17px;
@@ -360,6 +361,30 @@ pre code{
 	color: #6A6A6A;
 	margin-bottom: 0;
 }
+	/* == Custom Header Image == */
+
+	/* No text, use as logo */
+	#site-logo{
+		margin-bottom: 0;
+		width: 100%;
+	}
+	#site-logo img.header-image{
+		display: block;
+	}
+	/* Text with image, use as banner */
+	.custom-header.custom-header-image.custom-header-text #header{
+		padding: 0;
+		border: none;
+	}
+	.custom-header.custom-header-image.custom-header-text #branding{
+		padding: 20px;
+		padding: 2rem;
+	}
+	.custom-header.custom-header-image.custom-header-text #header-image-banner img.header-image{
+		display: block;
+		width: 100%;
+		height: auto;
+	}
 
 /* === #06 - MENU === */
 #menu-primary{
