@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hybrid Core\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-12 15:31+0700\n"
+"POT-Creation-Date: 2014-06-16 14:27+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team:  <justin@justintadlock.com>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Dimensions"
 msgstr ""
 
-#: classes/hybrid-media-meta.php:161 classes/widget-pages.php:191
+#: classes/hybrid-media-meta.php:161
 msgid "Date"
 msgstr ""
 
@@ -90,398 +90,6 @@ msgstr ""
 msgid "File Type"
 msgstr ""
 
-#: classes/widget-archives.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"archives."
-msgstr ""
-
-#: classes/widget-archives.php:55 classes/widget-archives.php:62
-#: extensions/breadcrumb-trail.php:181 functions/template-general.php:339
-msgid "Archives"
-msgstr ""
-
-#: classes/widget-archives.php:105
-msgid "Select Year"
-msgstr ""
-
-#: classes/widget-archives.php:108
-msgid "Select Month"
-msgstr ""
-
-#: classes/widget-archives.php:111
-msgid "Select Week"
-msgstr ""
-
-#: classes/widget-archives.php:114
-msgid "Select Day"
-msgstr ""
-
-#: classes/widget-archives.php:117
-msgid "Select Post"
-msgstr ""
-
-#: classes/widget-archives.php:194
-msgid "Alphabetical"
-msgstr ""
-
-#: classes/widget-archives.php:195
-msgid "Daily"
-msgstr ""
-
-#: classes/widget-archives.php:196
-msgid "Monthly"
-msgstr ""
-
-#: classes/widget-archives.php:197
-msgid "Post By Post"
-msgstr ""
-
-#: classes/widget-archives.php:198
-msgid "Weekly"
-msgstr ""
-
-#: classes/widget-archives.php:199
-msgid "Yearly"
-msgstr ""
-
-#: classes/widget-archives.php:204 classes/widget-authors.php:181
-#: classes/widget-bookmarks.php:220 classes/widget-categories.php:210
-#: classes/widget-pages.php:185 classes/widget-tags.php:227
-msgid "Ascending"
-msgstr ""
-
-#: classes/widget-archives.php:205 classes/widget-authors.php:182
-#: classes/widget-bookmarks.php:221 classes/widget-categories.php:211
-#: classes/widget-pages.php:186 classes/widget-tags.php:228
-msgid "Descending"
-msgstr ""
-
-#: classes/widget-archives.php:210
-msgid "Custom"
-msgstr ""
-
-#: classes/widget-archives.php:211
-msgid "HTML"
-msgstr ""
-
-#: classes/widget-archives.php:212
-msgid "Option"
-msgstr ""
-
-#: classes/widget-archives.php:218 classes/widget-authors.php:205
-#: classes/widget-bookmarks.php:250 classes/widget-calendar.php:137
-#: classes/widget-categories.php:234 classes/widget-nav-menu.php:173
-#: classes/widget-pages.php:211 classes/widget-search.php:128
-#: classes/widget-tags.php:248
-msgid "Title:"
-msgstr ""
-
-#: classes/widget-archives.php:262 classes/widget-authors.php:261
-msgid "Show post count?"
-msgstr ""
-
-#: classes/widget-authors.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"author lists."
-msgstr ""
-
-#: classes/widget-authors.php:55 classes/widget-authors.php:62
-msgid "Authors"
-msgstr ""
-
-#: classes/widget-authors.php:186
-msgid "Display Name"
-msgstr ""
-
-#: classes/widget-authors.php:187
-msgid "Email"
-msgstr ""
-
-#: classes/widget-authors.php:188 classes/widget-bookmarks.php:226
-#: classes/widget-bookmarks.php:232 classes/widget-categories.php:216
-#: classes/widget-pages.php:192
-msgid "ID"
-msgstr ""
-
-#: classes/widget-authors.php:189
-msgid "Nice Name"
-msgstr ""
-
-#: classes/widget-authors.php:190
-msgid "Post Count"
-msgstr ""
-
-#: classes/widget-authors.php:191
-msgid "Registered"
-msgstr ""
-
-#: classes/widget-authors.php:192 classes/widget-bookmarks.php:244
-msgid "URL"
-msgstr ""
-
-#: classes/widget-authors.php:193
-msgid "Login"
-msgstr ""
-
-#: classes/widget-authors.php:197 classes/widget-categories.php:205
-#: classes/widget-tags.php:223
-msgid "List"
-msgstr ""
-
-#: classes/widget-authors.php:198 classes/widget-categories.php:206
-msgid "None"
-msgstr ""
-
-#: classes/widget-authors.php:257
-msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
-msgstr ""
-
-#: classes/widget-authors.php:265
-msgid "Exclude admin?"
-msgstr ""
-
-#: classes/widget-authors.php:269
-msgid "Show full name?"
-msgstr ""
-
-#: classes/widget-authors.php:273 classes/widget-categories.php:337
-#: classes/widget-tags.php:367
-msgid "Hide empty?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"bookmarks (links)."
-msgstr ""
-
-#: classes/widget-bookmarks.php:55 classes/widget-bookmarks.php:62
-#: classes/widget-bookmarks.php:127
-msgid "Bookmarks"
-msgstr ""
-
-#: classes/widget-bookmarks.php:225 classes/widget-categories.php:215
-#: classes/widget-tags.php:233
-msgid "Count"
-msgstr ""
-
-#: classes/widget-bookmarks.php:227 classes/widget-bookmarks.php:235
-#: classes/widget-categories.php:217 classes/widget-tags.php:234
-msgid "Name"
-msgstr ""
-
-#: classes/widget-bookmarks.php:228 classes/widget-categories.php:218
-#: classes/widget-pages.php:195
-msgid "Slug"
-msgstr ""
-
-#: classes/widget-bookmarks.php:233
-msgid "Description"
-msgstr ""
-
-#: classes/widget-bookmarks.php:234
-msgid "Length"
-msgstr ""
-
-#: classes/widget-bookmarks.php:236
-msgid "Notes"
-msgstr ""
-
-#: classes/widget-bookmarks.php:237
-msgid "Owner"
-msgstr ""
-
-#: classes/widget-bookmarks.php:238 classes/widget-tags.php:229
-msgid "Random"
-msgstr ""
-
-#: classes/widget-bookmarks.php:239
-msgid "Rating"
-msgstr ""
-
-#: classes/widget-bookmarks.php:240
-msgid "Rel"
-msgstr ""
-
-#: classes/widget-bookmarks.php:241 classes/widget-categories.php:226
-msgid "RSS"
-msgstr ""
-
-#: classes/widget-bookmarks.php:242
-msgid "Target"
-msgstr ""
-
-#: classes/widget-bookmarks.php:243
-msgid "Updated"
-msgstr ""
-
-#: classes/widget-bookmarks.php:352
-msgid "Categorize?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:356
-msgid "Show description?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:360
-msgid "Hide invisible?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:364
-msgid "Show rating?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:368
-msgid "Show updated?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:372
-msgid "Show images?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:376
-msgid "Show name?"
-msgstr ""
-
-#: classes/widget-bookmarks.php:380
-msgid "Show private?"
-msgstr ""
-
-#: classes/widget-calendar.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"calendar."
-msgstr ""
-
-#: classes/widget-calendar.php:55 classes/widget-calendar.php:62
-msgid "Calendar"
-msgstr ""
-
-#: classes/widget-calendar.php:142
-msgid "One-letter abbreviation?"
-msgstr ""
-
-#: classes/widget-categories.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"category links."
-msgstr ""
-
-#: classes/widget-categories.php:55 classes/widget-categories.php:62
-msgid "Categories"
-msgstr ""
-
-#: classes/widget-categories.php:219
-msgid "Term Group"
-msgstr ""
-
-#: classes/widget-categories.php:224
-msgid "Atom"
-msgstr ""
-
-#: classes/widget-categories.php:225
-msgid "RDF"
-msgstr ""
-
-#: classes/widget-categories.php:227
-msgid "RSS 2.0"
-msgstr ""
-
-#: classes/widget-categories.php:325 classes/widget-pages.php:310
-msgid "Hierarchical?"
-msgstr ""
-
-#: classes/widget-categories.php:329
-msgid "Use description?"
-msgstr ""
-
-#: classes/widget-categories.php:333
-msgid "Show count?"
-msgstr ""
-
-#: classes/widget-nav-menu.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"menus."
-msgstr ""
-
-#: classes/widget-nav-menu.php:55
-msgid "Navigation Menu"
-msgstr ""
-
-#: classes/widget-nav-menu.php:62
-msgid "Navigation"
-msgstr ""
-
-#: classes/widget-pages.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your page "
-"links."
-msgstr ""
-
-#: classes/widget-pages.php:55 classes/widget-pages.php:62
-msgid "Pages"
-msgstr ""
-
-#: classes/widget-pages.php:190
-msgid "Author"
-msgstr ""
-
-#: classes/widget-pages.php:193
-msgid "Menu Order"
-msgstr ""
-
-#: classes/widget-pages.php:194 classes/widget-pages.php:202
-msgid "Modified"
-msgstr ""
-
-#: classes/widget-pages.php:196
-msgid "Title"
-msgstr ""
-
-#: classes/widget-pages.php:201
-msgid "Created"
-msgstr ""
-
-#: classes/widget-search.php:44
-msgid ""
-"An advanced widget that gives you total control over the output of your "
-"search form."
-msgstr ""
-
-#: classes/widget-search.php:56 classes/widget-search.php:63
-msgid "Search"
-msgstr ""
-
-#: classes/widget-tags.php:43
-msgid ""
-"An advanced widget that gives you total control over the output of your tags."
-msgstr ""
-
-#: classes/widget-tags.php:55 classes/widget-tags.php:64
-msgid "Tags"
-msgstr ""
-
-#: classes/widget-tags.php:217
-msgid "View"
-msgstr ""
-
-#: classes/widget-tags.php:218 extensions/breadcrumb-trail.php:1135
-#: extensions/breadcrumb-trail.php:1171 extensions/breadcrumb-trail.php:1188
-#: extensions/breadcrumb-trail.php:1219
-msgid "Edit"
-msgstr ""
-
-#: classes/widget-tags.php:222
-msgid "Flat"
-msgstr ""
-
-#: classes/widget-tags.php:363
-msgid "Pad counts?"
-msgstr ""
-
 #: extensions/breadcrumb-trail.php:178
 msgid "Browse:"
 msgstr ""
@@ -492,6 +100,10 @@ msgstr ""
 
 #: extensions/breadcrumb-trail.php:180 functions/template-general.php:494
 msgid "404 Not Found"
+msgstr ""
+
+#: extensions/breadcrumb-trail.php:181 functions/template-general.php:339
+msgid "Archives"
 msgstr ""
 
 #: extensions/breadcrumb-trail.php:183 functions/template-general.php:475
@@ -553,6 +165,11 @@ msgctxt "weekly archives date format"
 msgid "W"
 msgstr ""
 
+#: extensions/breadcrumb-trail.php:1135 extensions/breadcrumb-trail.php:1171
+#: extensions/breadcrumb-trail.php:1188 extensions/breadcrumb-trail.php:1219
+msgid "Edit"
+msgstr ""
+
 #: extensions/breadcrumb-trail.php:1163
 msgid "Split"
 msgstr ""
@@ -591,12 +208,12 @@ msgstr ""
 msgid "Global Layout"
 msgstr ""
 
-#: functions/attr.php:414
+#: functions/attr.php:430
 msgctxt "post time format"
 msgid "l, F j, Y, g:i a"
 msgstr ""
 
-#: functions/attr.php:535
+#: functions/attr.php:551
 msgctxt "comment time format"
 msgid "l, F j, Y, g:i a"
 msgstr ""
@@ -605,7 +222,7 @@ msgstr ""
 msgid "Permalink"
 msgstr ""
 
-#: functions/deprecated.php:864
+#: functions/deprecated.php:964
 #, php-format
 msgid ""
 "<code>%1$s</code> &mdash; This function has been removed or replaced by "

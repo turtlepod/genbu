@@ -71,6 +71,9 @@ function genbu_setup(){
 	/* === Editor Style === */
 	add_editor_style( array( 'style.css', tamatebako_google_open_sans_font_url() ) );
 
+	/* === Customizer Mobile View === */
+	add_theme_support( 'tamatebako-customize-mobile-view' );
+
 	/* === Custom Background === */
 	add_theme_support( 'custom-background', array( 'default-color' => 'e6e6e6' ) );
 
@@ -82,7 +85,6 @@ function genbu_setup(){
 		'admin-preview-callback' => 'genbu_custom_header_admin_preview_callback',
 	);
 	add_theme_support( 'custom-header', $header_args );
-	remove_theme_support( 'custom-header' );
 
 	/* === Set Content Width === */
 	hybrid_set_content_width( 1200 );
@@ -125,9 +127,10 @@ function genbu_custom_header_wp_head_callback(){
  */
 function genbu_custom_header_admin_head_callback(){
 	$hex = get_header_textcolor();
-	if ( empty( $hex ) )
-		return;
-	$text_color_style = "#site-title a, #site-title a:hover { color: #{$hex}; }";
+	$text_color_style = '';
+	if ( empty( $hex ) ){
+		$text_color_style = "#site-title a, #site-title a:hover { color: #{$hex}; }";
+	}
 ?>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 <style type="text/css" id="custom-header-css">

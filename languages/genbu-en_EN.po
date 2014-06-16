@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Genbu WordPress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-13 11:27+0700\n"
+"POT-Creation-Date: 2014-06-16 14:27+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: David Chandra Purnama <david@shellcreeper.com>\n"
@@ -17,61 +17,84 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: string.php:12
+msgctxt "content read more"
+msgid "read more&hellip;"
+msgstr ""
+
+#: string.php:15
+msgctxt "next in pagination and comments navigation"
+msgid "Next"
+msgstr ""
+
+#: string.php:16
+msgctxt "previous in pagination and comments navigation"
+msgid "Previous"
+msgstr ""
+
+#: string.php:19
 msgctxt "nav menu primary fallback home link"
 msgid "Home"
 msgstr ""
 
-#: string.php:15
+#: string.php:22
 msgctxt "search text"
 msgid "Search &hellip;"
 msgstr ""
 
-#: string.php:16
+#: string.php:23
 msgctxt "search button"
 msgid "Search"
 msgstr ""
 
-#: string.php:19
+#: string.php:26
 msgctxt "comments notice"
 msgid "Comments are closed, but trackbacks and pingbacks are open."
 msgstr ""
 
-#: string.php:20
+#: string.php:27
 msgctxt "comments notice"
 msgid "Comments are closed."
 msgstr ""
 
-#: string.php:23
+#: string.php:30
 msgctxt "404 title"
 msgid "404 Not Found"
 msgstr ""
 
-#: string.php:24
+#: string.php:31
 msgctxt "404 content"
 msgid "Apologies, but no entries were found."
 msgstr ""
 
-#: string.php:47
+#: string.php:34
+msgid "Global Layout"
+msgstr ""
+
+#: string.php:35
+msgid "Layout"
+msgstr ""
+
+#: string.php:58
 msgctxt "nav menu location"
 msgid "Navigation"
 msgstr ""
 
-#: string.php:48
+#: string.php:59
 msgctxt "nav menu location"
 msgid "Footer Links"
 msgstr ""
 
-#: string.php:51
+#: string.php:62
 msgctxt "sidebar name"
-msgid "Main Sidebar"
+msgid "Sidebar 1"
 msgstr ""
 
-#: string.php:52
+#: string.php:63
 msgctxt "sidebar name"
-msgid "Navigation Sidebar"
+msgid "Sidebar 2"
 msgstr ""
 
-#: string.php:55
+#: string.php:66
 msgctxt "edit link"
 msgid "Edit"
 msgstr ""
