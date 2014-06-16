@@ -27,9 +27,6 @@
 	</div><!-- .entry-wrap -->
 </article><!-- .entry -->
 
-<div class="loop-nav">
-	<?php previous_post_link( '<div class="prev">%link</div>', '%title' ); ?>
-	<?php next_post_link( '<div class="next">%link</div>', '%title' ); ?>
-</div><!-- .loop-nav -->
+<?php tamatebako_next_prev_entry(); ?>
 
 <?php comments_template( '', true ); // Load comments. ?>

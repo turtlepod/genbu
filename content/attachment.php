@@ -10,7 +10,7 @@
 
 			<div class="entry-content">
 				<?php hybrid_attachment(); // Function for handling non-image attachments. ?>
-				<?php the_content( genbu_string( 'more' ) ); ?>
+				<?php the_content(); ?>
 			</div><!-- .entry-content -->
 
 			<footer class="entry-footer">

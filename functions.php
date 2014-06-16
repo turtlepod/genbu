@@ -18,9 +18,16 @@ add_action( 'after_setup_theme', 'genbu_setup' );
  */
 function genbu_setup(){
 
+	/* === DEBUG === */
+	$debug_args = array(
+		'mobile'         => 1,
+		'no-js'          => 0,
+		'media-queries'  => 1,
+	);
+	//add_theme_support( 'tamatebako-debug', $debug_args );
+
 	/* === Post Formats === */
 	//add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'chat' ) );
-
 
 	/* === Theme Layouts === */
 	$layouts = array(
@@ -44,14 +51,12 @@ function genbu_setup(){
 	);
 	add_theme_support( 'theme-layouts', $layouts, $layouts_args );
 
-
 	/* === Register Sidebars === */
 	$sidebars_args = array(
 		"primary" => array( "name" => genbu_string( 'sidebar-primary-name' ), "description" => "" ),
 		"secondary" => array( "name" => genbu_string( 'sidebar-secondary-name' ), "description" => "" ),
 	);
 	add_theme_support( 'tamatebako-sidebars', $sidebars_args );
-
 
 	/* === Register Menus === */
 	$menus_args = array(
@@ -60,17 +65,17 @@ function genbu_setup(){
 	);
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
-
 	/* === Load Stylesheet === */
 	add_theme_support( 'hybrid-core-styles', array( 'theme-open-sans-font', 'dashicons', 'parent', 'style', 'media-queries' ) );
-
 
 	/* === Editor Style === */
 	add_editor_style( array( 'style.css', tamatebako_google_open_sans_font_url() ) );
 
-
 	/* === Custom Background === */
 	add_theme_support( 'custom-background', array( 'default-color' => 'e6e6e6' ) );
+
+	/* === Set Content Width === */
+	hybrid_set_content_width( 1200 );
 }
 
 do_action( 'genbu_after_theme_setup' );

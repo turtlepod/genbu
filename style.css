@@ -898,6 +898,9 @@ pre code{
 .loop-nav:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
+.loop-nav .screen-reader-text{
+	display: none;
+}
 .loop-nav .prev{
 	padding-left: 30px;
 	padding-left: 3rem;
@@ -953,6 +956,9 @@ pre code{
 	float: right;
 }
 .comments-header .comments-nav a{
+}
+.comments-nav .screen-reader-text{
+	display: none;
 }
 .comments-header .comments-nav .prev-comments:before{
 	content: "\f340";
@@ -1213,6 +1219,9 @@ ol #respond{
 .loop-pagination .page-numbers.prev{
 }
 .loop-pagination .page-numbers.next{
+}
+.loop-pagination .screen-reader-text{
+	display: none;
 }
 .loop-pagination .page-numbers.prev:before{
 	content: "\f340";

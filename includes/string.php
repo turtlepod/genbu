@@ -8,6 +8,13 @@ function tamatebako_string( $context ){
 	/* Open Sesame ! */
 	$text = array();
 
+	/* Read More */
+	$text['read-more'] = _x( 'read more&hellip;', 'content read more', 'genbu' );
+
+	/* Next, Previous */
+	$text['next'] = _x( 'Next', 'next in pagination and comments navigation', 'genbu' );
+	$text['previous'] = _x( 'Previous', 'previous in pagination and comments navigation', 'genbu' );
+
 	/* Menu Fallback */
 	$text['menu-primary-fallback-home'] = _x( 'Home', 'nav menu primary fallback home link', 'genbu' );
 
