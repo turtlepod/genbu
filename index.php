@@ -35,39 +35,37 @@
 
 				<main <?php hybrid_attr( 'content' ); ?>>
 
-					<?php /* Start Loop */
-						if ( have_posts() ){ ?>
+					<?php if ( have_posts() ){ /* Posts Found */ ?>
 
-							<?php tamatebako_archive_header(); ?>
+						<?php tamatebako_archive_header(); ?>
 
-							<div class="content-entry-wrap">
+						<div class="content-entry-wrap">
 
-								<?php while ( have_posts() ) {
-									the_post(); ?>
+							<?php while ( have_posts() ) {  /* Start Loop */ ?>
 
-									<?php /* Start Content */ ?>
-									<?php tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
-									<?php /* End Content */ ?>
+								<?php the_post(); /* Load Post Data */ ?>
 
-								<?php }?>
+								<?php /* Start Content */ ?>
+								<?php tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
+								<?php /* End Content */ ?>
 
-							</div><!-- .content-entry-wrap-->
+							<?php } /* End Loop */ ?>
 
-							<?php tamatebako_archive_footer(); ?>
+						</div><!-- .content-entry-wrap-->
 
-						<?php
-						}
-						else {
-							tamatebako_content_error();
-						}
-					/* End Loop */ ?>
+						<?php tamatebako_archive_footer(); ?>
+
+					<?php } else { /* No Posts Found */ ?>
+
+						<?php tamatebako_content_error(); ?>
+
+					<?php } /* End Posts Found Check */ ?>
 
 				</main><!-- #content -->
 
 				<?php hybrid_get_sidebar( 'primary' ); ?>
 
 			</div><!-- .main-wrap -->
-
 
 		</div><!-- .main-inner -->
 
