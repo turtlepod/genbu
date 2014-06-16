@@ -2,7 +2,7 @@
  * Theme Name:  Genbu
  * Theme URI:   http://shellcreeper.com/genbu-theme-responsive
  * Description: Perfect theme for custom site.
- * Version:     0.1.1
+ * Version:     0.1.2
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
  * Tags:        black, gray, light, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-header, custom-menu, editor-style, threaded-comments, translation-ready
@@ -706,7 +706,6 @@ pre code{
 }
 
 
-
 /* === #07 - MAIN === */
 #main{
 	padding: 20px;
@@ -736,6 +735,8 @@ pre code{
 }
 .loop-title{
 }
+.loop-description{
+}
 
 
 /* === #10 - ENTRY === */
@@ -749,22 +750,6 @@ pre code{
 }
 .entry:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
-}
-/* Thumbnail */
-.plural .entry .thumbnail{
-	float: left;
-	padding: 10px;
-	padding: 1rem;
-	margin-right: 20px;
-	margin-right: 2rem;
-	margin-bottom: 20px;
-	margin-bottom: 2rem;
-	box-shadow: 0 0 5px #B3B3B3;
-	background: #fff;
-	opacity: 1;
-}
-.plural .entry .thumbnail:hover{
-	opacity: 0.9;
 }
 /* Entry Wrap */
 .entry-wrap{

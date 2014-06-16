@@ -159,7 +159,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 		$wp_customize->add_section(
 			'layout',
 			array(
-				'title'      => tamatebako_string( 'layout' ),
+				'title'      => esc_html( tamatebako_string( 'layout' ) ),
 				'priority'   => 190,
 				'capability' => 'edit_theme_options'
 			)
@@ -192,7 +192,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 		$wp_customize->add_control(
 			'theme-layout-control',
 			array(
-				'label'    => tamatebako_string( 'global-layout' ),
+				'label'    => esc_html( tamatebako_string( 'global-layout' ) ),
 				'section'  => 'layout',
 				'settings' => 'theme_layout',
 				'type'     => 'radio',
@@ -615,19 +615,23 @@ function tamatebako_entry_terms(){
  */
 function tamatebako_archive_header(){ ?>
 
-	<?php /* Start Archive Title */
-		if ( !is_front_page() && !is_singular() && !is_404() ){?>
+	<?php if ( !is_front_page() && !is_singular() && !is_404() ){ ?>
+
 		<header <?php hybrid_attr( 'loop-meta' ); ?>>
-			<?php if ( $desc = hybrid_get_loop_title() ) : ?>
+
+			<?php if ( hybrid_get_loop_title() ) { ?>
 			<h1 <?php hybrid_attr( 'loop-title' ); ?>><?php hybrid_loop_title(); ?></h1>
-			<?php endif; // End paged check. ?>
-			<?php if ( $desc = hybrid_get_loop_description() ) : ?>
+			<?php } // End title check. ?>
+
+			<?php if ( $desc = hybrid_get_loop_description() ) { ?>
 				<div <?php hybrid_attr( 'loop-description' ); ?>>
 					<?php echo $desc; ?>
 				</div><!-- .loop-description -->
-			<?php endif; // End paged check. ?>
+			<?php } // End desc check. ?>
+
 		</header><!-- .loop-meta -->
-	<?php } /* End Archive Title */ ?>
+
+	<?php }  ?>
 
 <?php
 }
@@ -638,15 +642,16 @@ function tamatebako_archive_header(){ ?>
  */
 function tamatebako_archive_footer(){ ?>
 
-	<?php /* Start Archive Pagination */
-	if ( is_home() || is_archive() || is_search() ){ ?>
+	<?php if ( is_home() || is_archive() || is_search() ){ ?>
+
 		<?php loop_pagination( array(
 			'prev_text' => '<span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span>',
 			'next_text' => '<span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span>',
 			'end_size' => 3,
 			'mid_size' => 3,
 		)); ?>
-	<?php } /* End Archive Pagination */ ?>
+
+	<?php } ?>
 
 <?php
 }
@@ -673,12 +678,13 @@ function tamatebako_menu_fallback_cb(){
  * used in "menu/primary.php"
  * @since 0.1.0.0
  */
-function tamatebako_menu_search_form(){ ?>
-	<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-		<label id="search-toggle" for="search-menu"></label>
-		<input id="search-menu" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
-		<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
-	</form>
+function tamatebako_menu_search_form(){
+?>
+<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+	<label id="search-toggle" for="search-menu"></label>
+	<input id="search-menu" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
+	<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
+</form>
 <?php
 }
 
@@ -686,12 +692,12 @@ function tamatebako_menu_search_form(){ ?>
  * Next Previous Post (Loop Nav)
  * @since 0.1.0
  */
-function tamatebako_next_prev_entry(){
+function tamatebako_entry_nav(){
 ?>
-	<div class="loop-nav">
-		<?php previous_post_link( '<div class="prev"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . ':</span> %link</div>', '%title' ); ?>
-		<?php next_post_link( '<div class="next"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . ':</span> %link</div>', '%title' ); ?>
-	</div><!-- .loop-nav -->
+<div class="loop-nav">
+	<?php previous_post_link( '<div class="prev"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . ':</span> %link</div>', '%title' ); ?>
+	<?php next_post_link( '<div class="next"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . ':</span> %link</div>', '%title' ); ?>
+</div><!-- .loop-nav -->
 <?php
 }
 
@@ -724,19 +730,19 @@ function tamatebako_content_error(){
  */
 function tamatebako_comments_nav(){
 ?>
-	<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) : // Check for paged comments. ?>
+<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) : // Check for paged comments. ?>
 
-		<div class="comments-nav">
+	<div class="comments-nav">
 
-			<?php previous_comments_link( '<span class="prev-comments"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span></span>' ); ?>
+		<?php previous_comments_link( '<span class="prev-comments"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span></span>' ); ?>
 
-			<span class="page-numbers"><?php printf( '%1$s / %2$s', get_query_var( 'cpage' ) ? absint( get_query_var( 'cpage' ) ) : 1, get_comment_pages_count() ); ?></span>
+		<span class="page-numbers"><?php printf( '%1$s / %2$s', get_query_var( 'cpage' ) ? absint( get_query_var( 'cpage' ) ) : 1, get_comment_pages_count() ); ?></span>
 
-			<?php next_comments_link( '<span class="next-comments"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span></span>' ); ?>
+		<?php next_comments_link( '<span class="next-comments"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span></span>' ); ?>
 
-		</div><!-- .comments-nav -->
+	</div><!-- .comments-nav -->
 
-	<?php endif; // End check for paged comments. ?>
+<?php endif; // End check for paged comments. ?>
 <?php
 }
 

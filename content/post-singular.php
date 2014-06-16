@@ -27,6 +27,6 @@
 	</div><!-- .entry-wrap -->
 </article><!-- .entry -->
 
-<?php tamatebako_next_prev_entry(); ?>
+<?php tamatebako_entry_nav(); ?>
 
 <?php comments_template( '', true ); // Load comments. ?>

@@ -10,10 +10,11 @@
 //$layout = 'sidebar2-sidebar1-content';
 //$layout = 'content-sidebar1-sidebar2';
 //$layout = 'sidebar1-content-sidebar2';
+
+//tamatebako_set_layout( $layout );
+//tamatebako_set_template_dir( "content-grid", "content" );
+//tamatebako_add_body_class( array( "mobile-menu-active" ) );
 ?>
-<?php //tamatebako_set_layout( $layout ); ?>
-<?php //tamatebako_set_template_dir( "content-grid", "content" ); ?>
-<?php //tamatebako_add_body_class( array( "mobile-menu-active" ) ); ?>
 
 <?php get_header(); ?>
 

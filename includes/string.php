@@ -31,8 +31,8 @@ function tamatebako_string( $context ){
 	$text['error-msg'] = _x( 'Apologies, but no entries were found.', '404 content', 'genbu' );
 
 	/* Theme Layout */
-	$text['global-layout'] = esc_html__( 'Global Layout', 'theme-layouts' );
-	$text['layout'] = esc_html__( 'Layout', 'theme-layouts' );
+	$text['global-layout'] = _x( 'Global Layout', 'theme layouts', 'genbu' );
+	$text['layout'] = _x( 'Layout', 'theme layouts', 'genbu' );
 
 	$text = apply_filters( 'tamatebako_string', $text );
 
