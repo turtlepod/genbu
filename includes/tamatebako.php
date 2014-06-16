@@ -11,13 +11,15 @@
  * TABLE OF CONTENTS:
  * 
  * #01 - LOAD HYBRID CORE
- * #02 - SETUP
- * #03 - SET DEFAULTS
- * #04 - SCRIPTS AND STYLE
- * #05 - CONTEXT
- * #06 - TEMPLATE FUNCTIONS
- * #07 - UTILLITY
- * #08 - REGISTER THEME SUPPORT
+ * #02 - CONTENT
+ * #03 - SETUP
+ * #04 - SET DEFAULTS
+ * #05 - SCRIPTS AND STYLE
+ * #06 - CONTEXT
+ * #07 - TEMPLATE FUNCTIONS
+ * #08 - UTILLITY
+ * #09 - REGISTER THEME SUPPORT
+ * #10 - DEBUG
  * 
 ******************************************/
 
@@ -52,6 +54,10 @@ function tamatebako_setup(){
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
 
+	/* Set Consistent Read More */
+	add_filter( 'excerpt_more', 'tamatebako_disable_excerpt_more' );
+	add_filter( 'get_the_excerpt', 'tamatebako_add_excerpt_more' );
+
 	/* Sidebar Defaults Args */
 	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
 
@@ -78,7 +84,27 @@ function tamatebako_setup(){
 }
 
 
-/* #03 - SET DEFAULTS
+/* #03 - CONTENT
+******************************************/
+
+/**
+ * Disable / Remove Auto Excerpt More
+ * @since 0.1.0
+ */
+function tamatebako_disable_excerpt_more( $more ) {
+	return '';
+}
+
+/**
+ * Add Excerpt More In All Excerpt
+ * @since 0.1.0
+ */
+function tamatebako_add_excerpt_more( $excerpt ) {
+	return $excerpt . ' <a class="more-link" href="' . get_permalink() . '"><span>' . tamatebako_string( 'read-more' ) . '</span></a>';
+}
+
+
+/* #04 - SET DEFAULTS
 ******************************************/
 
 
@@ -133,7 +159,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 		$wp_customize->add_section(
 			'layout',
 			array(
-				'title'      => esc_html__( 'Layout', 'theme-layouts' ),
+				'title'      => tamatebako_string( 'layout' ),
 				'priority'   => 190,
 				'capability' => 'edit_theme_options'
 			)
@@ -166,7 +192,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 		$wp_customize->add_control(
 			'theme-layout-control',
 			array(
-				'label'    => esc_html__( 'Global Layout', 'theme-layouts' ),
+				'label'    => tamatebako_string( 'global-layout' ),
 				'section'  => 'layout',
 				'settings' => 'theme_layout',
 				'type'     => 'radio',
@@ -177,7 +203,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 }
 
 
-/* #04 - SCRIPTS AND STYLE
+/* #05 - SCRIPTS AND STYLE
 ******************************************/
 
 
@@ -219,19 +245,32 @@ function tamatebako_google_merriweather_font_url(){
 function tamatebako_head_script() {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 	$ie8_css = hybrid_locate_theme_file( array( "css/ie8{$suffix}.css", "css/ie8.css" ) );
+	$ie9_css = hybrid_locate_theme_file( array( "css/ie9{$suffix}.css", "css/ie9.css" ) );
 	$respond_js = hybrid_locate_theme_file( array( "js/respond{$suffix}.js", "js/respond.js" ) );
 	$html5shiv_js = hybrid_locate_theme_file( array( "js/html5shiv{$suffix}.js", "js/html5shiv.js" ) );
-	if ( !empty( $ie8_css ) ) { ?>
+?>
+<?php if ( !empty( $ie8_css ) ) { ?>
 <!--[if IE 8]>
 <link rel="stylesheet" type="text/css" href="<?php echo $ie8_css; ?>" media="screen" />
 <![endif]-->
-<?php } if( !empty( $respond_js ) && !empty( $html5shiv_js ) ){ ?>
+<?php } ?>
+<?php if ( !empty( $ie9_css ) ) { ?>
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="<?php echo $ie9_css; ?>" media="screen" />
+<![endif]-->
+<?php } ?>
+<?php if( !empty( $respond_js ) && !empty( $html5shiv_js ) ){ ?>
 <!-- Enables media queries and html5 in some unsupported browsers. -->
 <!--[if (lt IE 9) & (!IEMobile)]>
+<?php if( !empty( $respond_js ) ){ ?>
 <script type="text/javascript" src="<?php echo $respond_js; ?>"></script>
+<?php } ?>
+<?php if( !empty( $html5shiv_js ) ){ ?>
 <script type="text/javascript" src="<?php echo $html5shiv_js; ?>"></script>
+<?php } ?>
 <![endif]-->
-<?php }
+<?php } ?>
+<?php
 }
 
 /**
@@ -254,10 +293,11 @@ function tamatebako_enqueue_js(){
  */
 function tamatebako_check_js_script(){
 	$js_status = hybrid_locate_theme_file( array( "js/js-status.js" ) );
+	$script = '';
 	if( !empty( $js_status ) ) {
-?>
-<script src="<?php echo $js_status; ?>" type="text/javascript"></script>
-<?php }
+		$script = '<script src="' . $js_status . '" type="text/javascript"></script>';
+	}
+	return apply_filters( 'tamatebako_check_js_script', $script );
 }
 
 /**
@@ -280,24 +320,22 @@ function tamatebako_register_css(){
 }
 
 
-/* #05 - CONTEXT
+/* #06 - CONTEXT
 ******************************************/
 
 
 /**
- * Adds the <body> class to the visual editor.
+ * Add TinyMCE Body Class
  * @since  0.1.0
  */
-function tamatebako_tinymce_body_class( $settings ) {
-	$classes = get_body_class();
-	$classes[] = 'entry-content';
-	$classes = array_unique( $classes );
-	$settings['body_class'] = join( ' ', $classes );
+function tamatebako_tinymce_body_class( $settings ){
+	$classes = $settings['body_class'];
+	$settings['body_class'] = $classes . ' entry-content';
 	return $settings;
 }
 
 /**
- * Body Classes
+ * Add Body Class
  * @since 0.1.0
  */
 function tamatebako_body_class( $classes ){
@@ -347,6 +385,33 @@ function tamatebako_body_class( $classes ){
 		$classes[] = 'wp-is-not-mobile';
 	}
 
+	/* Custom header */
+	if ( current_theme_supports( 'custom-header' ) ){
+
+		/* Header Image */
+		if ( get_header_image() ) {
+			$classes[] = 'custom-header-image';
+		}
+		else{
+			$classes[] = 'custom-header-no-image';
+		}
+		/* Header Text */
+		if ( display_header_text() ){
+			$classes[] = 'custom-header-text';
+		}
+		else{
+			$classes[] = 'custom-header-no-text';
+		}
+		/* Header Text Color */
+		if ( get_header_textcolor() ) {
+			$classes[] = 'custom-header-text-color';
+		}
+		else{
+			$classes[] = 'custom-header-no-text-color';
+		}
+	}
+
+
 	/* Make it unique */
 	$classes = array_unique( $classes );
 
@@ -354,7 +419,7 @@ function tamatebako_body_class( $classes ){
 }
 
 
-/* #06 - TEMPLATE FUNCTIONS
+/* #07 - TEMPLATE FUNCTIONS
 ******************************************/
 
 
@@ -576,8 +641,8 @@ function tamatebako_archive_footer(){ ?>
 	<?php /* Start Archive Pagination */
 	if ( is_home() || is_archive() || is_search() ){ ?>
 		<?php loop_pagination( array(
-			'prev_text' => '<span class="meta-nav"></span>',
-			'next_text' => '<span class="meta-nav"></span>',
+			'prev_text' => '<span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span>',
+			'next_text' => '<span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span>',
 			'end_size' => 3,
 			'mid_size' => 3,
 		)); ?>
@@ -618,6 +683,19 @@ function tamatebako_menu_search_form(){ ?>
 }
 
 /**
+ * Next Previous Post (Loop Nav)
+ * @since 0.1.0
+ */
+function tamatebako_next_prev_entry(){
+?>
+	<div class="loop-nav">
+		<?php previous_post_link( '<div class="prev"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . ':</span> %link</div>', '%title' ); ?>
+		<?php next_post_link( '<div class="next"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . ':</span> %link</div>', '%title' ); ?>
+	</div><!-- .loop-nav -->
+<?php
+}
+
+/**
  * Content Error
  * used in "index.php"
  * @since 0.1.0
@@ -637,6 +715,28 @@ function tamatebako_content_error(){
 
 	</div><!-- .entry-wrap -->
 </article><!-- .entry -->
+<?php
+}
+
+/**
+ * Comments Nav
+ * @since 0.1.0
+ */
+function tamatebako_comments_nav(){
+?>
+	<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) : // Check for paged comments. ?>
+
+		<div class="comments-nav">
+
+			<?php previous_comments_link( '<span class="prev-comments"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span></span>' ); ?>
+
+			<span class="page-numbers"><?php printf( '%1$s / %2$s', get_query_var( 'cpage' ) ? absint( get_query_var( 'cpage' ) ) : 1, get_comment_pages_count() ); ?></span>
+
+			<?php next_comments_link( '<span class="next-comments"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span></span>' ); ?>
+
+		</div><!-- .comments-nav -->
+
+	<?php endif; // End check for paged comments. ?>
 <?php
 }
 
@@ -664,7 +764,7 @@ function tamatebako_comments_error(){
 }
 
 
-/* #07 - UTILLITY
+/* #08 - UTILLITY
 ******************************************/
 
 
@@ -722,7 +822,7 @@ function tamatebako_add_body_class( $new_classes ){
 }
 
 
-/* #08 - REGISTER THEME SUPPORT
+/* #09 - REGISTER THEME SUPPORT
 ******************************************/
 
 
@@ -741,6 +841,11 @@ function tamatebako_register_theme_support(){
 	/* Register Menus */
 	add_action( 'init', 'tamatebako_register_menus' );
 
+	/* Customize Mobile View */
+	if ( current_theme_supports( 'tamatebako-customize-mobile-view' ) ){
+		add_action( 'customize_controls_print_footer_scripts', 'tamatebako_customize_mobile_view_script' );
+		add_action( 'customize_controls_print_styles', 'tamatebako_customize_mobile_view_style' );
+	}
 }
 
 /**
@@ -785,4 +890,234 @@ function tamatebako_register_menus(){
 
 	/* Register it */
 	register_nav_menus( $menus[0] );
+}
+
+
+/**
+ * Load mobile preview toggle icon
+ * @since 0.1.0
+ */
+function tamatebako_customize_mobile_view_script(){
+?>
+<div id="devices">
+	<div class="devices-container">
+		<span id="desktop-preview" title="Desktop" class="current"></span>
+		<span id="tablet-preview" title="Tablet" class=""></span>
+		<span id="mobile-preview" title="Mobile" class=""></span>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+	$( "#tablet-preview" ).click(function(e){
+		e.preventDefault();
+		$( '#customize-preview' ).removeClass( "desktop tablet mobile" ).addClass( 'tablet' );
+		$( '.devices-container span' ).removeClass();
+		$( '#tablet-preview' ).addClass('current');
+	});
+	$( "#mobile-preview" ).click(function(e){
+		e.preventDefault();
+		$( '#customize-preview' ).removeClass( "desktop tablet mobile" ).addClass( 'mobile' );
+		$( '.devices-container span' ).removeClass();
+		$( '#mobile-preview' ).addClass( 'current' );
+	});
+	$( "#desktop-preview" ).click(function(e){
+		e.preventDefault();
+		$( '#customize-preview' ).removeClass( "desktop tablet mobile" );
+		$( '.devices-container span' ).removeClass();
+		$( '#desktop-preview' ).addClass( 'current' );
+	});
+});
+</script>
+<?php
+}
+
+/**
+ * Add custom stylesheet to customizer
+ * @since 0.1.0
+ */
+function tamatebako_customize_mobile_view_style(){
+/* Hide theme information */ ?>
+<style id="tamatebako-customize-mobile-view">
+/* Preview */
+#customize-preview{
+	text-align: center;
+}
+#customize-preview iframe{
+	display: block;
+	margin: 0 auto;
+}
+#customize-preview.desktop iframe{
+	width: 100%;
+}
+#customize-preview.tablet iframe{
+	max-width: 783px;
+}
+#customize-preview.mobile iframe{
+	max-width: 335px;
+}
+/* Control */
+#devices{
+	margin-left:-75px;
+	position:absolute;
+	bottom:20px;
+	left:50%;
+	z-index:1000000;
+	width:150px;
+}
+#devices .devices-container{
+	background:rgba(0,0,0,0.8);
+	border-radius:3px;
+	margin:0 auto;
+	padding:10px 10px 5px;
+	text-align:center;
+	width:130px;
+}
+#devices span{
+	cursor:pointer;
+}
+#devices span:before{
+	display:inline-block;
+	font:normal 30px/1 'dashicons';
+	margin:0 5px;
+	color:#777;
+	position:relative;
+	speak:none;
+	-webkit-font-smoothing:antialiased;
+	cursor:pointer;
+}
+#devices span:hover:before{
+	color:#2ea2cc;
+}
+#devices #desktop-preview:before{
+	content:"\f472";
+}
+#devices #tablet-preview:before{
+	content:"\f471";
+}
+#devices #mobile-preview:before{
+	content:"\f470";
+}
+#devices .current:before,
+#devices .current:hover:before{
+	color:#fff;
+}
+#customize-preview.desktop,
+#customize-preview.tablet,
+#customize-preview.mobile{
+	background:#555;
+}
+</style>
+<?php
+}
+
+
+/* #10 - DEBUG
+******************************************/
+
+/* Hook to theme setup */
+add_action( 'after_setup_theme', 'tamatebako_theme_debug_setup', 20 );
+
+
+/**
+ * Debug Setup Function
+ * @since 0.1.0
+ */
+function tamatebako_theme_debug_setup(){
+
+	$debug = get_theme_support( 'tamatebako-debug' );
+
+	if ( isset( $debug[0] ) ){
+		$test = $debug[0];
+
+		/* add "wp-is-mobile" body class  */
+		if ( isset( $test['mobile'] ) && $test['mobile'] ){
+			add_filter( 'body_class', 'tamatebako_debug_mobile_body_class' );
+		}
+
+		/* "js-disabled": dequeue theme.js script */
+		if ( isset( $test['no-js'] ) && $test['no-js'] ){
+			add_filter( 'tamatebako_check_js_script', '__return_false' );
+			remove_action( 'wp_enqueue_scripts', 'hybrid_enqueue_scripts', 5 );
+			remove_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
+			add_action( 'wp_print_scripts', 'tamatebako_debug_no_js' );
+		}
+
+		/* display media queries width */
+		if ( isset( $test['media-queries'] ) && $test['media-queries'] ){
+			add_action( 'wp_enqueue_scripts', 'tamatebako_debug_enqueue_media_queries', 20 );
+		}
+	}
+}
+
+/**
+ * Debug Mobile Body Class
+ * @since 0.1.0
+ */
+function tamatebako_debug_mobile_body_class( $classes ){
+	$classes[] = 'wp-is-mobile';
+	return $classes;
+}
+
+/**
+ * Debug No JS
+ * @since 0.1.0
+ */
+function tamatebako_debug_no_js(){
+	if ( !is_admin() ){
+		wp_dequeue_script( 'jquery' );
+	}
+}
+
+/**
+ * Enqueue Media Queries Debug CSS
+ * @since 0.1.0
+ */
+function tamatebako_debug_enqueue_media_queries(){
+	wp_enqueue_style( 'debug-media-queries', trailingslashit( get_template_directory_uri() ) . 'css/debug-media-queries.css', array(), tamatebako_theme_version(), 'all' );
+}
+
+/**
+ * Pretty Debug Data
+ * @link http://chrisbratlien.com/prettier-php-debug-messages-continued/
+ */
+function tmdd( $obj, $label = '' ) {  
+
+	$data = json_encode(print_r($obj,true));
+	?>
+	<style type="text/css">
+		#bsdLogger {
+			position: inherit;
+			bottom:0;
+			border: 3px solid #ffa601;
+			padding: 6px;
+			background: white;
+			color: #444;
+			z-index: 999;
+			font-size: 1.25em;
+			width: 980px;
+			overflow: scroll;
+			margin: 50px auto 0 auto;
+		}
+	</style>    
+	<script type="text/javascript">
+	var doStuff = function(){
+		var obj = <?php echo $data; ?>;
+		var logger = document.getElementById('bsdLogger');
+		if (!logger) {
+			logger = document.createElement('div');
+			logger.id = 'bsdLogger';
+			document.body.appendChild(logger);
+		}
+		////console.log(obj);
+		var pre = document.createElement('pre');
+		var h2 = document.createElement('h2');
+		pre.innerHTML = obj;
+
+		h2.innerHTML = '<?php echo addslashes($label); ?>';
+		logger.appendChild(h2);
+		logger.appendChild(pre);      
+	};
+	window.addEventListener ("DOMContentLoaded", doStuff, false);
+	</script>
+	<?php
 }

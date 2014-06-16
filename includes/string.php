@@ -8,6 +8,13 @@ function tamatebako_string( $context ){
 	/* Open Sesame ! */
 	$text = array();
 
+	/* Read More */
+	$text['read-more'] = _x( 'read more&hellip;', 'content read more', 'genbu' );
+
+	/* Next, Previous */
+	$text['next'] = _x( 'Next', 'next in pagination and comments navigation', 'genbu' );
+	$text['previous'] = _x( 'Previous', 'previous in pagination and comments navigation', 'genbu' );
+
 	/* Menu Fallback */
 	$text['menu-primary-fallback-home'] = _x( 'Home', 'nav menu primary fallback home link', 'genbu' );
 
@@ -22,6 +29,10 @@ function tamatebako_string( $context ){
 	/* Content error */
 	$text['error'] = _x( '404 Not Found', '404 title', 'genbu' );
 	$text['error-msg'] = _x( 'Apologies, but no entries were found.', '404 content', 'genbu' );
+
+	/* Theme Layout */
+	$text['global-layout'] = esc_html__( 'Global Layout', 'theme-layouts' );
+	$text['layout'] = esc_html__( 'Layout', 'theme-layouts' );
 
 	$text = apply_filters( 'tamatebako_string', $text );
 
@@ -48,8 +59,8 @@ function genbu_string( $context ){
 	$text['menu-footer-name'] = _x( 'Footer Links', 'nav menu location', 'genbu' );
 
 	/* Register Sidebar */
-	$text['sidebar-primary-name'] = _x( 'Main Sidebar', 'sidebar name', 'genbu' );
-	$text['sidebar-secondary-name'] = _x( 'Navigation Sidebar', 'sidebar name', 'genbu' );
+	$text['sidebar-primary-name'] = _x( 'Sidebar 1', 'sidebar name', 'genbu' );
+	$text['sidebar-secondary-name'] = _x( 'Sidebar 2', 'sidebar name', 'genbu' );
 
 	/* Edit link */
 	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );

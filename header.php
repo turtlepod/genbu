@@ -6,4 +6,4 @@
 </head>
 
 <body <?php hybrid_attr( 'body' ); ?>>
-<?php tamatebako_check_js_script(); ?>
+<?php echo tamatebako_check_js_script(); ?>

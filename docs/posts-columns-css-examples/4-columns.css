@@ -1,0 +1,62 @@
+/* === 4 COLUMNS: body class: "plural-display-4col" === */
+.plural-display-4col .entry:after{
+	content: "";
+}
+.plural-display-4col .entry{
+	width: 25%;
+	float: none;
+	margin-right: -0.25em;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 20px 0 0;
+	padding: 0 2rem 0 0;
+	border: none;
+}
+.plural-display-4col .entry .entry-wrap{
+	margin-left: 0;
+	padding: 20px;
+	border: 1px solid #ccc;
+}
+.plural-display-4col .entry:nth-child(4n+4){
+	padding: 0;
+}
+/* Change 4 to 3 columns */
+@media screen and (max-width: 200px){
+	.plural-display-4col .entry{
+		width: 33.3333%;
+	}
+	.plural-display-4col .entry:nth-child(4n+4){
+		padding: 0 20px 0 0;
+		padding: 0 2rem 0 0;
+	}
+	.plural-display-4col .entry:nth-child(3n+3){
+		padding: 0;
+	}
+
+}
+/* Change 4 to 2 columns */
+@media screen and (max-width: 200px){
+	.plural-display-4col .entry{
+		width: 50%;
+	}
+	.plural-display-4col .entry:nth-child(3n+3){
+		padding: 0 20px 0 0;
+		padding: 0 2rem 0 0;
+	}
+	.plural-display-4col .entry:nth-child(even){
+		padding: 0;
+	}
+}
+/* Change 4 to 1 columns */
+@media screen and (max-width: 200px){
+	.plural-display-4col .entry{
+		padding: 0;
+		width: 100%;
+	}
+	.plural-display-4col .entry:nth-child(3n+3){
+		padding: 0;
+	}
+	.plural-display-4col .entry:nth-child(even){
+		padding: 0;
+	}
+}
