@@ -10,6 +10,7 @@
  *                     (max-width:  700px)
  * #02 - MENU          (max-width:  700px)
  * #03 - ENTRY         (max-width:  600px)
+ *                     (max-width:  800px)
  * #04 - LOOP-NAV      (max-width:  450px)
  * #05 - COMMENTS      (max-width:  700px)
  * #06 - JETPACK       (max-width:  450px)
@@ -237,6 +238,12 @@
 	}
 	.entry-byline .post-edit-link:before{
 		content: "";
+	}
+}
+@media screen and (max-width: 800px) {
+	.entry-content .alignleft,
+	.entry-content .alignright{
+		max-width: 50%;
 	}
 }
 

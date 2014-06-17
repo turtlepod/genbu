@@ -119,16 +119,13 @@ q:before{
 table{
 	border-bottom: 1px solid #ededed;
 	color: #757575;
-	font-size: 14px;
-	font-size: 1.4rem;
 	line-height: 1.8em;
 	margin: 0 0 20px;
 	margin: 0 0 2rem;
 	width: 100%;
 }
 table caption{
-	font-size: 16px;
-	font-size: 1.6rem;
+	font-size: 1.2em;
 	margin: 20px 0;
 	margin: 2rem 0;
 }
@@ -149,8 +146,6 @@ fieldset{
 }
 input, textarea, select, button{
 	display: block;
-	font-size: 16px;
-	font-size: 1.6rem;
 	font-family: 'Open Sans','Trebuchet MS', sans-serif;
 	padding: 5px;
 	padding: 0.5rem;
@@ -230,11 +225,10 @@ label{
 }
 /* Pre, Code */
 pre{
-	font-size: 14px;
-	line-height: 20px;
-	padding: 20px;
+	padding: 2em;
+	line-height: 2em;
 	background-color: #eee;
-	background-size: 40px 40px;
+	background-size: 4em 4em;
 	background-image: linear-gradient(rgba(255, 255, 255, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0));
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0));
 	background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.5) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0));
@@ -245,7 +239,6 @@ code{
 	background: #F7F7F7;
 }
 pre code{
-	font-size: 14px;
 	line-height: 20px;
 	background: transparent;
 }
@@ -258,8 +251,6 @@ pre code{
 }
 .wp-caption-text,
 .wp-caption-dd{
-	font-size: 14px;
-	font-size: 1.4rem;
 	margin-bottom: 0;
 	text-align: left;
 }
@@ -285,8 +276,7 @@ pre code{
 	opacity: 0.9;
 }
 .gallery-caption{
-	font-size: 12px;
-	font-size: 1.2rem;
+	font-size: 0.8em;
 	line-height: 1.5em;
 	text-align: left;
 	margin: 1%;
@@ -785,8 +775,7 @@ pre code{
 .entry-byline{
 	color: #6A6A6A;
 	font-weight: 300;
-	font-size: 12px;
-	font-size: 1.2rem;
+	font-size: 0.8em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	letter-spacing: 0.2rem;
@@ -961,8 +950,6 @@ pre code{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 .comments-header .comments-nav{
-	font-size: 14px;
-	font-size: 1.4rem;
 	float: right;
 }
 .comments-header .comments-nav a{
@@ -987,16 +974,13 @@ pre code{
 	margin-left: 1rem;
 }
 #comments-number{
-	font-size: 17px;
-	font-size: 1.7rem;
+	font-size: 1.2em;
 	font-weight: 600;
 	margin-bottom: 1rem;
 	padding-bottom: 1rem;
 	border-bottom: 1px solid #ededed;
 }
 #respond{
-	font-size: 14px;
-	font-size: 1.4rem;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
 	padding: 10px;
@@ -1005,8 +989,7 @@ pre code{
 	background: #fff;
 }
 #reply-title{
-	font-size: 17px;
-	font-size: 1.7rem;
+	font-size: 1.2em;
 	font-weight: 600;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
@@ -1063,8 +1046,6 @@ ol #respond{
 	font-weight: 400;
 }
 #respond .form-allowed-tags code{
-	font-size: 14px;
-	font-size: 1.4rem;
 	line-height: 20px;
 	line-height: 2rem;
 	padding: 20px;
@@ -1120,8 +1101,6 @@ ol #respond{
 	margin-bottom: 0;
 }
 #comments .comment-meta{
-	font-size: 14px;
-	font-size: 1.4rem;
 	text-transform: uppercase;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
@@ -1134,8 +1113,6 @@ ol #respond{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 #comments .comment-meta .comment-author{
-	font-size: 17px;
-	font-size: 1.7rem;
 	text-transform: none;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
@@ -1166,8 +1143,6 @@ ol #respond{
 }
 #comments .comment-reply-link{
 	float: right;
-	font-size: 14px;
-	font-size: 1.4rem;
 	text-transform: uppercase;
 	padding: 0 5px;
 	padding: 0 0.5rem;
@@ -1257,8 +1232,6 @@ ol #respond{
 }
 .widget-title{
 	font-weight: 700;
-	font-size: 12px;
-	font-size: 1.2rem;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
 	padding: 0 10px;
@@ -1272,8 +1245,6 @@ ol #respond{
 #wp-calendar tr,
 #wp-calendar td{
 	text-align: center;
-	font-size: 10px;
-	font-size: 1rem;
 }
 /* one level list */
 .widget_recent_entries ul,
@@ -1310,8 +1281,6 @@ ol #respond{
 .widget_recent_entries .post-date,
 .widget_rss .rss-date{
 	color: #6A6A6A;
-	font-size: 14px;
-	font-size: 1.4rem;
 	font-weight: 300;
 	letter-spacing: 2px;
 	letter-spacing: 0.2rem;
@@ -1510,10 +1479,7 @@ span#footer-links a:before{
 }
 .jetpack_subscription_widget .widget-title{
 	color: #fff;
-}
-.jetpack_subscription_widget p{
-	font-size: 14px;
-	font-size: 1.4rem;
+	background: transparent;
 }
 .jetpack_subscription_widget #subscribe-text a{
 	color: #fff;
