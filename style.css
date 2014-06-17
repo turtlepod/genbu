@@ -828,6 +828,22 @@ pre code{
 	.entry-meta .entry-terms a{
 		font-weight: 300;
 	}
+/* More link */
+.more-link-wrap{
+	display: block;
+}
+	p .more-link-wrap{
+		margin-top: 20px;
+		margin-top: 2rem;
+	}
+.more-link{
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
+}
+	p .more-link{
+		margin-bottom: 0;
+	}
 /* Clear */
 .singular .entry-header:after,
 .singular .entry-content:after,
