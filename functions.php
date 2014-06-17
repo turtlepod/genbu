@@ -27,7 +27,7 @@ function genbu_setup(){
 	//add_theme_support( 'tamatebako-debug', $debug_args );
 
 	/* === Post Formats === */
-	//add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'chat' ) );
+	//add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 	/* === Theme Layouts === */
 	$layouts = array(
@@ -128,7 +128,7 @@ function genbu_custom_header_wp_head_callback(){
 function genbu_custom_header_admin_head_callback(){
 	$hex = get_header_textcolor();
 	$text_color_style = '';
-	if ( empty( $hex ) ){
+	if ( !empty( $hex ) ){
 		$text_color_style = "#site-title a, #site-title a:hover { color: #{$hex}; }";
 	}
 ?>
