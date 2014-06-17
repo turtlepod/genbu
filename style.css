@@ -117,7 +117,7 @@ q:before{
 }
 /* Table */
 table{
-	border-bottom: 1px solid #ededed;
+	border-bottom: 1px solid #ccc;
 	color: #757575;
 	line-height: 1.8em;
 	margin: 0 0 20px;
@@ -132,7 +132,7 @@ table caption{
 td {
 	padding: 6px 10px 6px 0;
 	padding: 0.6rem 1rem 0.6rem 0;
-	border-top: 1px solid #ededed;
+	border-top: 1px solid #ccc;
 }
 /* Forms */
 fieldset{
@@ -142,7 +142,12 @@ fieldset{
 	padding: 2rem;
 	width: 100%;
 	max-width: 100%;
-	border: 1px solid #ededed;
+	border: 1px solid #ccc;
+}
+legend{
+	border: 1px solid #ccc;
+	padding: 0 10px;
+	padding: 0 1rem;
 }
 input, textarea, select, button{
 	display: block;
@@ -150,12 +155,11 @@ input, textarea, select, button{
 	padding: 5px;
 	padding: 0.5rem;
 	width: 100%;
-	min-width: 50%;
 	max-width: 100%;
 	margin: 0;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
-	border: 1px solid #ededed;
+	border: 1px solid #ccc;
 	border-radius: 3px;
 	border-radius: 0.3rem;
 	-webkit-border-radius: 3px;
@@ -167,7 +171,7 @@ input, textarea, select, button{
 input:focus, input:active,
 textarea:focus, textarea:active,
 select:focus, select:active{
-	border: 1px solid #ccc;
+	border: 1px solid #aaa;
 	background: #fff;
 }
 textarea{
@@ -181,6 +185,15 @@ input[type="radio"]{
 }
 input[type="range"]{
 	margin: 0;
+}
+input[type="color"]{
+	height: 2.5em;
+	width: 3em;
+	min-width: 0;
+	cursor: pointer;
+}
+input[type="file"]{
+	cursor: pointer;
 }
 input[type="submit"],
 input[type="button"],
@@ -334,6 +347,8 @@ pre code{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 #site-title{
+	font-size: 25px;
+	font-size: 2.5rem;
 	margin-bottom: 10px;
 	margin-bottom: 1rem;
 }
@@ -775,7 +790,6 @@ pre code{
 .entry-byline{
 	color: #6A6A6A;
 	font-weight: 300;
-	font-size: 0.8em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	letter-spacing: 0.2rem;
