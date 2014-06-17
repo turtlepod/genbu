@@ -9,21 +9,17 @@ function tamatebako_string( $context ){
 	$text = array();
 
 	/* Read More */
-	$text['read-more'] = _x( 'read more&hellip;', 'content read more', 'genbu' );
+	$text['read-more'] = _x( 'Read more&hellip;', 'content read more', 'genbu' );
 
 	/* Edit Link */
-	$text['edit-post'] = _x( 'Edit', 'edit post link', 'genbu' );
-	$text['edit-comment'] = _x( 'Edit', 'edit comment link', 'genbu' );
+	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
 
 	/* Next, Previous */
-	$text['next'] = _x( 'Next', 'next in pagination and comments navigation', 'genbu' );
-	$text['previous'] = _x( 'Previous', 'previous in pagination and comments navigation', 'genbu' );
-
-	/* Menu Fallback */
-	$text['menu-primary-fallback-home'] = _x( 'Home', 'nav menu primary fallback home link', 'genbu' );
+	$text['next'] = _x( 'Next', 'next in pagination and navigation', 'genbu' );
+	$text['previous'] = _x( 'Previous', 'previous in pagination and navigation', 'genbu' );
 
 	/* Search */
-	$text['search'] = _x( 'Search &hellip;', 'search text', 'genbu' );
+	$text['search'] = _x( 'Search&hellip;', 'search text', 'genbu' );
 	$text['search-button'] = _x( 'Search', 'search button', 'genbu' );
 
 	/* Comments error */
@@ -65,9 +61,6 @@ function genbu_string( $context ){
 	/* Register Sidebar */
 	$text['sidebar-primary-name'] = _x( 'Sidebar 1', 'sidebar name', 'genbu' );
 	$text['sidebar-secondary-name'] = _x( 'Sidebar 2', 'sidebar name', 'genbu' );
-
-	/* Edit link */
-	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
 
 	$text = apply_filters( 'genbu_string', $text );
 

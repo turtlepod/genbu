@@ -121,7 +121,7 @@ function tamatebako_content_more( $more_link, $more_link_text ){
  * @since 0.1.0
  */
 function tamatebako_edit_post_link( $link, $post_id ){
-	$string = tamatebako_string( 'edit-post' );
+	$string = tamatebako_string( 'edit' );
 	if ( empty( $string ) ){
 		return $link;
 	}
@@ -136,7 +136,7 @@ function tamatebako_edit_post_link( $link, $post_id ){
  * @since 0.1.0
  */
 function tamatebako_edit_comment_link( $link, $comment_id ){
-	$string = tamatebako_string( 'edit-comment' );
+	$string = tamatebako_string( 'edit' );
 	if ( empty( $string ) ){
 		return $link;
 	}
@@ -709,7 +709,7 @@ function tamatebako_menu_fallback_cb(){
 <div class="wrap">
 	<ul class="menu-items" id="menu-items">
 		<li class="menu-item">
-			<a rel="home" href="<?php echo home_url(); ?>"><?php echo tamatebako_string( 'menu-primary-fallback-home' ); ?></a>
+			<a rel="home" href="<?php echo home_url(); ?>">Home</a>
 		</li>
 	</ul>
 </div>
@@ -773,7 +773,7 @@ function tamatebako_content_error(){
  */
 function tamatebako_comments_nav(){
 ?>
-<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) : // Check for paged comments. ?>
+<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) { // Check for paged comments. ?>
 
 	<div class="comments-nav">
 
@@ -785,7 +785,7 @@ function tamatebako_comments_nav(){
 
 	</div><!-- .comments-nav -->
 
-<?php endif; // End check for paged comments. ?>
+<?php } // End check for paged comments. ?>
 <?php
 }
 
@@ -796,19 +796,19 @@ function tamatebako_comments_nav(){
  */
 function tamatebako_comments_error(){
 ?>
-	<?php if ( pings_open() && !comments_open() ) : ?>
+<?php if ( pings_open() && !comments_open() ) { ?>
 
-		<p class="comments-closed pings-open">
-			<?php echo tamatebako_string( 'comments-closed-pings-open' ); ?>
-		</p><!-- .comments-closed.pings-open -->
+	<p class="comments-closed pings-open">
+		<?php echo tamatebako_string( 'comments-closed-pings-open' ); ?>
+	</p><!-- .comments-closed.pings-open -->
 
-	<?php elseif ( !comments_open() ) : ?>
+<?php } elseif ( !comments_open() ) { ?>
 
-		<p class="comments-closed">
-			<?php echo tamatebako_string( 'comments-closed' ); ?>
-		</p><!-- .comments-closed -->
+	<p class="comments-closed">
+		<?php echo tamatebako_string( 'comments-closed' ); ?>
+	</p><!-- .comments-closed -->
 
-	<?php endif; ?>
+<?php } ?>
 <?php
 }
 
