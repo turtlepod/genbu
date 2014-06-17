@@ -11,7 +11,7 @@
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
-			<?php edit_post_link( genbu_string( 'edit' ), '<p class="edit-this">', '</p>' ); ?>
+			<?php edit_post_link( null, '<p class="edit-this">', '</p>' ); ?>
 		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->

@@ -56,7 +56,11 @@ function tamatebako_setup(){
 
 	/* Set Consistent Read More */
 	add_filter( 'excerpt_more', 'tamatebako_disable_excerpt_more' );
-	add_filter( 'get_the_excerpt', 'tamatebako_add_excerpt_more' );
+	add_filter( 'the_excerpt', 'tamatebako_add_excerpt_more' );
+
+	/* Edit Link */
+	add_filter( 'edit_post_link', 'tamatebako_edit_post_link', 10, 2 );
+	add_filter( 'edit_comment_link', 'tamatebako_edit_comment_link', 10, 2 );
 
 	/* Sidebar Defaults Args */
 	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
@@ -101,6 +105,36 @@ function tamatebako_disable_excerpt_more( $more ) {
  */
 function tamatebako_add_excerpt_more( $excerpt ) {
 	return $excerpt . ' <a class="more-link" href="' . get_permalink() . '"><span>' . tamatebako_string( 'read-more' ) . '</span></a>';
+}
+
+/**
+ * Edit Post Link
+ * @since 0.1.0
+ */
+function tamatebako_edit_post_link( $link, $post_id ){
+	$string = tamatebako_string( 'edit-post' );
+	if ( empty( $string ) ){
+		return $link;
+	}
+	if ( 'Edit This' == strip_tags( $link ) ){
+		$link = '<a class="post-edit-link" href="' . get_edit_post_link( $post_id ) . '">' . $string . '</a>';
+	}
+	return $link;
+}
+
+/**
+ * Edit Post Link
+ * @since 0.1.0
+ */
+function tamatebako_edit_comment_link( $link, $comment_id ){
+	$string = tamatebako_string( 'edit-comment' );
+	if ( empty( $string ) ){
+		return $link;
+	}
+	if ( 'Edit This' == strip_tags( $link ) ){
+		$link = '<a class="comment-edit-link" href="' . get_edit_comment_link( $comment_id ) . '">' . $string . '</a>';
+	}
+	return $link;
 }
 
 
@@ -767,6 +801,43 @@ function tamatebako_comments_error(){
 
 	<?php endif; ?>
 <?php
+}
+
+/**
+ * Attachment
+ * @since 0.1.0
+ */
+function tamatebako_attachment(){
+	if ( wp_attachment_is_image( get_the_ID() ) ){
+		tamatebako_attachment_image();
+	}
+	else{
+		hybrid_attachment();
+	}
+}
+
+/**
+ * Attachment Image
+ * 
+ * 
+ */
+function tamatebako_attachment_image(){
+
+	/* If image has excerpt / caption. */
+	if ( has_excerpt() ) {
+
+		/* Image URL */
+		$src = wp_get_attachment_image_src( get_the_ID(), 'full' );
+		/* Display image with caption */
+		echo img_caption_shortcode( array( 'align' => 'aligncenter', 'width' => esc_attr( $src[1] ), 'caption' => get_the_excerpt() ), wp_get_attachment_image( get_the_ID(), 'full', false ) );
+
+	}
+	/* No caption. */
+	else {
+
+		/* Display image without caption. */
+		echo wp_get_attachment_image( get_the_ID(), 'full', false, array( 'class' => 'aligncenter' ) );
+	}
 }
 
 

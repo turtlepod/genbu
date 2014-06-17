@@ -11,6 +11,10 @@ function tamatebako_string( $context ){
 	/* Read More */
 	$text['read-more'] = _x( 'read more&hellip;', 'content read more', 'genbu' );
 
+	/* Edit Link */
+	$text['edit-post'] = _x( 'Edit', 'edit post link', 'genbu' );
+	$text['edit-comment'] = _x( 'Edit', 'edit comment link', 'genbu' );
+
 	/* Next, Previous */
 	$text['next'] = _x( 'Next', 'next in pagination and comments navigation', 'genbu' );
 	$text['previous'] = _x( 'Previous', 'previous in pagination and comments navigation', 'genbu' );
