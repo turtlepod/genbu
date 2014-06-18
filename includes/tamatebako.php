@@ -77,6 +77,9 @@ function tamatebako_setup(){
 	/* Additional Body Classes */
 	add_filter( 'body_class', 'tamatebako_body_class' );
 
+	/* Additional Widgets Classes */
+	add_filter( 'dynamic_sidebar_params', 'tamatebako_widget_class' );
+
 	/* HTML 5 */
 	$html5 = array(
 		'search-form',
@@ -461,6 +464,58 @@ function tamatebako_body_class( $classes ){
 	return $classes;
 }
 
+/**
+ * Widget Class
+ * @since 0.1.0
+ */
+function tamatebako_widget_class( $params ) {
+
+	/* Global a counter array */
+	global $shell_widget_num;
+
+	/* Get the id for the current sidebar we're processing */
+	$this_id = $params[0]['id'];
+
+	/* Get registered widgets */
+	$arr_registered_widgets = wp_get_sidebars_widgets();
+
+	/* If the counter array doesn't exist, create it */
+	if ( !$shell_widget_num ) {
+		$shell_widget_num = array();
+	}
+
+	/* if current sidebar has no widget, return. */
+	if ( !isset( $arr_registered_widgets[$this_id] ) || !is_array( $arr_registered_widgets[$this_id] ) ) {
+		return $params;
+	}
+
+	/* See if the counter array has an entry for this sidebar */
+	if ( isset( $shell_widget_num[$this_id] ) ) {
+		$shell_widget_num[$this_id] ++;
+	}
+	/* If not, create it starting with 1 */
+	else {
+		$shell_widget_num[$this_id] = 1;
+	}
+
+	/* Add a widget number class for additional styling options */
+	$class = 'class="widget widget-' . $shell_widget_num[$this_id] . ' '; 
+
+	/* in first widget, add 'widget-first' class */
+	if ( $shell_widget_num[$this_id] == 1 ) {
+		$class .= 'widget-first ';
+	}
+	/* in last widget, add 'widget-last' class */
+	elseif( $shell_widget_num[$this_id] == count( $arr_registered_widgets[$this_id] ) ) { 
+		$class .= 'widget-last ';
+	}
+
+	/* str replace before_widget param with new class */
+	$params[0]['before_widget'] = str_replace( 'class="widget ', $class, $params[0]['before_widget'] );
+
+	return $params;
+}
+
 
 /* #07 - TEMPLATE FUNCTIONS
 ******************************************/
@@ -721,11 +776,11 @@ function tamatebako_menu_fallback_cb(){
  * used in "menu/primary.php"
  * @since 0.1.0.0
  */
-function tamatebako_menu_search_form(){
+function tamatebako_menu_search_form( $id = 'search-menu' ){
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-	<label id="search-toggle" for="search-menu"></label>
-	<input id="search-menu" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
+	<label class="search-toggle" for="<?php echo esc_attr( $id ); ?>"></label>
+	<input id="<?php echo esc_attr( $id ); ?>" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
 	<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
 </form>
 <?php
