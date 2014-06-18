@@ -103,7 +103,7 @@ function tamatebako_setup(){
  * @since 0.1.0
  */
 function tamatebako_disable_excerpt_more( $more ) {
-	return '';
+	return '&hellip;';
 }
 
 /**
@@ -111,7 +111,11 @@ function tamatebako_disable_excerpt_more( $more ) {
  * @since 0.1.0
  */
 function tamatebako_add_excerpt_more( $excerpt ) {
-	return $excerpt . '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . tamatebako_string( 'read-more' ) . '</span></a></span>';
+	$string = tamatebako_string( 'read-more' );
+	if ( !empty( $string ) ){
+		return $excerpt . '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
+	}
+	return $excerpt;
 }
 
 /**
@@ -119,7 +123,11 @@ function tamatebako_add_excerpt_more( $excerpt ) {
  * @since 0.1.0
  */
 function tamatebako_content_more( $more_link, $more_link_text ){
-	return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span>', $more_link ) . '</span>';
+	$string = tamatebako_string( 'read-more' );
+	if ( !empty( $string ) ){
+		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span>', $more_link ) . '</span>';
+	}
+	return $more_link;
 }
 
 /**
