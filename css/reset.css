@@ -408,6 +408,14 @@ body#tinymce {
 	border: none;
 	max-width: 100%;
 }
+#container{
+	word-wrap: break-word;
+	word-break: normal;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
 /* Admin Bar Fix */
 #wpadminbar input{
 	display: inline;
