@@ -11,6 +11,7 @@
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
+			<?php edit_post_link(); ?>
 			<?php tamatebako_entry_terms(); ?>
 		</footer><!-- .entry-footer -->
 

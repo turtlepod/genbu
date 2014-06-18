@@ -348,17 +348,6 @@ code{
 		vertical-align: middle;
 		-webkit-font-smoothing: antialiased;
 	}
-	.entry-byline .post-edit-link:before{
-		content: " | ";
-	}
-.post-edit-link{
-}
-.post-edit-link:after{
-	content: "\f464";
-	font-family: "dashicons";
-	vertical-align: top;
-	-webkit-font-smoothing: antialiased;
-}
 /* Entry Meta */
 .entry-meta{
 }
@@ -383,6 +372,17 @@ code{
 	p .more-link{
 		margin-bottom: 0;
 	}
+.post-edit-link{
+}
+.post-edit-link:before{
+	content: "\f464";
+	font-family: "dashicons";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+}
+.post-edit-link:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
 /* Clear */
 .singular .entry-header:after,
 .singular .entry-content:after,

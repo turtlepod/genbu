@@ -7,8 +7,12 @@
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
-			<?php edit_post_link( null, '<p class="edit-this">', '</p>' ); ?>
 		</div><!-- .entry-summary -->
+
+		<footer class="entry-footer">
+			<?php edit_post_link(); ?>
+			<?php tamatebako_entry_terms(); ?>
+		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
 </article><!-- .entry -->

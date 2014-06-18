@@ -63,6 +63,9 @@ function tamatebako_setup(){
 	add_filter( 'edit_post_link', 'tamatebako_edit_post_link', 10, 2 );
 	add_filter( 'edit_comment_link', 'tamatebako_edit_comment_link', 10, 2 );
 
+	/* WP Link Pages */
+	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
+
 	/* Sidebar Defaults Args */
 	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
 
@@ -147,6 +150,16 @@ function tamatebako_edit_comment_link( $link, $comment_id ){
 		$link = '<a class="comment-edit-link" href="' . get_edit_comment_link( $comment_id ) . '">' . $string . '</a>';
 	}
 	return $link;
+}
+
+/**
+ * WP Link Pages
+ * @since 0.1.0
+ */
+function tamatebako_wp_link_pages( $args ){
+	$args['before'] = '<p class="wp-link-pages">';
+	$args['after'] = '</p>';
+	return $args;
 }
 
 
