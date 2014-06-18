@@ -9,17 +9,17 @@ function tamatebako_string( $context ){
 	$text = array();
 
 	/* Read More */
-	$text['read-more'] = _x( 'read more&hellip;', 'content read more', 'genbu' );
+	$text['read-more'] = _x( 'Read more&hellip;', 'content read more', 'genbu' );
+
+	/* Edit Link */
+	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
 
 	/* Next, Previous */
-	$text['next'] = _x( 'Next', 'next in pagination and comments navigation', 'genbu' );
-	$text['previous'] = _x( 'Previous', 'previous in pagination and comments navigation', 'genbu' );
-
-	/* Menu Fallback */
-	$text['menu-primary-fallback-home'] = _x( 'Home', 'nav menu primary fallback home link', 'genbu' );
+	$text['next'] = _x( 'Next', 'next in pagination and navigation', 'genbu' );
+	$text['previous'] = _x( 'Previous', 'previous in pagination and navigation', 'genbu' );
 
 	/* Search */
-	$text['search'] = _x( 'Search &hellip;', 'search text', 'genbu' );
+	$text['search'] = _x( 'Search&hellip;', 'search text', 'genbu' );
 	$text['search-button'] = _x( 'Search', 'search button', 'genbu' );
 
 	/* Comments error */
@@ -31,8 +31,8 @@ function tamatebako_string( $context ){
 	$text['error-msg'] = _x( 'Apologies, but no entries were found.', '404 content', 'genbu' );
 
 	/* Theme Layout */
-	$text['global-layout'] = esc_html__( 'Global Layout', 'theme-layouts' );
-	$text['layout'] = esc_html__( 'Layout', 'theme-layouts' );
+	$text['global-layout'] = _x( 'Global Layout', 'theme layouts', 'genbu' );
+	$text['layout'] = _x( 'Layout', 'theme layouts', 'genbu' );
 
 	$text = apply_filters( 'tamatebako_string', $text );
 
@@ -61,9 +61,6 @@ function genbu_string( $context ){
 	/* Register Sidebar */
 	$text['sidebar-primary-name'] = _x( 'Sidebar 1', 'sidebar name', 'genbu' );
 	$text['sidebar-secondary-name'] = _x( 'Sidebar 2', 'sidebar name', 'genbu' );
-
-	/* Edit link */
-	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
 
 	$text = apply_filters( 'genbu_string', $text );
 

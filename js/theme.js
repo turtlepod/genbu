@@ -2,11 +2,11 @@ jQuery( document ).ready( function($) {
 
 	/* Display search on search page */
 	if ( $("body").hasClass("search") ){
-		$( "#search-toggle" ).parents( ".menu-search" ).addClass( "search-toggle-active" )
+		$( ".search-toggle" ).parents( ".menu-search" ).addClass( "search-toggle-active" )
 	}
 
 	/* Show menu search */
-	$( "#search-toggle" ).click( function(e) {
+	$( ".search-toggle" ).click( function(e) {
 		e.preventDefault();
 		$( this ).parents( ".menu-search" ).toggleClass( "search-toggle-active" );
 		$( this ).siblings( ".search-field" ).focus();

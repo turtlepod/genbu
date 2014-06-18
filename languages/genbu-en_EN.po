@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Genbu WordPress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-16 14:27+0700\n"
+"POT-Creation-Date: 2014-06-18 10:28+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: David Chandra Purnama <david@shellcreeper.com>\n"
@@ -18,27 +18,27 @@ msgstr ""
 
 #: string.php:12
 msgctxt "content read more"
-msgid "read more&hellip;"
+msgid "Read more&hellip;"
 msgstr ""
 
 #: string.php:15
-msgctxt "next in pagination and comments navigation"
+msgctxt "edit link"
+msgid "Edit"
+msgstr ""
+
+#: string.php:18
+msgctxt "next in pagination and navigation"
 msgid "Next"
 msgstr ""
 
-#: string.php:16
-msgctxt "previous in pagination and comments navigation"
-msgid "Previous"
-msgstr ""
-
 #: string.php:19
-msgctxt "nav menu primary fallback home link"
-msgid "Home"
+msgctxt "previous in pagination and navigation"
+msgid "Previous"
 msgstr ""
 
 #: string.php:22
 msgctxt "search text"
-msgid "Search &hellip;"
+msgid "Search&hellip;"
 msgstr ""
 
 #: string.php:23
@@ -67,10 +67,12 @@ msgid "Apologies, but no entries were found."
 msgstr ""
 
 #: string.php:34
+msgctxt "theme layouts"
 msgid "Global Layout"
 msgstr ""
 
 #: string.php:35
+msgctxt "theme layouts"
 msgid "Layout"
 msgstr ""
 
@@ -92,9 +94,4 @@ msgstr ""
 #: string.php:63
 msgctxt "sidebar name"
 msgid "Sidebar 2"
-msgstr ""
-
-#: string.php:66
-msgctxt "edit link"
-msgid "Edit"
 msgstr ""

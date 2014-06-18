@@ -20,14 +20,14 @@ function genbu_setup(){
 
 	/* === DEBUG === */
 	$debug_args = array(
-		'mobile'         => 1,
+		'mobile'         => 0,
 		'no-js'          => 0,
 		'media-queries'  => 1,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );
 
 	/* === Post Formats === */
-	//add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'chat' ) );
+	//add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 	/* === Theme Layouts === */
 	$layouts = array(
@@ -128,7 +128,7 @@ function genbu_custom_header_wp_head_callback(){
 function genbu_custom_header_admin_head_callback(){
 	$hex = get_header_textcolor();
 	$text_color_style = '';
-	if ( empty( $hex ) ){
+	if ( !empty( $hex ) ){
 		$text_color_style = "#site-title a, #site-title a:hover { color: #{$hex}; }";
 	}
 ?>
@@ -200,43 +200,7 @@ function genbu_custom_header_admin_head_callback(){
 function genbu_custom_header_admin_preview_callback(){
 ?>
 <div id="fake-body" <?php hybrid_attr( 'body' ); // Fake <body> class. ?>>
-<header <?php hybrid_attr( 'header' ); ?>>
-
-	<?php if ( get_header_image() ) { /* Use Header Image */ ?>
-
-		<?php if ( display_header_text() ){ /* Using Header Text, use image as banner */ ?>
-
-			<div id="branding">
-
-				<?php hybrid_site_title(); ?>
-				<?php hybrid_site_description(); ?>
-
-			</div><!-- #branding -->
-
-			<div id="header-image-banner">
-				<img class="header-image" src="<?php header_image(); ?>" alt="<?php esc_attr( get_bloginfo( 'name' ) ); ?>" title="<?php esc_attr( get_bloginfo( 'name' ) ); ?>"/>
-			</div>
-
-		<?php } else { /* No Header Text, use as logo */ ?>
-
-				<div id="branding">
-					<h1 id="site-logo"><a href="<?php echo home_url(); ?>" rel="home"><img class="header-image" src="<?php header_image(); ?>" alt="<?php esc_attr( get_bloginfo( 'name' ) ); ?>" title="<?php esc_attr( get_bloginfo( 'name' ) ); ?>"/></a></h1>
-				</div><!-- #branding -->
-
-		<?php } /* End Header Text Check */ ?>
-
-	<?php } else { /* No Header Image, always display text */ ?>
-
-		<div id="branding">
-
-			<?php hybrid_site_title(); ?>
-			<?php hybrid_site_description(); ?>
-
-		</div><!-- #branding -->
-
-	<?php } /* End Header Image Check */ ?>
-
-</header><!-- #header-->
+	<?php require_once( trailingslashit( get_template_directory() ) . 'site-header.php' ); ?>
 </div>
 <?php
 }

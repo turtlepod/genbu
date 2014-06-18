@@ -56,7 +56,15 @@ function tamatebako_setup(){
 
 	/* Set Consistent Read More */
 	add_filter( 'excerpt_more', 'tamatebako_disable_excerpt_more' );
-	add_filter( 'get_the_excerpt', 'tamatebako_add_excerpt_more' );
+	add_filter( 'the_excerpt', 'tamatebako_add_excerpt_more' );
+	add_filter( 'the_content_more_link', 'tamatebako_content_more', 10, 2 );
+
+	/* Edit Link */
+	add_filter( 'edit_post_link', 'tamatebako_edit_post_link', 10, 2 );
+	add_filter( 'edit_comment_link', 'tamatebako_edit_comment_link', 10, 2 );
+
+	/* WP Link Pages */
+	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
 
 	/* Sidebar Defaults Args */
 	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
@@ -71,6 +79,9 @@ function tamatebako_setup(){
 
 	/* Additional Body Classes */
 	add_filter( 'body_class', 'tamatebako_body_class' );
+
+	/* Additional Widgets Classes */
+	add_filter( 'dynamic_sidebar_params', 'tamatebako_widget_class' );
 
 	/* HTML 5 */
 	$html5 = array(
@@ -92,7 +103,7 @@ function tamatebako_setup(){
  * @since 0.1.0
  */
 function tamatebako_disable_excerpt_more( $more ) {
-	return '';
+	return '&hellip;';
 }
 
 /**
@@ -100,7 +111,63 @@ function tamatebako_disable_excerpt_more( $more ) {
  * @since 0.1.0
  */
 function tamatebako_add_excerpt_more( $excerpt ) {
-	return $excerpt . ' <a class="more-link" href="' . get_permalink() . '"><span>' . tamatebako_string( 'read-more' ) . '</span></a>';
+	$string = tamatebako_string( 'read-more' );
+	if ( !empty( $string ) ){
+		return $excerpt . '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
+	}
+	return $excerpt;
+}
+
+/**
+ * Content More
+ * @since 0.1.0
+ */
+function tamatebako_content_more( $more_link, $more_link_text ){
+	$string = tamatebako_string( 'read-more' );
+	if ( !empty( $string ) ){
+		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span>', $more_link ) . '</span>';
+	}
+	return $more_link;
+}
+
+/**
+ * Edit Post Link
+ * @since 0.1.0
+ */
+function tamatebako_edit_post_link( $link, $post_id ){
+	$string = tamatebako_string( 'edit' );
+	if ( empty( $string ) ){
+		return $link;
+	}
+	if ( 'Edit This' == strip_tags( $link ) ){
+		$link = '<a class="post-edit-link" href="' . get_edit_post_link( $post_id ) . '">' . $string . '</a>';
+	}
+	return $link;
+}
+
+/**
+ * Edit Post Link
+ * @since 0.1.0
+ */
+function tamatebako_edit_comment_link( $link, $comment_id ){
+	$string = tamatebako_string( 'edit' );
+	if ( empty( $string ) ){
+		return $link;
+	}
+	if ( 'Edit This' == strip_tags( $link ) ){
+		$link = '<a class="comment-edit-link" href="' . get_edit_comment_link( $comment_id ) . '">' . $string . '</a>';
+	}
+	return $link;
+}
+
+/**
+ * WP Link Pages
+ * @since 0.1.0
+ */
+function tamatebako_wp_link_pages( $args ){
+	$args['before'] = '<p class="wp-link-pages">';
+	$args['after'] = '</p>';
+	return $args;
 }
 
 
@@ -159,7 +226,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 		$wp_customize->add_section(
 			'layout',
 			array(
-				'title'      => tamatebako_string( 'layout' ),
+				'title'      => esc_html( tamatebako_string( 'layout' ) ),
 				'priority'   => 190,
 				'capability' => 'edit_theme_options'
 			)
@@ -192,7 +259,7 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 		$wp_customize->add_control(
 			'theme-layout-control',
 			array(
-				'label'    => tamatebako_string( 'global-layout' ),
+				'label'    => esc_html( tamatebako_string( 'global-layout' ) ),
 				'section'  => 'layout',
 				'settings' => 'theme_layout',
 				'type'     => 'radio',
@@ -418,6 +485,58 @@ function tamatebako_body_class( $classes ){
 	return $classes;
 }
 
+/**
+ * Widget Class
+ * @since 0.1.0
+ */
+function tamatebako_widget_class( $params ) {
+
+	/* Global a counter array */
+	global $shell_widget_num;
+
+	/* Get the id for the current sidebar we're processing */
+	$this_id = $params[0]['id'];
+
+	/* Get registered widgets */
+	$arr_registered_widgets = wp_get_sidebars_widgets();
+
+	/* If the counter array doesn't exist, create it */
+	if ( !$shell_widget_num ) {
+		$shell_widget_num = array();
+	}
+
+	/* if current sidebar has no widget, return. */
+	if ( !isset( $arr_registered_widgets[$this_id] ) || !is_array( $arr_registered_widgets[$this_id] ) ) {
+		return $params;
+	}
+
+	/* See if the counter array has an entry for this sidebar */
+	if ( isset( $shell_widget_num[$this_id] ) ) {
+		$shell_widget_num[$this_id] ++;
+	}
+	/* If not, create it starting with 1 */
+	else {
+		$shell_widget_num[$this_id] = 1;
+	}
+
+	/* Add a widget number class for additional styling options */
+	$class = 'class="widget widget-' . $shell_widget_num[$this_id] . ' '; 
+
+	/* in first widget, add 'widget-first' class */
+	if ( $shell_widget_num[$this_id] == 1 ) {
+		$class .= 'widget-first ';
+	}
+	/* in last widget, add 'widget-last' class */
+	elseif( $shell_widget_num[$this_id] == count( $arr_registered_widgets[$this_id] ) ) { 
+		$class .= 'widget-last ';
+	}
+
+	/* str replace before_widget param with new class */
+	$params[0]['before_widget'] = str_replace( 'class="widget ', $class, $params[0]['before_widget'] );
+
+	return $params;
+}
+
 
 /* #07 - TEMPLATE FUNCTIONS
 ******************************************/
@@ -615,19 +734,23 @@ function tamatebako_entry_terms(){
  */
 function tamatebako_archive_header(){ ?>
 
-	<?php /* Start Archive Title */
-		if ( !is_front_page() && !is_singular() && !is_404() ){?>
+	<?php if ( !is_front_page() && !is_singular() && !is_404() ){ ?>
+
 		<header <?php hybrid_attr( 'loop-meta' ); ?>>
-			<?php if ( $desc = hybrid_get_loop_title() ) : ?>
+
+			<?php if ( hybrid_get_loop_title() ) { ?>
 			<h1 <?php hybrid_attr( 'loop-title' ); ?>><?php hybrid_loop_title(); ?></h1>
-			<?php endif; // End paged check. ?>
-			<?php if ( $desc = hybrid_get_loop_description() ) : ?>
+			<?php } // End title check. ?>
+
+			<?php if ( $desc = hybrid_get_loop_description() ) { ?>
 				<div <?php hybrid_attr( 'loop-description' ); ?>>
 					<?php echo $desc; ?>
 				</div><!-- .loop-description -->
-			<?php endif; // End paged check. ?>
+			<?php } // End desc check. ?>
+
 		</header><!-- .loop-meta -->
-	<?php } /* End Archive Title */ ?>
+
+	<?php }  ?>
 
 <?php
 }
@@ -638,15 +761,16 @@ function tamatebako_archive_header(){ ?>
  */
 function tamatebako_archive_footer(){ ?>
 
-	<?php /* Start Archive Pagination */
-	if ( is_home() || is_archive() || is_search() ){ ?>
+	<?php if ( is_home() || is_archive() || is_search() ){ ?>
+
 		<?php loop_pagination( array(
 			'prev_text' => '<span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span>',
 			'next_text' => '<span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span>',
 			'end_size' => 3,
 			'mid_size' => 3,
 		)); ?>
-	<?php } /* End Archive Pagination */ ?>
+
+	<?php } ?>
 
 <?php
 }
@@ -661,7 +785,7 @@ function tamatebako_menu_fallback_cb(){
 <div class="wrap">
 	<ul class="menu-items" id="menu-items">
 		<li class="menu-item">
-			<a rel="home" href="<?php echo home_url(); ?>"><?php echo tamatebako_string( 'menu-primary-fallback-home' ); ?></a>
+			<a rel="home" href="<?php echo home_url(); ?>">Home</a>
 		</li>
 	</ul>
 </div>
@@ -673,12 +797,13 @@ function tamatebako_menu_fallback_cb(){
  * used in "menu/primary.php"
  * @since 0.1.0.0
  */
-function tamatebako_menu_search_form(){ ?>
-	<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-		<label id="search-toggle" for="search-menu"></label>
-		<input id="search-menu" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
-		<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
-	</form>
+function tamatebako_menu_search_form( $id = 'search-menu' ){
+?>
+<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+	<label class="search-toggle" for="<?php echo esc_attr( $id ); ?>"></label>
+	<input id="<?php echo esc_attr( $id ); ?>" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
+	<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
+</form>
 <?php
 }
 
@@ -686,12 +811,12 @@ function tamatebako_menu_search_form(){ ?>
  * Next Previous Post (Loop Nav)
  * @since 0.1.0
  */
-function tamatebako_next_prev_entry(){
+function tamatebako_entry_nav(){
 ?>
-	<div class="loop-nav">
-		<?php previous_post_link( '<div class="prev"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . ':</span> %link</div>', '%title' ); ?>
-		<?php next_post_link( '<div class="next"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . ':</span> %link</div>', '%title' ); ?>
-	</div><!-- .loop-nav -->
+<div class="loop-nav">
+	<?php previous_post_link( '<div class="prev"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . ':</span> %link</div>', '%title' ); ?>
+	<?php next_post_link( '<div class="next"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . ':</span> %link</div>', '%title' ); ?>
+</div><!-- .loop-nav -->
 <?php
 }
 
@@ -724,19 +849,19 @@ function tamatebako_content_error(){
  */
 function tamatebako_comments_nav(){
 ?>
-	<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) : // Check for paged comments. ?>
+<?php if ( get_option( 'page_comments' ) && 1 < get_comment_pages_count() ) { // Check for paged comments. ?>
 
-		<div class="comments-nav">
+	<div class="comments-nav">
 
-			<?php previous_comments_link( '<span class="prev-comments"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span></span>' ); ?>
+		<?php previous_comments_link( '<span class="prev-comments"><span class="screen-reader-text">' . tamatebako_string( 'previous' ) . '</span></span>' ); ?>
 
-			<span class="page-numbers"><?php printf( '%1$s / %2$s', get_query_var( 'cpage' ) ? absint( get_query_var( 'cpage' ) ) : 1, get_comment_pages_count() ); ?></span>
+		<span class="page-numbers"><?php printf( '%1$s / %2$s', get_query_var( 'cpage' ) ? absint( get_query_var( 'cpage' ) ) : 1, get_comment_pages_count() ); ?></span>
 
-			<?php next_comments_link( '<span class="next-comments"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span></span>' ); ?>
+		<?php next_comments_link( '<span class="next-comments"><span class="screen-reader-text">' . tamatebako_string( 'next' ) . '</span></span>' ); ?>
 
-		</div><!-- .comments-nav -->
+	</div><!-- .comments-nav -->
 
-	<?php endif; // End check for paged comments. ?>
+<?php } // End check for paged comments. ?>
 <?php
 }
 
@@ -747,20 +872,57 @@ function tamatebako_comments_nav(){
  */
 function tamatebako_comments_error(){
 ?>
-	<?php if ( pings_open() && !comments_open() ) : ?>
+<?php if ( pings_open() && !comments_open() ) { ?>
 
-		<p class="comments-closed pings-open">
-			<?php echo tamatebako_string( 'comments-closed-pings-open' ); ?>
-		</p><!-- .comments-closed.pings-open -->
+	<p class="comments-closed pings-open">
+		<?php echo tamatebako_string( 'comments-closed-pings-open' ); ?>
+	</p><!-- .comments-closed.pings-open -->
 
-	<?php elseif ( !comments_open() ) : ?>
+<?php } elseif ( !comments_open() ) { ?>
 
-		<p class="comments-closed">
-			<?php echo tamatebako_string( 'comments-closed' ); ?>
-		</p><!-- .comments-closed -->
+	<p class="comments-closed">
+		<?php echo tamatebako_string( 'comments-closed' ); ?>
+	</p><!-- .comments-closed -->
 
-	<?php endif; ?>
+<?php } ?>
 <?php
+}
+
+/**
+ * Attachment
+ * @since 0.1.0
+ */
+function tamatebako_attachment(){
+	if ( wp_attachment_is_image( get_the_ID() ) ){
+		tamatebako_attachment_image();
+	}
+	else{
+		hybrid_attachment();
+	}
+}
+
+/**
+ * Attachment Image
+ * 
+ * 
+ */
+function tamatebako_attachment_image(){
+
+	/* If image has excerpt / caption. */
+	if ( has_excerpt() ) {
+
+		/* Image URL */
+		$src = wp_get_attachment_image_src( get_the_ID(), 'full' );
+		/* Display image with caption */
+		echo img_caption_shortcode( array( 'align' => 'aligncenter', 'width' => esc_attr( $src[1] ), 'caption' => get_the_excerpt() ), wp_get_attachment_image( get_the_ID(), 'full', false ) );
+
+	}
+	/* No caption. */
+	else {
+
+		/* Display image without caption. */
+		echo wp_get_attachment_image( get_the_ID(), 'full', false, array( 'class' => 'aligncenter' ) );
+	}
 }
 
 
