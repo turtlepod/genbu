@@ -59,6 +59,11 @@ b,center,font,hr,i,layer,menu,s,strike,u,xmp {
 	border:none;
 	text-decoration:none;
 }
+hr {
+	background-color: #ccc;
+	height: 1px;
+	border: 0;
+}
 /* Headings */
 h1,h2,h3,h4,h5,h6 {
 	font-style:normal;

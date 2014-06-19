@@ -189,7 +189,7 @@ function tamatebako_sidebar_defaults( $args ){
 add_action( 'after_setup_theme', 'tamatebako_override_theme_layouts_customize_setup', 14 );
 
 /**
- * Shell Override Theme Layouts Customize
+ * Override Theme Layouts Customize and fix theme layout post meta.
  * 
  * @since 0.2.0
  */
@@ -203,6 +203,12 @@ function tamatebako_override_theme_layouts_customize_setup(){
 
 		/* Add custom setting for layout in customizer */
 		add_action( 'customize_register', 'tamatebako_theme_layouts_customize_register' );
+
+		/* Remove theme layouts default filter */
+		remove_filter( 'theme_mod_theme_layout', 'theme_layouts_filter_layout', 5 );
+
+		/* Set to default layout in singular pages when it's not supported. */
+		add_filter( 'theme_mod_theme_layout', 'tamatebako_filter_layout', 6 );
 	}
 }
 
@@ -267,6 +273,47 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 			)
 		);
 	}
+}
+
+/**
+ * Post Layout Filter.
+ * Problem: If in the future post meta is disabled, user cannot change post layout already set.
+ * @since 0.1.0
+ */
+function tamatebako_filter_layout( $theme_layout ){
+
+	/* Layout */
+	$layout = '';
+
+	/* Theme Support */
+	$layouts = get_theme_support( 'theme-layouts' );
+
+	/* If viewing a singular post, get the post layout. */
+	if ( is_singular() ){
+
+		/* Only if theme layout support post meta and post type supports it */
+		if( true === $layouts[1]['post_meta'] && post_type_supports( get_post_type( get_queried_object_id() ) , 'theme-layouts' ) ){
+
+			$layout = get_post_layout( get_queried_object_id() );
+		}
+	}
+
+	/* If viewing an author archive, get the user layout. */
+	elseif ( is_author() )
+		$layout = get_user_layout( get_queried_object_id() );
+
+	/* If a layout was found, set it. */
+	if ( !empty( $layout ) && 'default' !== $layout ) {
+		$theme_layout = $layout;
+	}
+
+	/* Else, if no layout option has yet been saved, return the theme default. */
+	elseif ( empty( $theme_layout ) ) {
+		$args = theme_layouts_get_args();
+		$theme_layout = $args['default'];
+	}
+
+	return $theme_layout;
 }
 
 
