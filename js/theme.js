@@ -1,10 +1,5 @@
 jQuery( document ).ready( function($) {
 
-	/* Display search on search page */
-	if ( $("body").hasClass("search") ){
-		$( ".search-toggle" ).parents( ".menu-search" ).addClass( "search-toggle-active" )
-	}
-
 	/* Show menu search */
 	$( ".search-toggle" ).click( function(e) {
 		e.preventDefault();
@@ -12,7 +7,12 @@ jQuery( document ).ready( function($) {
 		$( this ).siblings( ".search-field" ).focus();
 	});
 
-	/* Mobile sub-menu */
+	/* Display search form on search page */
+	if ( $("body").hasClass("search") ){
+		$( ".search-toggle" ).parents( ".menu-search" ).addClass( "search-toggle-active" )
+	}
+
+	/* Mobile submenu toggle on mobile device */
 	if ( $("body").hasClass("wp-is-mobile") ){
 		$("body").addClass("mobile-menu-active");
 	}
@@ -41,9 +41,11 @@ jQuery( document ).ready( function($) {
 			}
 		});
 	}
-	/* Mobile Menu */
+
+	/* Mobile menu toggle (small screen) */
 	$( ".menu-toggle a" ).click( function(e) {
 		e.preventDefault();
 		$( this ).parents(".menu-container").toggleClass( "menu-toggle-active" );
 	});
+
 });

@@ -27,7 +27,18 @@ function genbu_setup(){
 	//add_theme_support( 'tamatebako-debug', $debug_args );
 
 	/* === Post Formats === */
-	//add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'audio', 'chat' ) );
+	$post_formats_args = array(
+		'aside',
+		'image',
+		'gallery',
+		'link',
+		'quote',
+		'status',
+		'video',
+		'audio',
+		'chat'
+	);
+	//add_theme_support( 'post-formats', $post_formats_args );
 
 	/* === Theme Layouts === */
 	$layouts = array(
@@ -66,14 +77,16 @@ function genbu_setup(){
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
 	/* === Load Stylesheet === */
-	add_theme_support( 'hybrid-core-styles', array(
+	$style_args = array(
 		'theme-open-sans-font',
 		'dashicons',
-		//'theme-reset',
-		//'theme-menus',
+		'theme-reset',
+		'theme-menus',
+		'parent',
 		'style',
 		'media-queries'
-	) );
+	);
+	add_theme_support( 'hybrid-core-styles', $style_args );
 
 	/* === Editor Style === */
 	add_editor_style( array( 'style.css', tamatebako_google_open_sans_font_url() ) );
