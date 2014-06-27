@@ -18,6 +18,7 @@
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
+			<?php tamatebako_read_more(); ?>
 		</div><!-- .entry-summary -->
 
 		<div class="entry-footer">

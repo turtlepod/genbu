@@ -56,7 +56,6 @@ function tamatebako_setup(){
 
 	/* Set Consistent Read More */
 	add_filter( 'excerpt_more', 'tamatebako_disable_excerpt_more' );
-	add_filter( 'the_excerpt', 'tamatebako_add_excerpt_more' );
 	add_filter( 'the_content_more_link', 'tamatebako_content_more', 10, 2 );
 
 	/* Edit Link */
@@ -107,15 +106,16 @@ function tamatebako_disable_excerpt_more( $more ) {
 }
 
 /**
- * Add Excerpt More In All Excerpt
+ * Tamatebako Read More
  * @since 0.1.0
  */
-function tamatebako_add_excerpt_more( $excerpt ) {
+function tamatebako_read_more() {
 	$string = tamatebako_string( 'read-more' );
+	$read_more = '';
 	if ( !empty( $string ) ){
-		return $excerpt . '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
+		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
 	}
-	return $excerpt;
+	echo $read_more;
 }
 
 /**
