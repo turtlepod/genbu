@@ -1,4 +1,5 @@
 <article <?php hybrid_attr( 'post' ); ?>>
+
 	<div class="entry-wrap">
 
 		<div class="entry-header">
@@ -16,4 +17,5 @@
 		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
+
 </article><!-- .entry -->

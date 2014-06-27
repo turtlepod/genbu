@@ -635,12 +635,13 @@ function tamatebako_get_template( $dir ) {
 		$post_format = get_post_format() ? get_post_format() : 'standard';
 
 		/* Template based off post type and post format. */
-		$templates[] = "{$dir}/{$post_type}-{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_type}-{$post_format}.php";
+		$templates[] = "{$dir}/{$post_type}-format-{$post_format}{$singular}.php";
+		$templates[] = "{$dir}/{$post_type}-format{$singular}.php";
+		$templates[] = "{$dir}/{$post_type}-format-{$post_format}.php";
 
 		/* Template based off the post format. */
-		$templates[] = "{$dir}/{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_format}.php";
+		$templates[] = "{$dir}/format-{$post_format}{$singular}.php";
+		$templates[] = "{$dir}/format-{$post_format}.php";
 	}
 
 	/* Template based off the post type. */
@@ -1198,7 +1199,6 @@ function tamatebako_customize_mobile_view_style(){
 	margin:0 5px;
 	color:#777;
 	position:relative;
-	speak:none;
 	-webkit-font-smoothing:antialiased;
 	cursor:pointer;
 }

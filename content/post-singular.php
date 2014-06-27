@@ -1,4 +1,5 @@
 <article <?php hybrid_attr( 'post' ); ?>>
+
 	<div class="entry-wrap">
 
 		<header class="entry-header">
@@ -24,6 +25,7 @@
 		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
+
 </article><!-- .entry -->
 
 <?php tamatebako_entry_nav(); ?>

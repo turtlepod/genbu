@@ -89,7 +89,12 @@ function genbu_setup(){
 	add_theme_support( 'hybrid-core-styles', $style_args );
 
 	/* === Editor Style === */
-	add_editor_style( array( 'style.css', tamatebako_google_open_sans_font_url() ) );
+	$editor_css = array(
+		'css/reset.min.css',
+		'style.css',
+		tamatebako_google_open_sans_font_url()
+	);
+	add_editor_style( $editor_css );
 
 	/* === Customizer Mobile View === */
 	add_theme_support( 'tamatebako-customize-mobile-view' );

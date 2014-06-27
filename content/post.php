@@ -1,7 +1,5 @@
 <article <?php hybrid_attr( 'post' ); ?>>
 
-	<?php //get_the_image( array( 'attachment' => false ) ); ?>
-
 	<div class="entry-wrap">
 
 		<div class="entry-header">
