@@ -535,3 +535,22 @@ body#tinymce .gallery{
 .gallery-columns-28 .gallery-item { width:3.57%; }
 .gallery-columns-29 .gallery-item { width:3.44%; }
 .gallery-columns-30 .gallery-item { width:3.33%; }
+
+/* == 20px Reset == */
+hr,h1,h2,h3,h4,h5,h6,figure,p,ul,ol,dl,address,pre,object,fieldset,table,table caption,hr,
+.block,.wp-audio-shortcode,.wp-video-shortcode,.gallery,.html5-captions .wp-caption,.wp-caption{
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
+}
+.alignleft,.html5-captions .wp-caption.alignleft,.wp-caption.alignleft,.left {
+	margin: 0 20px 20px 0;
+	margin: 0 2rem 2rem 0;
+}
+.alignright,.html5-captions .wp-caption.alignright,.wp-caption.alignright,.right {
+	margin: 0 0 20px 20px;
+	margin: 0 0 2rem 2rem;
+}
+.aligncenter,.html5-captions .wp-caption.aligncenter,.wp-caption.aligncenter,.center {
+	margin: 0 auto 20px;
+	margin: 0 auto 2rem;
+}

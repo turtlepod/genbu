@@ -66,7 +66,14 @@ function genbu_setup(){
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
 	/* === Load Stylesheet === */
-	add_theme_support( 'hybrid-core-styles', array( 'theme-open-sans-font', 'dashicons', 'parent', 'style', 'media-queries' ) );
+	add_theme_support( 'hybrid-core-styles', array(
+		'theme-open-sans-font',
+		'dashicons',
+		//'theme-reset',
+		//'theme-menus',
+		'style',
+		'media-queries'
+	) );
 
 	/* === Editor Style === */
 	add_editor_style( array( 'style.css', tamatebako_google_open_sans_font_url() ) );

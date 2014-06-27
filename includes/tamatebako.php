@@ -421,7 +421,6 @@ function tamatebako_check_js_script(){
 function tamatebako_register_css(){
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
 
 	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
 	wp_register_style( 'theme-open-sans-font', tamatebako_google_open_sans_font_url(), array(), tamatebako_theme_version(), 'all' );
@@ -430,7 +429,16 @@ function tamatebako_register_css(){
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
 	/* Media Queries */
-	wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
+	if ( !empty( $media_queries_css ) ) wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+
+	/* Reset CSS */
+	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.js", "css/reset.css" ) );
+	if ( !empty( $reset_css ) ) wp_register_style( 'theme-reset',$reset_css, array(), tamatebako_theme_version(), 'all' );
+
+	/* Menus CSS */
+	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.js", "css/menus.css" ) );
+	if ( !empty( $menus_css ) ) wp_register_style( 'theme-menus',$menus_css, array(), tamatebako_theme_version(), 'all' );
 }
 
 
