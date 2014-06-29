@@ -21,9 +21,10 @@ Genbu is powered with 9 Layout, You can set the layout globally via WordPress cu
 * Content / Sidebar 1 / Sidebar 2
 * Sidebar 1 / Content / Sidebar 2
 
-*Content*: Main content of the page.
-*Sidebar 1*: Primary Sidebar (300px wide).
-*Sidebar 2*: Secondary Sidebar (160px wide).
+Info:
+* *Content*: Main content of the page.
+* *Sidebar 1*: Primary Sidebar (300px wide).
+* *Sidebar 2*: Secondary Sidebar (160px wide).
 
 ### Navigation Menus:
 
