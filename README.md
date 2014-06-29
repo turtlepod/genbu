@@ -20,21 +20,22 @@ Genbu is powered with 9 Layout, You can set the layout globally via WordPress cu
 * Sidebar 2 / Sidebar 1 / Content
 * Content / Sidebar 1 / Sidebar 2
 * Sidebar 1 / Content / Sidebar 2
+
 *Content*: Main content of the page.
 *Sidebar 1*: Primary Sidebar (300px wide).
 *Sidebar 2*: Secondary Sidebar (160px wide).
 
-## Navigation Menus:
+### Navigation Menus:
 
 Genbu have two navigation menus.
 * *Primary Navigation*: located below header with search form on the right side. On mobile device will use toggle and using menu name as toggle. When not set, it will display link to home page.
-* *Footer Links*: will be displayed as simple hyperlink in footer area. If not set, will not displayed.
+* *Footer Links*: will be displayed as simple links in footer area. If not set, will not displayed.
 
-## Custom Background:
+### Custom Background:
 
 Genbu have custom background feature you can set custom background via WP Customize or background settings page.
 
-## Custom Header Image:
+### Custom Header Image:
 
 Genbu have custom background header feature you can set custom header image via WP Customize or header settings page.
 * When displaying the header text, the header image will be used as banner image below site title and description.
@@ -56,11 +57,9 @@ Genbu theme do *not* have:
 
 ### Links
 
-[Github project page](https://github.com/turtlepod/genbu)
-
-[Theme page](http://shellcreeper.com/portfolio/wordpress-theme/genbu-theme-responsive/)
-
-Need a custom theme or plugin for your WordPress website? [I can help](http://shellcreeper.com/services/).
+* [Github project page](https://github.com/turtlepod/genbu)
+* [Theme page](http://shellcreeper.com/portfolio/wordpress-theme/genbu-theme-responsive/)
+* Need a custom theme or plugin for your WordPress website? [I can help](http://shellcreeper.com/services/).
 
 ## Copyright & license
 
@@ -70,8 +69,8 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 ## To Do List:
 
-- Better Accessibility Feature
-- Post Format Example (maybe as child theme)
+* Better Accessibility Feature
+* Post Format Example (maybe as child theme)
 
 ## Changelog:
 
