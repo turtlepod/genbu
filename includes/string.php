@@ -8,6 +8,12 @@ function tamatebako_string( $context ){
 	/* Open Sesame ! */
 	$text = array();
 
+	/* Paged Title Tag
+	 * Translators: 1 is the page title and separator. 2 is the page number.
+	 * Example Output: "{post title} | Page {page number}"
+	 */
+	$text['paged'] = _x( '%1$s Page %2$s', 'paged title tag', 'genbu' );
+
 	/* Read More */
 	$text['read-more'] = _x( 'Read more&hellip;', 'content read more', 'genbu' );
 
