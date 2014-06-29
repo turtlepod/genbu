@@ -65,7 +65,8 @@ body.wordpress{
 a{
 	color: #21759B;
 }
-a:hover{
+a:hover,
+a:focus {
 	color: #444;
 }
 ul{
@@ -129,7 +130,8 @@ code{
 				font-weight: 800;
 				color: #444;
 			}
-			#site-title a:hover{
+			#site-title a:hover,
+			#site-title a:focus{
 				color: #444;
 				opacity: 0.8;
 			}
@@ -179,14 +181,16 @@ code{
 			color: #fff;
 			background: #333;
 		}
-		#menu-primary li a:hover{
+		#menu-primary li a:hover,
+		#menu-primary li a:focus{
 			color: #e6e6e6;
 		}
 			#menu-primary li li a{
 				color: #444;
 				background: #fff;
 			}
-			#menu-primary li li a:hover{
+			#menu-primary li li a:hover,
+			#menu-primary li li a:focus{
 				color: #000;
 			}
 			#menu-primary .current-menu-item > a,
@@ -286,7 +290,8 @@ code{
 			.entry-byline a{
 				color: #444;
 			}
-			.entry-byline a:hover{
+			.entry-byline a:hover,
+			.entry-byline a:focus{
 				color: #000;
 			}
 			.entry-author:before{
@@ -357,7 +362,8 @@ code{
 			color: #444;
 			border: 1px solid #ccc;
 		}
-		.wp-link-pages a:hover{
+		.wp-link-pages a:hover,
+		.wp-link-pages a:focus{
 			border: 1px solid #aaa;
 		}
 /* Entry Footer */
@@ -586,7 +592,8 @@ code{
 					.pingback .comment-author a{
 						color: #444;
 					}
-					.pingback .comment-author a:hover{
+					.pingback .comment-author a:hover,
+					.pingback .comment-author a:focus{
 						color: #21759B;
 					}
 				.pingback .comment-published{
@@ -721,7 +728,8 @@ code{
 		padding: 5px 10px;
 		padding: 0.5rem 1rem;
 	}
-	.loop-pagination a.page-numbers:hover{
+	.loop-pagination a.page-numbers:hover,
+	.loop-pagination a.page-numbers:focus{
 		border: 1px solid #aaa;
 	}
 	.loop-pagination .page-numbers.current{
@@ -835,7 +843,8 @@ code{
 	color: #fff;
 	background: #444;
 }
-.widget_search .search-submit:hover{
+.widget_search .search-submit:hover,
+.widget_search .search-submit:focus{
 	background: #333;
 	border: none;
 }
@@ -1036,7 +1045,8 @@ code{
 	color: #fff;
 	background: #21759B;
 }
-.jetpack_subscription_widget input[type="submit"]:hover{
+.jetpack_subscription_widget input[type="submit"]:hover,
+.jetpack_subscription_widget input[type="submit"]:focus{
 	color: #444;
 	background: #fff;
 	border: none;

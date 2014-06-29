@@ -1,24 +1,5 @@
 @media screen and (max-width: 700px){
 
-	/* Menu Primary 1st Level */
-	#menu-primary li a{
-		background: #444;
-	}
-
-	/* === Menu Toggle: no-js === */
-	#menu-primary:target .menu-toggle{
-		border-bottom: 1px solid #ccc;
-	}
-	#menu-primary:target .menu-items{
-		display: block;
-	}
-	#menu-primary:target .menu-toggle-open{
-		display: none;
-	}
-	#menu-primary:target .menu-toggle-close{
-		display: inline;
-	}
-
 	/* Menu Toggle */
 	.menu-toggle{
 		font-weight: 700;
@@ -28,6 +9,15 @@
 		width: 100%;
 		height: 47px;
 		height: 4.7rem;
+	}
+	.menu-toggle .screen-reader-text{
+		position: inherit;
+		left: auto;
+		top: auto;
+	}
+	.menu-toggle a:hover,
+	.menu-toggle a:focus{
+		opacity: 0.8;
 	}
 	.menu-toggle a:before{
 		content: "\f203";

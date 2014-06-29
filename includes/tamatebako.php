@@ -238,7 +238,7 @@ function tamatebako_read_more() {
 	$string = tamatebako_string( 'read-more' );
 	$read_more = '';
 	if ( !empty( $string ) ){
-		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
+		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span> <span class="screen-reader-text">' . get_the_title() . '</span></a></span>';
 	}
 	echo $read_more;
 }
@@ -250,7 +250,7 @@ function tamatebako_read_more() {
 function tamatebako_content_more( $more_link, $more_link_text ){
 	$string = tamatebako_string( 'read-more' );
 	if ( !empty( $string ) ){
-		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span>', $more_link ) . '</span>';
+		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
 	}
 	return $more_link;
 }
@@ -550,7 +550,7 @@ function tamatebako_register_css(){
 	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
 	wp_register_style( 'theme-open-sans-font', tamatebako_google_open_sans_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
+	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
 	/* Media Queries */
@@ -576,8 +576,7 @@ function tamatebako_register_css(){
  * @since  0.1.0
  */
 function tamatebako_tinymce_body_class( $settings ){
-	$classes = $settings['body_class'];
-	$settings['body_class'] = $classes . ' entry-content';
+	$settings['body_class'] = $settings['body_class'] . ' entry-content';
 	return $settings;
 }
 
@@ -721,6 +720,17 @@ function tamatebako_widget_class( $params ) {
 /* #07 - TEMPLATE FUNCTIONS
 ******************************************/
 
+/**
+ * Skip to Content Link (accessibility)
+ * @since 0.1.0
+ */
+function tamatebako_skip_to_content(){
+?>
+<div class="skip-link">
+	<a class="screen-reader-text" href="#content"><?php echo tamatebako_string( 'skip-to-content' ); ?></a>
+</div>
+<?php
+}
 
 /**
  * Loads a post content template based off the post type and/or the post format.
@@ -981,9 +991,9 @@ function tamatebako_menu_fallback_cb(){
 function tamatebako_menu_search_form( $id = 'search-menu' ){
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-	<label class="search-toggle" for="<?php echo esc_attr( $id ); ?>"></label>
+	<button class="search-toggle" for="<?php echo esc_attr( $id ); ?>"><span class="screen-reader-text"><?php echo tamatebako_string('expand-search-form'); ?></span></button>
 	<input id="<?php echo esc_attr( $id ); ?>" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
-	<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
+	<button class="search-submit button"><span class="screen-reader-text"><?php echo tamatebako_string('search-button'); ?></span></button>
 </form>
 <?php
 }

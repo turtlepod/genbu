@@ -23,6 +23,7 @@
  * #06 - GALLERY
  * #07 - 20px RESET
  * #08 - WP EDITOR (front-end)
+ * #09 - ACCESSIBILITY
  * 
 ******************************************/
 
@@ -291,10 +292,15 @@ button,
 	display: inline;
 }
 input[type="submit"]:hover,
+input[type="submit"]:focus,
 input[type="button"]:hover,
+input[type="button"]:focus,
 input[type="reset"]:hover,
+input[type="reset"]:focus,
 button:hover,
-.button:hover{
+button:focus,
+.button:hover,
+.button:focus{
 	border: 1px solid #aaa;
 }
 optgroup{
@@ -565,7 +571,8 @@ hr,h1,h2,h3,h4,h5,h6,figure,p,ul,ol,dl,address,pre,object,fieldset,table,table c
 	margin-bottom: 2rem;
 	max-width: 100%;
 }
-.wp-editor-wrap button:hover{
+.wp-editor-wrap button:hover,
+.wp-editor-wrap button:focus{
 	border: none;
 }
 .wp-editor-container{
@@ -606,3 +613,25 @@ hr,h1,h2,h3,h4,h5,h6,figure,p,ul,ol,dl,address,pre,object,fieldset,table,table c
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 }
+
+/* === #09 - ACCESSIBILITY === */
+.screen-reader-text,
+.assistive-text{
+	position: absolute;
+	left: -9999em;
+	top: -9999em;
+}
+.skip-link{
+	margin: 0 auto;
+	text-align: center;
+}
+.skip-link .screen-reader-text:focus{
+	position: inherit;
+	left: auto;
+	top: auto;
+	padding: 10px 20px;
+	padding: 1rem 2rem;
+	border: 1px solid red;
+	background: #fff;
+}
+

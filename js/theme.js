@@ -1,18 +1,47 @@
 jQuery( document ).ready( function($) {
 
-	/* Show menu search */
+	/* === Accessibility === */
+
+	/* == Menu Toggle == */
+	$( '.menu-dropdown' ).find( 'a' ).on( 'focus blur', function() {
+		$( this ).parents().toggleClass( 'focus' );
+	} );
+
+	/* == Focus input element on Hash "#" change == */
+	var is_webkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
+	    is_opera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
+	    is_ie     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
+
+	if ( ( is_webkit || is_opera || is_ie ) && document.getElementById && window.addEventListener ) {
+		window.addEventListener( 'hashchange', function() {
+			var element = document.getElementById( location.hash.substring( 1 ) );
+
+			if ( element ) {
+				if ( ! /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) )
+					element.tabIndex = -1;
+
+				element.focus();
+			}
+		}, false );
+	}
+
+	/* === Menu Search === */
+
+	/* == Search Toggle == */
 	$( ".search-toggle" ).click( function(e) {
 		e.preventDefault();
 		$( this ).parents( ".menu-search" ).toggleClass( "search-toggle-active" );
 		$( this ).siblings( ".search-field" ).focus();
 	});
 
-	/* Display search form on search page */
+	/* == Display search form on search pages == */
 	if ( $("body").hasClass("search") ){
 		$( ".search-toggle" ).parents( ".menu-search" ).addClass( "search-toggle-active" )
 	}
 
-	/* Mobile submenu toggle on mobile device */
+	/* === Menu Toggle === */
+
+	/* == Mobile submenu toggle on mobile device == */
 	if ( $("body").hasClass("wp-is-mobile") ){
 		$("body").addClass("mobile-menu-active");
 	}
@@ -42,7 +71,7 @@ jQuery( document ).ready( function($) {
 		});
 	}
 
-	/* Mobile menu toggle (small screen) */
+	/* == Mobile menu toggle (small screen) == */
 	$( ".menu-toggle a" ).click( function(e) {
 		e.preventDefault();
 		$( this ).parents(".menu-container").toggleClass( "menu-toggle-active" );
