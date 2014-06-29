@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Genbu WordPress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-18 10:28+0700\n"
+"POT-Creation-Date: 2014-06-29 21:27+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: David Chandra Purnama <david@shellcreeper.com>\n"
@@ -16,82 +16,98 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: string.php:12
-msgctxt "content read more"
-msgid "Read more&hellip;"
+#: string.php:15
+#, php-format
+msgctxt "paged title tag"
+msgid "%1$s Page %2$s"
 msgstr ""
 
-#: string.php:15
+#: string.php:18
+msgctxt "skip to content (accessibility)"
+msgid "Skip to content"
+msgstr ""
+
+#: string.php:21
+msgctxt "content read more"
+msgid "Continue reading"
+msgstr ""
+
+#: string.php:24
 msgctxt "edit link"
 msgid "Edit"
 msgstr ""
 
-#: string.php:18
-msgctxt "next in pagination and navigation"
+#: string.php:27
+msgctxt "next in pagination and navigation (accessibility)"
 msgid "Next"
 msgstr ""
 
-#: string.php:19
-msgctxt "previous in pagination and navigation"
+#: string.php:28
+msgctxt "previous in pagination and navigation (accessibility)"
 msgid "Previous"
 msgstr ""
 
-#: string.php:22
+#: string.php:31
 msgctxt "search text"
 msgid "Search&hellip;"
 msgstr ""
 
-#: string.php:23
-msgctxt "search button"
+#: string.php:32
+msgctxt "search button (accessibility)"
 msgid "Search"
 msgstr ""
 
-#: string.php:26
+#: string.php:33
+msgctxt "expand search form button (accessibility)"
+msgid "Expand Search Form"
+msgstr ""
+
+#: string.php:36
 msgctxt "comments notice"
 msgid "Comments are closed, but trackbacks and pingbacks are open."
 msgstr ""
 
-#: string.php:27
+#: string.php:37
 msgctxt "comments notice"
 msgid "Comments are closed."
 msgstr ""
 
-#: string.php:30
+#: string.php:40
 msgctxt "404 title"
 msgid "404 Not Found"
 msgstr ""
 
-#: string.php:31
+#: string.php:41
 msgctxt "404 content"
 msgid "Apologies, but no entries were found."
 msgstr ""
 
-#: string.php:34
+#: string.php:44
 msgctxt "theme layouts"
 msgid "Global Layout"
 msgstr ""
 
-#: string.php:35
+#: string.php:45
 msgctxt "theme layouts"
 msgid "Layout"
 msgstr ""
 
-#: string.php:58
+#: string.php:68
 msgctxt "nav menu location"
 msgid "Navigation"
 msgstr ""
 
-#: string.php:59
+#: string.php:69
 msgctxt "nav menu location"
 msgid "Footer Links"
 msgstr ""
 
-#: string.php:62
+#: string.php:72
 msgctxt "sidebar name"
 msgid "Sidebar 1"
 msgstr ""
 
-#: string.php:63
+#: string.php:73
 msgctxt "sidebar name"
 msgid "Sidebar 2"
 msgstr ""
