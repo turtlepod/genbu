@@ -26,7 +26,9 @@
 .menu-container li li a{
 	background: #fff;
 }
-.menu-container li a:hover {
+.menu-container li a:hover,
+.menu-container li a:focus{
+	color: #000;
 }
 .menu-container:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
@@ -54,7 +56,12 @@
 	-o-transition:      opacity .4s ease-in-out;
 	transition:         opacity .4s ease-in-out;
 }
-.menu-dropdown .sub-menu li:hover > .sub-menu{
+.menu-dropdown li.focus > .sub-menu{
+	left: auto;
+	opacity: 1;
+}
+.menu-dropdown .sub-menu li:hover > .sub-menu,
+.menu-dropdown .sub-menu li.focus > .sub-menu{
 	top: -1px;
 	left: 229px;
 	left: 22.9rem;
@@ -90,7 +97,8 @@
 	content: "\f139";
 }
 /* Drop Down Mobile */
-.mobile-menu-active .menu-dropdown li:hover > .sub-menu{
+.mobile-menu-active .menu-dropdown li:hover > .sub-menu,
+.mobile-menu-active .menu-dropdown li.focus > .sub-menu{
 	left: -9999px;
 }
 .mobile-menu-active .menu-dropdown li.menu-item-open-children > .sub-menu{
@@ -136,12 +144,13 @@
 	height: 47px;
 	height: 4.7rem;
 	float: right;
+	padding: 0;
+	border: none;
 }
-.menu-search .search-toggle span.screen-reader-text{
-	display: none;
-}
-.menu-search .search-toggle:hover{
+.menu-search .search-toggle:hover,
+.menu-search .search-toggle:focus{
 	opacity: 0.8;
+	border: none;
 }
 .menu-search .search-toggle:after{
 	content: "\f179";
@@ -159,7 +168,7 @@
 	display: none;
 	width: auto;
 }
-.menu-search button{
+.menu-search .search-submit{
 	display: none;
 }
 .menu-search .search-field{
@@ -190,13 +199,10 @@
 }
 .search-toggle-active.menu-search .search-submit{
 }
-.search-toggle-active.menu-search .search-submit span{
-	display: none;
-}
 .search-toggle-active.menu-search input{
 	display: inline;
 }
-.search-toggle-active.menu-search button{
+.search-toggle-active.menu-search .search-submit{
 	display: inline;
 	width: 33px;
 	width: 3.3rem;
@@ -208,10 +214,11 @@
 	border: none;
 	background: transparent;
 }
-.search-toggle-active.menu-search button:hover{
+.search-toggle-active.menu-search .search-submit:hover,
+.search-toggle-active.menu-search .search-submit:focus{
 	opacity: 0.8;
 }
-.search-toggle-active.menu-search button:before{
+.search-toggle-active.menu-search .search-submit:before{
 	content: "\f179";
 	font-family: "dashicons";
 	font-size: 30px;

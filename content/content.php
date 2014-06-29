@@ -1,4 +1,5 @@
 <article <?php hybrid_attr( 'post' ); ?>>
+
 	<div class="entry-wrap">
 
 		<div class="entry-header">
@@ -7,6 +8,7 @@
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
+			<?php tamatebako_read_more(); ?>
 		</div><!-- .entry-summary -->
 
 		<footer class="entry-footer">
@@ -15,4 +17,5 @@
 		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
+
 </article><!-- .entry -->

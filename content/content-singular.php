@@ -1,4 +1,5 @@
 <article <?php hybrid_attr( 'post' ); ?>>
+
 	<div class="entry-wrap">
 
 		<header class="entry-header">
@@ -16,6 +17,7 @@
 		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
+
 </article><!-- .entry -->
 
 <?php comments_template( '', true ); // Load comments. ?>

@@ -20,8 +20,6 @@
 
 <div id="container">
 
-	<?php tamatebako_skip_to_content(); ?>
-
 	<?php get_template_part( 'site-header' ); ?>
 
 	<?php hybrid_get_menu( 'primary' ); ?>
@@ -40,8 +38,6 @@
 
 					<?php if ( have_posts() ){ /* Posts Found */ ?>
 
-						<?php tamatebako_archive_header(); ?>
-
 						<div class="content-entry-wrap">
 
 							<?php while ( have_posts() ) {  /* Start Loop */ ?>
@@ -49,14 +45,26 @@
 								<?php the_post(); /* Load Post Data */ ?>
 
 								<?php /* Start Content */ ?>
-								<?php tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
+								<article <?php hybrid_attr( 'post' ); ?>>
+
+									<div class="entry-wrap">
+
+										<header class="entry-header">
+											<?php the_title( '<h1 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h1>' ); ?>
+										</header><!-- .entry-header -->
+
+										<div <?php hybrid_attr( 'entry-content' ); ?>>
+											<?php the_content(); ?>
+										</div><!-- .entry-content -->
+
+									</div><!-- .entry-wrap -->
+
+								</article><!-- .entry -->
 								<?php /* End Content */ ?>
 
 							<?php } /* End Loop */ ?>
 
 						</div><!-- .content-entry-wrap-->
-
-						<?php tamatebako_archive_footer(); ?>
 
 					<?php } else { /* No Posts Found */ ?>
 

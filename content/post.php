@@ -1,7 +1,5 @@
 <article <?php hybrid_attr( 'post' ); ?>>
 
-	<?php //get_the_image( array( 'attachment' => false ) ); ?>
-
 	<div class="entry-wrap">
 
 		<div class="entry-header">
@@ -18,6 +16,7 @@
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
+			<?php tamatebako_read_more(); ?>
 		</div><!-- .entry-summary -->
 
 		<div class="entry-footer">

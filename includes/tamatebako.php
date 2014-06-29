@@ -54,9 +54,15 @@ function tamatebako_setup(){
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
 
+	/* Document Title */
+	remove_action( 'wp_head', 'hybrid_doctitle', 0 );
+	add_action( 'wp_head', 'tamatebako_doctitle', 1 );
+
+	remove_filter( 'wp_title', 'hybrid_wp_title', 1 );
+	add_filter( 'wp_title', 'tamatebako_wp_title', 1 );
+
 	/* Set Consistent Read More */
 	add_filter( 'excerpt_more', 'tamatebako_disable_excerpt_more' );
-	add_filter( 'the_excerpt', 'tamatebako_add_excerpt_more' );
 	add_filter( 'the_content_more_link', 'tamatebako_content_more', 10, 2 );
 
 	/* Edit Link */
@@ -65,9 +71,6 @@ function tamatebako_setup(){
 
 	/* WP Link Pages */
 	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
-
-	/* Sidebar Defaults Args */
-	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
 
 	/* Script */
 	add_action( 'wp_head', 'tamatebako_head_script' );
@@ -99,6 +102,124 @@ function tamatebako_setup(){
 ******************************************/
 
 /**
+ * Add Title Tag
+ * @since 0.1.0
+ */
+function tamatebako_doctitle(){ ?>
+<title><?php wp_title( '' ); ?></title>
+<?php
+}
+
+
+/**
+ * Filter Default WP Title Tag
+ * @since 0.1.0
+ */
+function tamatebako_wp_title( $doctitle ){
+
+	/* Variable */
+	$site_title = get_bloginfo( 'name' );
+	$site_description = get_bloginfo( 'description', 'display' );
+
+	if ( is_front_page() ){
+		$doctitle = $site_title;
+	}
+
+	elseif ( is_home() ){
+		$doctitle = single_post_title( '', false );
+	}
+
+	elseif ( is_singular() ){
+		$doctitle = single_post_title( '', false );
+	}
+
+	elseif ( is_category() ){
+		$doctitle = single_cat_title( '', false );
+	}
+
+	elseif ( is_tag() ){
+		$doctitle = single_tag_title( '', false );
+	}
+
+	elseif ( is_tax() ){
+		$doctitle = single_term_title( '', false );
+	}
+
+	elseif ( is_post_type_archive() ){
+		$doctitle = post_type_archive_title( '', false );
+	}
+
+	elseif ( is_author() ){
+		$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+	}
+
+	elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ){
+		$doctitle = hybrid_single_minute_hour_title( '', false );
+	}
+
+	elseif ( get_query_var( 'minute' ) ){
+		$doctitle = hybrid_single_minute_title( '', false );
+	}
+
+	elseif ( get_query_var( 'hour' ) ){
+		$doctitle = hybrid_single_hour_title( '', false );
+	}
+
+	elseif ( is_day() ){
+		$doctitle = hybrid_single_day_title( '', false );
+	}
+
+	elseif ( get_query_var( 'w' ) ){
+		$doctitle = hybrid_single_week_title( '', false );
+	}
+
+	elseif ( is_month() ){
+		$doctitle = single_month_title( ' ', false );
+	}
+
+	elseif ( is_year() ){
+		$doctitle = hybrid_single_year_title( '', false );
+	}
+
+	elseif ( is_archive() ){
+		$doctitle = hybrid_single_archive_title( '', false );
+	}
+
+	elseif ( is_search() ){
+		$doctitle = hybrid_search_title( '', false );
+	}
+
+	elseif ( is_404() ){
+		$doctitle = hybrid_404_title( '', false );
+	}
+
+	/* Add Site Description */
+	if( is_front_page() ){
+		if ( $site_description ){
+			$doctitle = "{$doctitle}: {$site_description}";
+		}
+	}
+	elseif( is_home() ){
+		if ( $site_description ){
+			$doctitle = "{$doctitle}: {$site_description}";
+		}
+	}
+	/* Add Site Title */
+	else{
+		$doctitle = "{$doctitle} &ndash; {$site_title}";
+	}
+
+	/* If the current page is a paged page. */
+	if ( ( ( $page = get_query_var( 'paged' ) ) || ( $page = get_query_var( 'page' ) ) ) && $page > 1 ){
+		$page = number_format_i18n( absint( $page ) );
+		$doctitle = sprintf( tamatebako_string( 'paged' ), $doctitle . " | ", $page );
+	}
+
+	return trim( strip_tags( $doctitle ) );
+}
+
+
+/**
  * Disable / Remove Auto Excerpt More
  * @since 0.1.0
  */
@@ -107,15 +228,16 @@ function tamatebako_disable_excerpt_more( $more ) {
 }
 
 /**
- * Add Excerpt More In All Excerpt
+ * Tamatebako Read More
  * @since 0.1.0
  */
-function tamatebako_add_excerpt_more( $excerpt ) {
+function tamatebako_read_more() {
 	$string = tamatebako_string( 'read-more' );
+	$read_more = '';
 	if ( !empty( $string ) ){
-		return $excerpt . '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
+		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span> <span class="screen-reader-text">' . get_the_title() . '</span></a></span>';
 	}
-	return $excerpt;
+	echo $read_more;
 }
 
 /**
@@ -125,7 +247,7 @@ function tamatebako_add_excerpt_more( $excerpt ) {
 function tamatebako_content_more( $more_link, $more_link_text ){
 	$string = tamatebako_string( 'read-more' );
 	if ( !empty( $string ) ){
-		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span>', $more_link ) . '</span>';
+		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
 	}
 	return $more_link;
 }
@@ -174,22 +296,11 @@ function tamatebako_wp_link_pages( $args ){
 /* #04 - SET DEFAULTS
 ******************************************/
 
-
-/**
- * Filter Register Sidebar Args in Hybrid Core
- * @since 0.1.0
- */
-function tamatebako_sidebar_defaults( $args ){
-	$args['before_title'] = '<div class="widget-title">';
-	$args['after_title'] = '</div>';
-	return $args;
-}
-
 /* Override theme layout customize */
 add_action( 'after_setup_theme', 'tamatebako_override_theme_layouts_customize_setup', 14 );
 
 /**
- * Shell Override Theme Layouts Customize
+ * Override Theme Layouts Customize and fix theme layout post meta.
  * 
  * @since 0.2.0
  */
@@ -203,6 +314,12 @@ function tamatebako_override_theme_layouts_customize_setup(){
 
 		/* Add custom setting for layout in customizer */
 		add_action( 'customize_register', 'tamatebako_theme_layouts_customize_register' );
+
+		/* Remove theme layouts default filter */
+		remove_filter( 'theme_mod_theme_layout', 'theme_layouts_filter_layout', 5 );
+
+		/* Set to default layout in singular pages when it's not supported. */
+		add_filter( 'theme_mod_theme_layout', 'tamatebako_filter_layout', 6 );
 	}
 }
 
@@ -267,6 +384,47 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 			)
 		);
 	}
+}
+
+/**
+ * Post Layout Filter.
+ * Problem: If in the future post meta is disabled, user cannot change post layout already set.
+ * @since 0.1.0
+ */
+function tamatebako_filter_layout( $theme_layout ){
+
+	/* Layout */
+	$layout = '';
+
+	/* Theme Support */
+	$layouts = get_theme_support( 'theme-layouts' );
+
+	/* If viewing a singular post, get the post layout. */
+	if ( is_singular() ){
+
+		/* Only if theme layout support post meta and post type supports it */
+		if( true === $layouts[1]['post_meta'] && post_type_supports( get_post_type( get_queried_object_id() ) , 'theme-layouts' ) ){
+
+			$layout = get_post_layout( get_queried_object_id() );
+		}
+	}
+
+	/* If viewing an author archive, get the user layout. */
+	elseif ( is_author() )
+		$layout = get_user_layout( get_queried_object_id() );
+
+	/* If a layout was found, set it. */
+	if ( !empty( $layout ) && 'default' !== $layout ) {
+		$theme_layout = $layout;
+	}
+
+	/* Else, if no layout option has yet been saved, return the theme default. */
+	elseif ( empty( $theme_layout ) ) {
+		$args = theme_layouts_get_args();
+		$theme_layout = $args['default'];
+	}
+
+	return $theme_layout;
 }
 
 
@@ -374,16 +532,24 @@ function tamatebako_check_js_script(){
 function tamatebako_register_css(){
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
 
 	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
 	wp_register_style( 'theme-open-sans-font', tamatebako_google_open_sans_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
+	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
 	/* Media Queries */
-	wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
+	if ( !empty( $media_queries_css ) ) wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+
+	/* Reset CSS */
+	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.js", "css/reset.css" ) );
+	if ( !empty( $reset_css ) ) wp_register_style( 'theme-reset',$reset_css, array(), tamatebako_theme_version(), 'all' );
+
+	/* Menus CSS */
+	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.js", "css/menus.css" ) );
+	if ( !empty( $menus_css ) ) wp_register_style( 'theme-menus',$menus_css, array(), tamatebako_theme_version(), 'all' );
 }
 
 
@@ -396,8 +562,7 @@ function tamatebako_register_css(){
  * @since  0.1.0
  */
 function tamatebako_tinymce_body_class( $settings ){
-	$classes = $settings['body_class'];
-	$settings['body_class'] = $classes . ' entry-content';
+	$settings['body_class'] = $settings['body_class'] . ' entry-content';
 	return $settings;
 }
 
@@ -541,6 +706,17 @@ function tamatebako_widget_class( $params ) {
 /* #07 - TEMPLATE FUNCTIONS
 ******************************************/
 
+/**
+ * Skip to Content Link (accessibility)
+ * @since 0.1.0
+ */
+function tamatebako_skip_to_content(){
+?>
+<div class="skip-link">
+	<a class="screen-reader-text" href="#content"><?php echo tamatebako_string( 'skip-to-content' ); ?></a>
+</div>
+<?php
+}
 
 /**
  * Loads a post content template based off the post type and/or the post format.
@@ -580,12 +756,13 @@ function tamatebako_get_template( $dir ) {
 		$post_format = get_post_format() ? get_post_format() : 'standard';
 
 		/* Template based off post type and post format. */
-		$templates[] = "{$dir}/{$post_type}-{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_type}-{$post_format}.php";
+		$templates[] = "{$dir}/{$post_type}-format-{$post_format}{$singular}.php";
+		$templates[] = "{$dir}/{$post_type}-format{$singular}.php";
+		$templates[] = "{$dir}/{$post_type}-format-{$post_format}.php";
 
 		/* Template based off the post format. */
-		$templates[] = "{$dir}/{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_format}.php";
+		$templates[] = "{$dir}/format-{$post_format}{$singular}.php";
+		$templates[] = "{$dir}/format-{$post_format}.php";
 	}
 
 	/* Template based off the post type. */
@@ -800,9 +977,9 @@ function tamatebako_menu_fallback_cb(){
 function tamatebako_menu_search_form( $id = 'search-menu' ){
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-	<label class="search-toggle" for="<?php echo esc_attr( $id ); ?>"></label>
+	<button class="search-toggle" for="<?php echo esc_attr( $id ); ?>"><span class="screen-reader-text"><?php echo tamatebako_string('expand-search-form'); ?></span></button>
 	<input id="<?php echo esc_attr( $id ); ?>" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
-	<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
+	<button class="search-submit button"><span class="screen-reader-text"><?php echo tamatebako_string('search-button'); ?></span></button>
 </form>
 <?php
 }
@@ -1143,7 +1320,6 @@ function tamatebako_customize_mobile_view_style(){
 	margin:0 5px;
 	color:#777;
 	position:relative;
-	speak:none;
 	-webkit-font-smoothing:antialiased;
 	cursor:pointer;
 }
