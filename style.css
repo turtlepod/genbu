@@ -767,6 +767,8 @@ code{
 	background: #fff;
 }
 	.widget-title{
+		font-size: 14px;
+		line-height: 1.7em;
 		font-weight: 700;
 		margin-bottom: 10px;
 		margin-bottom: 1rem;

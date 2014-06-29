@@ -72,9 +72,6 @@ function tamatebako_setup(){
 	/* WP Link Pages */
 	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
 
-	/* Sidebar Defaults Args */
-	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
-
 	/* Script */
 	add_action( 'wp_head', 'tamatebako_head_script' );
 	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
@@ -298,17 +295,6 @@ function tamatebako_wp_link_pages( $args ){
 
 /* #04 - SET DEFAULTS
 ******************************************/
-
-
-/**
- * Filter Register Sidebar Args in Hybrid Core
- * @since 0.1.0
- */
-function tamatebako_sidebar_defaults( $args ){
-	$args['before_title'] = '<div class="widget-title">';
-	$args['after_title'] = '</div>';
-	return $args;
-}
 
 /* Override theme layout customize */
 add_action( 'after_setup_theme', 'tamatebako_override_theme_layouts_customize_setup', 14 );

@@ -22,8 +22,8 @@ if ( strpos( get_theme_mod( 'theme_layout' ),'sidebar2' ) === false) {
 				array(
 					'before_widget' => '<section class="widget widget_categories">',
 					'after_widget'  => '</section>',
-					'before_title'  => '<div class="widget-title">',
-					'after_title'   => '</div>'
+					'before_title'  => '<h3 class="widget-title">',
+					'after_title'   => '</h3>'
 				)
 			); ?>
 
