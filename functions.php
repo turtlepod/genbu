@@ -58,7 +58,7 @@ function genbu_setup(){
 	$layouts_args = array(
 		'default'   => 'sidebar2-content-sidebar1',
 		'customize' => true,
-		'post_meta' => true,
+		'post_meta' => false,
 	);
 	add_theme_support( 'theme-layouts', $layouts, $layouts_args );
 

@@ -10,7 +10,7 @@ It's modular, you can use it as robust parent theme or as theme base for your pr
 
 ### Theme Layout and Sidebar:
 
-Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize and also can be set per post basis using layout meta box.
+Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize.
 * Content (No sidebar)
 * Content / Sidebar 1
 * Sidebar 1 / Content
@@ -82,6 +82,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add basic support for The Events Calendar Plugin.
 * Add basic support for Easy Digital Downloads Plugin.
 * Add basic support for Custom Content Portfolio Plugin.
+* Remove theme layout post meta support (too much).
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.
