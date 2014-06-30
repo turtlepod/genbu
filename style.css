@@ -46,8 +46,7 @@
  * #14 - WIDGETS
  * #15 - FOOTER
  * #16 - LAYOUT
- * #17 - JETPACK
- * #18 - WOOCOMMMERCE
+ * #17 - PLUGINS
  * 
  *****************************************/
 
@@ -1010,7 +1009,9 @@ code{
 }
 
 
-/* === #17 JETPACK === */
+/* === #17 PLUGINS === */
+
+/* == JETPACK == */
 
 /* Blog Subscribe Widget */
 .jetpack_subscription_widget{
@@ -1110,7 +1111,7 @@ p.comment-subscription-form input{
 }
 
 
-/* === #18 WOOCOMMERCE === */
+/* == WOOCOMMERCE == */
 
 html .woocommerce-page .menu-search .search-submit{
 	display: none;
@@ -1153,3 +1154,15 @@ html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
 .woocommerce-page .woocommerce-message:before{
 	padding-top: 0 !important;
 }
+
+
+/* == THE EVENTS CALENDAR == */
+.tribe-events-content-entry-wrap{
+	padding: 20px;
+	padding: 2rem;
+	border: 1px solid #ccc;
+}
+.tribe-events-content-entry-wrap.entry{
+	border: none;
+}
+
