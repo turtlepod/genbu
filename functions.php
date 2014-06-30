@@ -113,6 +113,9 @@ function genbu_setup(){
 
 	/* === Set Content Width === */
 	hybrid_set_content_width( 1200 );
+
+	/* === Plugins === */
+	add_theme_support( 'woocommerce' );
 }
 
 /**

@@ -72,8 +72,13 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 * Better Accessibility Feature
 * Post Format Example (maybe as child theme)
+* Update Screen shot
 
 ## Changelog:
+
+### 0.1.4 (beta)
+* Add basic WooCommerce support.
+* Disable comment error on pages.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.

@@ -47,6 +47,7 @@
  * #15 - FOOTER
  * #16 - LAYOUT
  * #17 - JETPACK
+ * #18 - WOOCOMMMERCE
  * 
  *****************************************/
 
@@ -1106,4 +1107,49 @@ p.comment-subscription-form input{
 /* Top Posts (Grid) */
 #sidebar-primary .widget-grid-view-image a img{
 	display: block;
+}
+
+
+/* === #18 WOOCOMMERCE === */
+
+html .woocommerce-page .menu-search .search-submit{
+	display: none;
+}
+html .woocommerce-page .menu-search .search-submit{
+	padding: 0;
+}
+html .woocommerce-page .search-toggle-active.menu-search .search-submit{
+	display: inline;
+	border-radius: none;
+	box-shadow: none;
+	font-weight: 400;
+}
+html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
+	background: transparent;
+	display: inline;
+	border-radius: none;
+	box-shadow: none;
+	font-weight: 400;
+}
+.woocommerce #content .quantity input.qty,
+.woocommerce .quantity input.qty,
+.woocommerce-page #content .quantity input.qty,
+.woocommerce-page .quantity input.qty{
+	margin-bottom: 0;
+}
+.woocommerce-content-entry-wrap{
+	padding: 20px;
+	padding: 2rem;
+	border: 1px solid #ccc;
+}
+.woocommerce-content-entry-wrap .entry{
+	border: none;
+}
+.woocommerce .woocommerce-error:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-message:before,
+.woocommerce-page .woocommerce-error:before,
+.woocommerce-page .woocommerce-info:before,
+.woocommerce-page .woocommerce-message:before{
+	padding-top: 0 !important;
 }

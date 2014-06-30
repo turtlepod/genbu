@@ -507,8 +507,12 @@ function tamatebako_enqueue_js(){
 	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.css" ) );
 	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
 
-	if ( !empty( $fitvids_js ) ) wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
-	if ( !empty( $theme_js ) ) wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
+	if ( !empty( $fitvids_js ) ){
+		wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
+	}
+	if ( !empty( $theme_js ) ){
+		wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
+	}
 }
 
 /**
@@ -541,15 +545,21 @@ function tamatebako_register_css(){
 
 	/* Media Queries */
 	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
-	if ( !empty( $media_queries_css ) ) wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	if ( !empty( $media_queries_css ) ){
+		wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	}
 
 	/* Reset CSS */
 	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.js", "css/reset.css" ) );
-	if ( !empty( $reset_css ) ) wp_register_style( 'theme-reset',$reset_css, array(), tamatebako_theme_version(), 'all' );
+	if ( !empty( $reset_css ) ){
+		wp_register_style( 'theme-reset',$reset_css, array(), tamatebako_theme_version(), 'all' );
+	}
 
 	/* Menus CSS */
 	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.js", "css/menus.css" ) );
-	if ( !empty( $menus_css ) ) wp_register_style( 'theme-menus',$menus_css, array(), tamatebako_theme_version(), 'all' );
+	if ( !empty( $menus_css ) ){
+		wp_register_style( 'theme-menus',$menus_css, array(), tamatebako_theme_version(), 'all' );
+	}
 }
 
 
@@ -1048,6 +1058,9 @@ function tamatebako_comments_nav(){
  * @since 0.1.0
  */
 function tamatebako_comments_error(){
+	if( is_page() ){
+		return false;
+	}
 ?>
 <?php if ( pings_open() && !comments_open() ) { ?>
 
