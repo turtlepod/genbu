@@ -77,9 +77,11 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 ## Changelog:
 
 ### 0.1.4 (beta)
-* Add basic WooCommerce Plugin support.
-* Disable comment error on pages.
-* Add basic support for The Events Calendar Plugin
+* Disable comment error on Page (post type).
+* Add basic support for WooCommerce Plugin.
+* Add basic support for The Events Calendar Plugin.
+* Add basic support for Easy Digital Downloads Plugin.
+* Add basic support for Custom Content Portfolio Plugin.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.

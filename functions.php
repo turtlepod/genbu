@@ -233,4 +233,20 @@ function genbu_custom_header_admin_preview_callback(){
 <?php
 }
 
+/**
+ * Custom Content Portfolio Project Link
+ * @since 0.1.4
+ */
+function genbu_ccp_project_link(){
+	$url = get_post_meta( get_the_ID(), 'portfolio_item_url', true );
+	if ( $url ){
+?>
+<div class="ccp-project-link">
+	<p><a class="button" href="<?php echo esc_url( $url ); ?>"><?php echo genbu_string('ccp-view-project'); ?></a></p>
+</div>
+<?php
+	}
+}
+
+
 do_action( 'genbu_after_theme_setup' );

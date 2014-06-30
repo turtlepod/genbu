@@ -72,6 +72,9 @@ function genbu_string( $context ){
 	$text['sidebar-primary-name'] = _x( 'Sidebar 1', 'sidebar name', 'genbu' );
 	$text['sidebar-secondary-name'] = _x( 'Sidebar 2', 'sidebar name', 'genbu' );
 
+	/* Custom Content Portfolio Project Link */
+	$text['ccp-view-project'] = _x( 'View Project', 'custom content portfolio link', 'genbu' );
+
 	$text = apply_filters( 'genbu_string', $text );
 
 	/* Close Sesame ! */

@@ -1165,4 +1165,32 @@ html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
 .tribe-events-content-entry-wrap.entry{
 	border: none;
 }
+.tribe-events-list-widget ol{
+	margin: 0;
+}
+.tribe-events-list-widget .entry-title{
+	font-size: 17px;
+	font-size: 1.7rem;
+	margin-bottom: 5px;
+	margin-bottom: 0.5rem;
+	padding-bottom: 5px;
+	padding-bottom: 0.5rem;
+}
+.sidebar .tribe-events-list-widget ol li{
+	margin-bottom: 10px;
+	margin-bottom: 1rem;
+}
+
+/* == Easy Digital Downloads == */
+#edd_checkout_form_wrap legend{
+	border: none;
+}
+
+
+
+
+
+
+
+
 
