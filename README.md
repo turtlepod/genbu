@@ -83,6 +83,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add basic support for Easy Digital Downloads Plugin.
 * Add basic support for Custom Content Portfolio Plugin.
 * Remove theme layout post meta support (too much).
+* Fix search form (menu) toggle, now using link instead of button.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.
