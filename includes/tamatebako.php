@@ -806,20 +806,30 @@ function tamatebako_get_template( $dir ) {
 	}
 
 	/* If the post type supports 'post-formats', get the template based on the format. */
-	if ( post_type_supports( $post_type, 'post-formats' ) ) {
+	if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post_type, 'post-formats' ) ) {
 
-		/* Get the post format. */
-		$post_format = get_post_format() ? get_post_format() : 'standard';
+		/* Get theme post format support. */
+		$theme_support_format = get_theme_support( 'post-formats' );
 
-		/* Template based off post type and post format. */
-		$templates[] = "{$dir}/{$post_type}-format-{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_type}-format{$singular}.php";
-		$templates[] = "{$dir}/{$post_type}-format-{$post_format}.php";
+		/* Only if theme support specific format */
+		if ( is_array( $theme_support_format[0] ) ){
 
-		/* Template based off the post format. */
-		$templates[] = "{$dir}/format-{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/format{$singular}.php";
-		$templates[] = "{$dir}/format-{$post_format}.php";
+			/* Get the post format. */
+			$post_format = get_post_format() ? get_post_format() : 'standard';
+
+			if ( in_array( $post_format, $theme_support_format[0] ) ){
+
+				/* Template based off post type and post format. */
+				$templates[] = "{$dir}/{$post_type}-format-{$post_format}{$singular}.php";
+				$templates[] = "{$dir}/{$post_type}-format{$singular}.php";
+				$templates[] = "{$dir}/{$post_type}-format-{$post_format}.php";
+
+				/* Template based off the post format. */
+				$templates[] = "{$dir}/format-{$post_format}{$singular}.php";
+				$templates[] = "{$dir}/format{$singular}.php";
+				$templates[] = "{$dir}/format-{$post_format}.php";
+			}
+		}
 	}
 
 	/* Template based off the post type. */
