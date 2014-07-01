@@ -503,7 +503,8 @@ code{
 	}
 		.comment-list .children{
 			list-style: none;
-			margin: 0;
+			margin: 0 0 0 10px;
+			margin: 0 0 0 1rem;
 		}
 		/* Comment */
 		.comment{
@@ -1185,12 +1186,4 @@ html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
 #edd_checkout_form_wrap legend{
 	border: none;
 }
-
-
-
-
-
-
-
-
 

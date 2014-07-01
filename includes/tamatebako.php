@@ -209,7 +209,7 @@ function tamatebako_wp_title( $doctitle ){
 		$doctitle = "{$doctitle} &ndash; {$site_title}";
 	}
 
-	/* If the current page is a paged page. */
+	/* If the current page is a paged. */
 	if ( ( ( $page = get_query_var( 'paged' ) ) || ( $page = get_query_var( 'page' ) ) ) && $page > 1 ){
 		$page = number_format_i18n( absint( $page ) );
 		$doctitle = sprintf( tamatebako_string( 'paged' ), $doctitle . " | ", $page );
@@ -772,6 +772,7 @@ function tamatebako_get_template( $dir ) {
 
 		/* Template based off the post format. */
 		$templates[] = "{$dir}/format-{$post_format}{$singular}.php";
+		$templates[] = "{$dir}/format{$singular}.php";
 		$templates[] = "{$dir}/format-{$post_format}.php";
 	}
 
@@ -1430,6 +1431,7 @@ function tamatebako_debug_enqueue_media_queries(){
 /**
  * Pretty Debug Data
  * @link http://chrisbratlien.com/prettier-php-debug-messages-continued/
+ * @since 0.1.0
  */
 function tmdd( $obj, $label = '' ) {  
 
