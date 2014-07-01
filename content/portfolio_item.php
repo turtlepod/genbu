@@ -15,10 +15,10 @@
 			<?php tamatebako_read_more(); ?>
 		</div><!-- .entry-summary -->
 
-		<footer class="entry-footer">
+		<div class="entry-footer">
 			<?php edit_post_link(); ?>
 			<?php tamatebako_entry_terms(); ?>
-		</footer><!-- .entry-footer -->
+		</div><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
 

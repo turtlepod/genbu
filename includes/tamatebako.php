@@ -667,7 +667,7 @@ function tamatebako_body_class( $classes ){
 function tamatebako_widget_class( $params ) {
 
 	/* Global a counter array */
-	global $shell_widget_num;
+	global $tamatebako_widget_num;
 
 	/* Get the id for the current sidebar we're processing */
 	$this_id = $params[0]['id'];
@@ -676,8 +676,8 @@ function tamatebako_widget_class( $params ) {
 	$arr_registered_widgets = wp_get_sidebars_widgets();
 
 	/* If the counter array doesn't exist, create it */
-	if ( !$shell_widget_num ) {
-		$shell_widget_num = array();
+	if ( !$tamatebako_widget_num ) {
+		$tamatebako_widget_num = array();
 	}
 
 	/* if current sidebar has no widget, return. */
@@ -686,23 +686,23 @@ function tamatebako_widget_class( $params ) {
 	}
 
 	/* See if the counter array has an entry for this sidebar */
-	if ( isset( $shell_widget_num[$this_id] ) ) {
-		$shell_widget_num[$this_id] ++;
+	if ( isset( $tamatebako_widget_num[$this_id] ) ) {
+		$tamatebako_widget_num[$this_id] ++;
 	}
 	/* If not, create it starting with 1 */
 	else {
-		$shell_widget_num[$this_id] = 1;
+		$tamatebako_widget_num[$this_id] = 1;
 	}
 
 	/* Add a widget number class for additional styling options */
-	$class = 'class="widget widget-' . $shell_widget_num[$this_id] . ' '; 
+	$class = 'class="widget widget-' . $tamatebako_widget_num[$this_id] . ' '; 
 
 	/* in first widget, add 'widget-first' class */
-	if ( $shell_widget_num[$this_id] == 1 ) {
+	if ( $tamatebako_widget_num[$this_id] == 1 ) {
 		$class .= 'widget-first ';
 	}
 	/* in last widget, add 'widget-last' class */
-	elseif( $shell_widget_num[$this_id] == count( $arr_registered_widgets[$this_id] ) ) { 
+	elseif( $tamatebako_widget_num[$this_id] == count( $arr_registered_widgets[$this_id] ) ) { 
 		$class .= 'widget-last ';
 	}
 

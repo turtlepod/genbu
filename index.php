@@ -1,21 +1,3 @@
-<?php
-//$layout = 'content';
-
-//$layout = 'content-sidebar1';
-//$layout = 'sidebar1-content';
-//$layout = 'sidebar2-content';
-//$layout = 'content-sidebar2';
-
-//$layout = 'sidebar2-content-sidebar1';
-//$layout = 'sidebar2-sidebar1-content';
-//$layout = 'content-sidebar1-sidebar2';
-//$layout = 'sidebar1-content-sidebar2';
-
-//tamatebako_set_layout( $layout );
-//tamatebako_set_template_dir( "content-grid", "content" );
-//tamatebako_add_body_class( array( "mobile-menu-active" ) );
-?>
-
 <?php get_header(); ?>
 
 <div id="container">

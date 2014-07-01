@@ -84,6 +84,10 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add basic support for Custom Content Portfolio Plugin.
 * Remove theme layout post meta support (too much).
 * Fix search form (menu) toggle, now using link instead of button.
+* Remove Utillity functions from template, add examples in docs folder.
+* Change global for widget num to tamatebako.
+* Fix tag footer to div in entry footer for plural pages.
+* Change header tag to div in comment meta.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.
