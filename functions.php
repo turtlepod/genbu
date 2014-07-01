@@ -38,7 +38,7 @@ function genbu_setup(){
 		'audio',
 		'chat'
 	);
-	//add_theme_support( 'post-formats', $post_formats_args );
+	add_theme_support( 'post-formats', $post_formats_args );
 
 	/* === Theme Layouts === */
 	$layouts = array(

@@ -72,6 +72,9 @@ function tamatebako_setup(){
 	/* WP Link Pages */
 	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
 
+	/* Post Formats */
+	add_filter( 'hybrid_aside_infinity', 'tamatebako_aside_infinity' );
+
 	/* Script */
 	add_action( 'wp_head', 'tamatebako_head_script' );
 	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
@@ -82,6 +85,9 @@ function tamatebako_setup(){
 
 	/* Additional Body Classes */
 	add_filter( 'body_class', 'tamatebako_body_class' );
+
+	/* Additional Post Classes */
+	add_filter( 'post_class', 'tamatebako_post_class' );
 
 	/* Additional Widgets Classes */
 	add_filter( 'dynamic_sidebar_params', 'tamatebako_widget_class' );
@@ -253,6 +259,16 @@ function tamatebako_content_more( $more_link, $more_link_text ){
 }
 
 /**
+ * Entry Permalink
+ * @since 0.1.0
+ */
+function tamatebako_entry_permalink(){
+?>
+<a class="entry-permalink" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php echo tamatebako_string( 'permalink' ); ?></a>
+<?php
+}
+
+/**
  * Edit Post Link
  * @since 0.1.0
  */
@@ -290,6 +306,17 @@ function tamatebako_wp_link_pages( $args ){
 	$args['before'] = '<p class="wp-link-pages">';
 	$args['after'] = '</p>';
 	return $args;
+}
+
+/**
+ * Post Format Aside Infinity Symbol
+ * @since 0.1.0
+ */
+function tamatebako_aside_infinity( $html ){
+	if ( have_comments() || comments_open() ){
+		$html = ' <a class="comments-link" href="' . get_permalink() . '">' . number_format_i18n( get_comments_number() ) . '</a>';
+	}
+	return $html;
 }
 
 
@@ -653,6 +680,25 @@ function tamatebako_body_class( $classes ){
 		}
 	}
 
+
+	/* Make it unique */
+	$classes = array_unique( $classes );
+
+	return $classes;
+}
+
+/**
+ * Add Post Class
+ * @since 0.1.0
+ */
+function tamatebako_post_class( $classes ){
+
+	/* Post formats */
+	if ( post_type_supports( get_post_type(), 'post-formats' ) ) {
+		if ( get_post_format() ){
+			$classes[] = 'has-format';
+		}
+	}
 
 	/* Make it unique */
 	$classes = array_unique( $classes );

@@ -1,0 +1,10 @@
+Post Formats Handling in Genbu Theme
+=====================================
+
+Aside
+-----------
+in archive page:
+- title: none
+- full content
+- footer: byline with only link to aside format.
+

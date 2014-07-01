@@ -50,11 +50,6 @@ Genbu is using editor style, so you'll see what you get in your WordPress visual
 
 You can translate Genbu using provided po and mo file.
 
-### Features Note:
-
-Genbu theme do *not* have:
-* Thumbnail
-* Page Template
 
 ### Links
 
@@ -71,7 +66,6 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 ## To Do List:
 
 * Better Accessibility Feature
-* Post Format Example (maybe as child theme)
 * Update Screen shot
 
 ## Changelog:
@@ -87,6 +81,8 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Change global for widget num to tamatebako.
 * Fix tag footer to div in entry footer for plural pages.
 * Change header tag to div in comment meta.
+* Fix threaded comments style
+* Add basic support for Post Formats.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.

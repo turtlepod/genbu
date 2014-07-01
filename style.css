@@ -46,7 +46,8 @@
  * #14 - WIDGETS
  * #15 - FOOTER
  * #16 - LAYOUT
- * #17 - PLUGINS
+ * #17 - POST FORMATS
+ * #18 - PLUGINS
  * 
  *****************************************/
 
@@ -287,6 +288,9 @@ code{
 			margin-bottom: 20px;
 			margin-bottom: 2rem;
 		}
+		.entry-footer .entry-byline{
+			margin-bottom: 0;
+		}
 			.entry-byline a{
 				color: #444;
 			}
@@ -296,6 +300,15 @@ code{
 			}
 			.entry-author:before{
 				content: "\f110";
+				font-family: "dashicons";
+				vertical-align: top;
+				margin-right: 5px;
+				margin-right: 0.5rem;
+				color: #ccc;
+				-webkit-font-smoothing: antialiased;
+			}
+			.entry-permalink:before{
+				content: "\f103";
 				font-family: "dashicons";
 				vertical-align: top;
 				margin-right: 5px;
@@ -331,6 +344,9 @@ code{
 	.entry-content{
 	}
 	.entry-summary{
+	}
+	.entry-content:after{
+		content:".";display:block;height:0;clear:both;visibility:hidden;
 	}
 		/* More link */
 		.more-link-wrap{
@@ -1010,7 +1026,82 @@ code{
 }
 
 
-/* === #17 PLUGINS === */
+/* === #17 POST FORMATS === */
+
+.entry.has-format .post-format-link:before{
+	content: "";
+	font-family: "dashicons";
+	vertical-align: top;
+	margin-right: 5px;
+	margin-right: 0.5rem;
+	color: #21759b;
+	-webkit-font-smoothing: antialiased;
+}
+.entry.has-format .entry-terms.post_format{
+	display: none;
+}
+
+/* == ASIDE == */
+.entry.format-aside .post-format-link:before{
+	content: "\f123";
+}
+/* == AUDIO == */
+.entry.format-audio .post-format-link:before{
+	content: "\f127";
+}
+/* == CHAT == */
+.entry.format-chat .post-format-link:before{
+	content: "\f125";
+}
+.chat-author cite{
+	font-weight: 800;
+	font-style: normal;
+}
+/* == GALLERY == */
+.entry.format-gallery .post-format-link:before{
+	content: "\f161";
+}
+/* == IMAGE == */
+.entry.format-image .post-format-link:before{
+	content: "\f128";
+}
+/* == LINK == */
+.entry.format-link .post-format-link:before{
+	content: "\f103";
+}
+.format-link-title:after{
+	content: "\f344";
+	margin-left: 10px;
+	margin-left: 1rem;
+	font-family: "dashicons";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+}
+/* == QUOTE == */
+.entry.format-quote .post-format-link:before{
+	content: "\f122";
+}
+/* == STATUS == */
+.entry.format-status .post-format-link:before{
+	content: "\f130";
+}
+.status-avatar img{
+	height: 50px;
+	height: 5rem;
+	width: 50px;
+	width: 5rem;
+	float: left;
+	margin: 0 20px 20px 0;
+	margin: 0 2rem 2rem 0;
+}
+/* == VIDEO == */
+.entry.format-video .post-format-link:before{
+	content: "\f126";
+}
+
+
+
+/* === #18 PLUGINS === */
 
 /* == JETPACK == */
 
