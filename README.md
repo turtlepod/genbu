@@ -82,7 +82,10 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Fix tag footer to div in entry footer for plural pages.
 * Change header tag to div in comment meta.
 * Fix threaded comments style
-* Add basic support for Post Formats.
+* Add basic support and style for Post Formats.
+* Add thumbnail for post archive.
+* Better layout structure to enable grid/columns in displaying posts list.
+* Add base structure and example for grid and masonry in displaying posts list.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.

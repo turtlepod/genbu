@@ -1,3 +1,6 @@
+List of Style loaded in WP Editor iframe.
+---------------------------------------------
+
 /* Style */
 .mce-content-body div.mce-resizehandle {position: absolute;border: 1px solid black;background: #FFF;width: 5px;height: 5px;z-index: 10000}.mce-content-body .mce-resizehandle:hover {background: #000}.mce-content-body img[data-mce-selected], hr[data-mce-selected] {outline: 1px solid black;resize: none}.mce-content-body .mce-clonedresizable {position: absolute;opacity: .5;filter: alpha(opacity=50);z-index: 10000}
 img:-moz-broken {-moz-force-broken-image-icon:1;min-width:24px;min-height:24px}
@@ -31,6 +34,7 @@ http://fonts.googleapis.com/css?family=Open+Sans:400%2C300%2C300italic%2C400ital
 
 
 /* Editor Style */
+http://hybrid.play/content/themes/genbu/css/reset.min.css
 http://hybrid.play/content/themes/genbu/style.css
 
 

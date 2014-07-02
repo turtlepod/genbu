@@ -21,7 +21,7 @@ function genbu_setup(){
 	/* === DEBUG === */
 	$debug_args = array(
 		'mobile'         => 0,
-		'no-js'          => 0,
+		'no-js'          => 1,
 		'media-queries'  => 1,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );

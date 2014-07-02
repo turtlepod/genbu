@@ -15,6 +15,7 @@
 		</div><!-- .entry-header -->
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
+			<?php get_the_image( array( 'attachment' => false, 'image_class' => 'theme-thumbnail' ) ); ?>
 			<?php the_excerpt(); ?>
 			<?php tamatebako_read_more(); ?>
 		</div><!-- .entry-summary -->

@@ -230,7 +230,7 @@ function tamatebako_wp_title( $doctitle ){
  * @since 0.1.0
  */
 function tamatebako_disable_excerpt_more( $more ) {
-	return '&hellip;';
+	return " &hellip; ";
 }
 
 /**
@@ -241,7 +241,7 @@ function tamatebako_read_more() {
 	$string = tamatebako_string( 'read-more' );
 	$read_more = '';
 	if ( !empty( $string ) ){
-		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span> <span class="screen-reader-text">' . get_the_title() . '</span></a></span>';
+		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span class="more-text">' . $string . '</span> <span class="screen-reader-text">' . get_the_title() . '</span></a></span>';
 	}
 	echo $read_more;
 }
@@ -253,7 +253,7 @@ function tamatebako_read_more() {
 function tamatebako_content_more( $more_link, $more_link_text ){
 	$string = tamatebako_string( 'read-more' );
 	if ( !empty( $string ) ){
-		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
+		return " &hellip; " . '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span class="more-text">' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
 	}
 	return $more_link;
 }
