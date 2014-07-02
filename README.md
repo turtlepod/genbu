@@ -86,6 +86,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add thumbnail for post archive.
 * Better layout structure to enable grid/columns in displaying posts list.
 * Add base structure and example for grid and masonry in displaying posts list.
+* Add flexslider and examples in how to use it.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.

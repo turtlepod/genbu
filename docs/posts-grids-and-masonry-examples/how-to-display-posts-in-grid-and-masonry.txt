@@ -10,5 +10,4 @@ Enable Masonry
 2. Load masonry script and style
 	wp_enqueue_script('masonry');
 	wp_enqueue_style('masonry');
-3. Load js/mansonry-setting.js or use it as example.
-	better to load the script with masonry dependency.
+3. Use mansonry-setting.js as example.

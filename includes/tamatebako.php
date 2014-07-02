@@ -533,9 +533,13 @@ function tamatebako_enqueue_js(){
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.css" ) );
 	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
+	$flexslider_js = hybrid_locate_theme_file( array( "js/flexslider{$suffix}.js", "js/flexslider.js" ) );
 
 	if ( !empty( $fitvids_js ) ){
 		wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
+	}
+	if ( !empty( $flexslider_js ) ){
+		wp_register_script( 'theme-flexslider', $flexslider_js, array( 'jquery' ), '2.2.2', true );
 	}
 	if ( !empty( $theme_js ) ){
 		wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
@@ -570,20 +574,26 @@ function tamatebako_register_css(){
 	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
+	/* Flexslider */
+	$flexslider_css = hybrid_locate_theme_file( array( "css/flexslider{$suffix}.css", "css/flexslider.css" ) );
+	if ( !empty( $flexslider_css ) ){
+		wp_register_style( 'theme-flexslider',$flexslider_css, array(), '2.2.2', 'all' );
+	}
+
 	/* Media Queries */
-	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
+	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.css", "media-queries.css" ) );
 	if ( !empty( $media_queries_css ) ){
 		wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Reset CSS */
-	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.js", "css/reset.css" ) );
+	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.css", "css/reset.css" ) );
 	if ( !empty( $reset_css ) ){
 		wp_register_style( 'theme-reset',$reset_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Menus CSS */
-	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.js", "css/menus.css" ) );
+	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.css", "css/menus.css" ) );
 	if ( !empty( $menus_css ) ){
 		wp_register_style( 'theme-menus',$menus_css, array(), tamatebako_theme_version(), 'all' );
 	}

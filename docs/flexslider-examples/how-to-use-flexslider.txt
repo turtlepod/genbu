@@ -1,0 +1,14 @@
+How to Use Flex Slider
+---------------------------------------------
+1. Enqueue Flexslider Script and Style in preferred page.
+	wp_enqueue_script('theme-flexslider');
+	wp_enqueue_style('theme-flexslider');
+2. Use js/flexslider-setting.js as example in how to use flexslider.
+3. Add your slider content using the examples in loop folder.
+
+How to test and create use loop-examples template
+---------------------------------------------
+1. After the opening of div ".content-entry-wrap" add this code:
+	<?php locate_template( array( 'docs/flexslider-examples/loop/basicslide.php' ), true ); ?>
+	<?php locate_template( array( 'docs/flexslider-examples/loop/thumbnav.php' ), true ); ?>
+	<?php locate_template( array( 'docs/flexslider-examples/loop/carousel.php' ), true ); ?>

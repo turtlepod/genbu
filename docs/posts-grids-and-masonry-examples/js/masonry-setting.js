@@ -1,6 +1,6 @@
 jQuery( document ).ready( function($) {
 
-	/* === MASONRY === */
+	/* === MASONRY Settings Example === */
 	if ( $("body").hasClass( "col-masonry" ) && $("body").hasClass( "plural" ) ){
 		$("body").addClass( "col-masonry-active" );
 	}
