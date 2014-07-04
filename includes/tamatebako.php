@@ -975,7 +975,7 @@ function tamatebako_entry_terms(){
 	if ( !empty( $entry_taxonomies ) ){ ?>
 		<div class="entry-meta">
 		<?php foreach ( $entry_taxonomies as $tax_id => $entry_tax ){ ?>
-			<?php hybrid_post_terms( array( 'taxonomy' => $tax_id, 'text' => $entry_tax['text'] . ' %s' ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => $tax_id, 'text' => '<span class="term-name">' . $entry_tax['text'] . '</span>' . ' %s' ) ); ?>
 		<?php }//end foreach ?>
 		</div>
 
