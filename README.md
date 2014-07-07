@@ -65,6 +65,10 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 ## Changelog:
 
+### 1.0.0
+* Push to version 1.0.0
+* now using [Semantic Versioning](http://semver.org/)
+
 ### 0.1.4
 * Disable comment error on Page (post type).
 * Add basic support for WooCommerce Plugin.
