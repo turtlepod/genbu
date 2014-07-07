@@ -63,14 +63,9 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 2014 © [Genbu Media](http://genbu.me/). All rights reserved.
 
-## To Do List:
-
-* Better Accessibility Feature
-* Update Screen shot
-
 ## Changelog:
 
-### 0.1.4 (beta)
+### 0.1.4
 * Disable comment error on Page (post type).
 * Add basic support for WooCommerce Plugin.
 * Add basic support for The Events Calendar Plugin.
