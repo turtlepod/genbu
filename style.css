@@ -1265,6 +1265,8 @@ html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
 	padding: 20px;
 	padding: 2rem;
 	border: 1px solid #ccc;
+	margin-right: 20px;
+	margin-right: 2rem;
 }
 .woocommerce-content-entry-wrap .entry{
 	border: none;
@@ -1284,6 +1286,8 @@ html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
 	padding: 20px;
 	padding: 2rem;
 	border: 1px solid #ccc;
+	margin-right: 20px;
+	margin-right: 2rem;
 }
 .tribe-events-content-entry-wrap.entry{
 	border: none;
