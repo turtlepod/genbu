@@ -2,8 +2,6 @@
 
 <div id="container">
 
-	<?php tamatebako_skip_to_content(); ?>
-
 	<?php get_template_part( 'site-header' ); ?>
 
 	<?php hybrid_get_menu( 'primary' ); ?>
@@ -20,31 +18,13 @@
 
 				<main <?php hybrid_attr( 'content' ); ?>>
 
-					<?php if ( have_posts() ){ /* Posts Found */ ?>
-
-						<?php tamatebako_archive_header(); ?>
-
-						<div class="content-entry-wrap">
-
-							<?php while ( have_posts() ) {  /* Start Loop */ ?>
-
-								<?php the_post(); /* Load Post Data */ ?>
+						<div class="content-entry-wrap woocommerce-content-entry-wrap">
 
 								<?php /* Start Content */ ?>
-								<?php tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
+								<?php woocommerce_content(); ?>
 								<?php /* End Content */ ?>
 
-							<?php } /* End Loop */ ?>
-
 						</div><!-- .content-entry-wrap-->
-
-						<?php tamatebako_archive_footer(); ?>
-
-					<?php } else { /* No Posts Found */ ?>
-
-						<?php tamatebako_content_error(); ?>
-
-					<?php } /* End Posts Found Check */ ?>
 
 				</main><!-- #content -->
 

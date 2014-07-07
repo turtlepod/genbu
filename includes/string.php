@@ -20,8 +20,8 @@ function tamatebako_string( $context ){
 	/* Read More */
 	$text['read-more'] = _x( 'Continue reading', 'content read more', 'genbu' );
 
-	/* Edit Link */
-	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
+	/* Entry Permalink */
+	$text['permalink'] = _x( 'Permalink', 'entry permalink', 'genbu' );
 
 	/* Next, Previous */
 	$text['next'] = _x( 'Next', 'next in pagination and navigation (accessibility)', 'genbu' );
@@ -71,6 +71,9 @@ function genbu_string( $context ){
 	/* Register Sidebar */
 	$text['sidebar-primary-name'] = _x( 'Sidebar 1', 'sidebar name', 'genbu' );
 	$text['sidebar-secondary-name'] = _x( 'Sidebar 2', 'sidebar name', 'genbu' );
+
+	/* Custom Content Portfolio Project Link */
+	$text['ccp-view-project'] = _x( 'View Project', 'custom content portfolio link', 'genbu' );
 
 	$text = apply_filters( 'genbu_string', $text );
 

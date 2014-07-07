@@ -1,11 +1,11 @@
 /**
  * Theme Name:  Genbu
- * Theme URI:   http://shellcreeper.com/genbu-theme-responsive
- * Description: Perfect theme for custom site.
- * Version:     0.1.3
+ * Theme URI:   http://genbutheme.com/
+ * Description: Rock-solid responsive WordPress theme with 9 layouts, perfect for any site.
+ * Version:     0.1.4
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
- * Tags:        black, gray, light, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-header, custom-menu, editor-style, threaded-comments, translation-ready
+ * Tags:        black, gray, light, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, post-formats, threaded-comments, translation-ready
  * Text Domain: genbu
  * License:     GNU General Public License v2.0 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,7 +46,8 @@
  * #14 - WIDGETS
  * #15 - FOOTER
  * #16 - LAYOUT
- * #17 - JETPACK
+ * #17 - POST FORMATS
+ * #18 - PLUGINS
  * 
  *****************************************/
 
@@ -229,8 +230,8 @@ code{
 	padding: 20px;
 	padding: 2rem;
 	padding-bottom: 0;
-	margin-bottom: 20px;
-	margin-bottom: 2rem;
+	margin: 0 20px 20px 0;
+	margin: 0 2rem 2rem 0;
 	border: 1px solid #ccc;
 }
 	.loop-title{
@@ -287,6 +288,9 @@ code{
 			margin-bottom: 20px;
 			margin-bottom: 2rem;
 		}
+		.entry-footer .entry-byline{
+			margin-bottom: 0;
+		}
 			.entry-byline a{
 				color: #444;
 			}
@@ -296,6 +300,15 @@ code{
 			}
 			.entry-author:before{
 				content: "\f110";
+				font-family: "dashicons";
+				vertical-align: top;
+				margin-right: 5px;
+				margin-right: 0.5rem;
+				color: #ccc;
+				-webkit-font-smoothing: antialiased;
+			}
+			.entry-permalink:before{
+				content: "\f103";
 				font-family: "dashicons";
 				vertical-align: top;
 				margin-right: 5px;
@@ -332,6 +345,19 @@ code{
 	}
 	.entry-summary{
 	}
+	.entry-summary:after,
+	.entry-content:after{
+		content:".";display:block;height:0;clear:both;visibility:hidden;
+	}
+		/* Thumbnail */
+		.entry-summary .theme-thumbnail{
+			float: right;
+			margin: 0 0 20px 20px;
+			margin: 0 0 2rem 2rem;
+			border: 1px solid #ccc;
+			padding: 10px;
+			padding: 1rem;
+		}
 		/* More link */
 		.more-link-wrap{
 			display: block;
@@ -344,9 +370,20 @@ code{
 			display: inline-block;
 			margin-bottom: 20px;
 			margin-bottom: 2rem;
+			border: 1px solid #ccc;
+			padding: 4px 10px;
+			padding: 0.4rem 1rem;
 		}
 		p .more-link{
 			margin-bottom: 0;
+		}
+		.more-text:after{
+			content: "\f345";
+			font-family: "dashicons";
+			vertical-align: top;
+			margin-left: 10px;
+			margin-left: 1rem;
+			-webkit-font-smoothing: antialiased;
 		}
 		/* Page links */
 		.wp-link-pages{
@@ -410,7 +447,6 @@ code{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 	.loop-nav .screen-reader-text{
-		display: none;
 	}
 	.loop-nav .prev{
 		padding-left: 30px;
@@ -488,7 +524,6 @@ code{
 				}
 				.comments-nav .prev-comments .screen-reader-text,
 				.comments-nav .next-comments .screen-reader-text{
-					display: none;
 				}
 			.comments-nav .page-numbers{
 			}
@@ -505,7 +540,8 @@ code{
 	}
 		.comment-list .children{
 			list-style: none;
-			margin: 0;
+			margin: 0 0 0 10px;
+			margin: 0 0 0 1rem;
 		}
 		/* Comment */
 		.comment{
@@ -711,15 +747,14 @@ code{
 
 /* === #13 - LOOP PAGINATION === */
 .loop-pagination{
-	margin-bottom: 25px;
-	margin-bottom: 2.5rem;
+	margin: 0 20px 25px 0;
+	margin: 0 2rem 2.5rem 0;
 }
 .loop-pagination:before,
 .loop-pagination:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
 }
 	.loop-pagination .screen-reader-text{
-		display: none;
 	}
 	.loop-pagination .page-numbers{
 		color: #444;
@@ -833,7 +868,6 @@ code{
 }
 /* Widget Search */
 .widget_search .screen-reader-text{
-	display: none;
 }
 .widget_search .search-field{
 	text-align: center;
@@ -871,6 +905,9 @@ code{
 /* === #16 - LAYOUT === */
 
 /* Layout Default: "sidebar2-content-sidebar1" */
+#main{
+	padding-right: 0;
+}
 .main-inner{
 	float: right;
 	padding-left: 200px;
@@ -882,13 +919,17 @@ code{
 	margin-right: 340px;
 	margin-right: 34rem;
 }
+.content-entry-wrap{
+	padding-right: 20px;
+	padding-right: 2rem;
+}
 #content{
 	float: left;
 }
 #sidebar-primary-wrap{
 	float: right;
-	margin-right: -340px;
-	margin-right: -34rem;
+	margin-right: -320px;
+	margin-right: -32rem;
 	width: 320px;
 	width: 32rem;
 	max-width: 100%;
@@ -896,8 +937,8 @@ code{
 #sidebar-secondary-wrap{
 	width: 180px;
 	width: 18rem;
-	margin-right: -200px;
-	margin-right: -20rem;
+	margin-right: -180px;
+	margin-right: -18rem;
 	float: left;
 	position: relative;
 }
@@ -951,7 +992,8 @@ code{
 	margin-right: 0;
 }
 .layout-content-sidebar2 #sidebar-secondary-wrap{
-	margin-right: 0;
+	margin-right: 20px;
+	margin-right: 2rem;
 	margin-left: -200px;
 	margin-left: -20rem;
 	float: right;
@@ -979,7 +1021,8 @@ code{
 	padding-right: 20rem;
 }
 .layout-content-sidebar1-sidebar2 #sidebar-secondary-wrap{
-	margin-right: 0;
+	margin-right: 20px;
+	margin-right: 2rem;
 	margin-left: -200px;
 	margin-left: -20rem;
 	float: right;
@@ -992,7 +1035,8 @@ code{
 	padding-right: 20rem;
 }
 .layout-sidebar1-content-sidebar2 #sidebar-secondary-wrap{
-	margin-right: 0;
+	margin-right: 20px;
+	margin-right: 2rem;
 	margin-left: -200px;
 	margin-left: -20rem;
 	float: right;
@@ -1013,7 +1057,84 @@ code{
 }
 
 
-/* === #17 JETPACK === */
+/* === #17 POST FORMATS === */
+
+.entry.has-format .post-format-link:before{
+	content: "";
+	font-family: "dashicons";
+	vertical-align: top;
+	margin-right: 5px;
+	margin-right: 0.5rem;
+	color: #21759b;
+	-webkit-font-smoothing: antialiased;
+}
+.entry.has-format .entry-terms.post_format{
+	display: none;
+}
+
+/* == ASIDE == */
+.entry.format-aside .post-format-link:before{
+	content: "\f123";
+}
+/* == AUDIO == */
+.entry.format-audio .post-format-link:before{
+	content: "\f127";
+}
+/* == CHAT == */
+.entry.format-chat .post-format-link:before{
+	content: "\f125";
+}
+.chat-author cite{
+	font-weight: 800;
+	font-style: normal;
+}
+/* == GALLERY == */
+.entry.format-gallery .post-format-link:before{
+	content: "\f161";
+}
+/* == IMAGE == */
+.entry.format-image .post-format-link:before{
+	content: "\f128";
+}
+/* == LINK == */
+.entry.format-link .post-format-link:before{
+	content: "\f103";
+}
+.format-link-title:after{
+	content: "\f344";
+	margin-left: 10px;
+	margin-left: 1rem;
+	font-family: "dashicons";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+}
+/* == QUOTE == */
+.entry.format-quote .post-format-link:before{
+	content: "\f122";
+}
+/* == STATUS == */
+.entry.format-status .post-format-link:before{
+	content: "\f130";
+}
+.status-avatar img{
+	height: 50px;
+	height: 5rem;
+	width: 50px;
+	width: 5rem;
+	float: left;
+	margin: 0 20px 20px 0;
+	margin: 0 2rem 2rem 0;
+}
+/* == VIDEO == */
+.entry.format-video .post-format-link:before{
+	content: "\f126";
+}
+
+
+
+/* === #18 PLUGINS === */
+
+/* == JETPACK == */
 
 /* Blog Subscribe Widget */
 .jetpack_subscription_widget{
@@ -1110,4 +1231,84 @@ p.comment-subscription-form input{
 /* Top Posts (Grid) */
 #sidebar-primary .widget-grid-view-image a img{
 	display: block;
+}
+
+
+/* == WOOCOMMERCE == */
+
+html .woocommerce-page .menu-search .search-submit{
+	display: none;
+}
+html .woocommerce-page .menu-search .search-submit{
+	padding: 0;
+}
+html .woocommerce-page .search-toggle-active.menu-search .search-submit{
+	display: inline;
+	border-radius: none;
+	box-shadow: none;
+	font-weight: 400;
+}
+html .woocommerce-page .search-toggle-active.menu-search .search-submit:hover{
+	background: transparent;
+	display: inline;
+	border-radius: none;
+	box-shadow: none;
+	font-weight: 400;
+}
+.woocommerce #content .quantity input.qty,
+.woocommerce .quantity input.qty,
+.woocommerce-page #content .quantity input.qty,
+.woocommerce-page .quantity input.qty{
+	margin-bottom: 0;
+}
+.woocommerce-content-entry-wrap{
+	padding: 20px;
+	padding: 2rem;
+	border: 1px solid #ccc;
+	margin-right: 20px;
+	margin-right: 2rem;
+}
+.woocommerce-content-entry-wrap .entry{
+	border: none;
+}
+.woocommerce .woocommerce-error:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-message:before,
+.woocommerce-page .woocommerce-error:before,
+.woocommerce-page .woocommerce-info:before,
+.woocommerce-page .woocommerce-message:before{
+	padding-top: 0 !important;
+}
+
+
+/* == THE EVENTS CALENDAR == */
+.tribe-events-content-entry-wrap{
+	padding: 20px;
+	padding: 2rem;
+	border: 1px solid #ccc;
+	margin-right: 20px;
+	margin-right: 2rem;
+}
+.tribe-events-content-entry-wrap.entry{
+	border: none;
+}
+.tribe-events-list-widget ol{
+	margin: 0;
+}
+.tribe-events-list-widget .entry-title{
+	font-size: 17px;
+	font-size: 1.7rem;
+	margin-bottom: 5px;
+	margin-bottom: 0.5rem;
+	padding-bottom: 5px;
+	padding-bottom: 0.5rem;
+}
+.sidebar .tribe-events-list-widget ol li{
+	margin-bottom: 10px;
+	margin-bottom: 1rem;
+}
+
+/* == Easy Digital Downloads == */
+#edd_checkout_form_wrap legend{
+	border: none;
 }

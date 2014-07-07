@@ -38,7 +38,17 @@
 	margin: 2rem auto;
 	padding: 0;
 }
+#main{
+	padding: 20px;
+	padding: 2rem;
+}
+#content{
+	width: 100%;
+}
 /* Layout Default: "sidebar2-content-sidebar1" */
+#main{
+	padding-right: 0;
+}
 .main-inner{
 	float: right;
 	padding-left: 200px;
@@ -50,13 +60,17 @@
 	margin-right: 340px;
 	margin-right: 34rem;
 }
+.content-entry-wrap{
+	padding-right: 20px;
+	padding-right: 2rem;
+}
 #content{
 	float: left;
 }
 #sidebar-primary-wrap{
 	float: right;
-	margin-right: -340px;
-	margin-right: -34rem;
+	margin-right: -320px;
+	margin-right: -32rem;
 	width: 320px;
 	width: 32rem;
 	max-width: 100%;
@@ -64,8 +78,8 @@
 #sidebar-secondary-wrap{
 	width: 180px;
 	width: 18rem;
-	margin-right: -200px;
-	margin-right: -20rem;
+	margin-right: -180px;
+	margin-right: -18rem;
 	float: left;
 	position: relative;
 }
@@ -119,7 +133,8 @@
 	margin-right: 0;
 }
 .layout-content-sidebar2 #sidebar-secondary-wrap{
-	margin-right: 0;
+	margin-right: 20px;
+	margin-right: 2rem;
 	margin-left: -200px;
 	margin-left: -20rem;
 	float: right;
@@ -147,7 +162,8 @@
 	padding-right: 20rem;
 }
 .layout-content-sidebar1-sidebar2 #sidebar-secondary-wrap{
-	margin-right: 0;
+	margin-right: 20px;
+	margin-right: 2rem;
 	margin-left: -200px;
 	margin-left: -20rem;
 	float: right;
@@ -160,7 +176,8 @@
 	padding-right: 20rem;
 }
 .layout-sidebar1-content-sidebar2 #sidebar-secondary-wrap{
-	margin-right: 0;
+	margin-right: 20px;
+	margin-right: 2rem;
 	margin-left: -200px;
 	margin-left: -20rem;
 	float: right;
@@ -179,3 +196,25 @@
 	margin-left: -340px;
 	margin-left: -34rem;
 }
+
+/* Start! */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

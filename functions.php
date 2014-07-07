@@ -21,7 +21,7 @@ function genbu_setup(){
 	/* === DEBUG === */
 	$debug_args = array(
 		'mobile'         => 0,
-		'no-js'          => 0,
+		'no-js'          => 1,
 		'media-queries'  => 1,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );
@@ -38,7 +38,7 @@ function genbu_setup(){
 		'audio',
 		'chat'
 	);
-	//add_theme_support( 'post-formats', $post_formats_args );
+	add_theme_support( 'post-formats', $post_formats_args );
 
 	/* === Theme Layouts === */
 	$layouts = array(
@@ -113,6 +113,9 @@ function genbu_setup(){
 
 	/* === Set Content Width === */
 	hybrid_set_content_width( 1200 );
+
+	/* === Plugins === */
+	add_theme_support( 'woocommerce' );
 }
 
 /**
@@ -229,5 +232,21 @@ function genbu_custom_header_admin_preview_callback(){
 </div>
 <?php
 }
+
+/**
+ * Custom Content Portfolio Project Link
+ * @since 0.1.4
+ */
+function genbu_ccp_project_link(){
+	$url = get_post_meta( get_the_ID(), 'portfolio_item_url', true );
+	if ( $url ){
+?>
+<div class="ccp-project-link">
+	<p><a class="button" href="<?php echo esc_url( $url ); ?>"><?php echo genbu_string('ccp-view-project'); ?></a></p>
+</div>
+<?php
+	}
+}
+
 
 do_action( 'genbu_after_theme_setup' );

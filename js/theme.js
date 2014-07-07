@@ -1,5 +1,8 @@
 jQuery( document ).ready( function($) {
 
+	/* === FitVids === */
+	$('#content,.entry-content,.entry-summary,.widget').fitVids();
+
 	/* === Accessibility === */
 
 	/* == Menu Toggle == */
@@ -78,3 +81,4 @@ jQuery( document ).ready( function($) {
 	});
 
 });
+

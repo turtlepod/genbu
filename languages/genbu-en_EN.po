@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Genbu WordPress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-29 21:27+0700\n"
+"POT-Creation-Date: 2014-06-30 22:02+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: David Chandra Purnama <david@shellcreeper.com>\n"
@@ -110,4 +110,9 @@ msgstr ""
 #: string.php:73
 msgctxt "sidebar name"
 msgid "Sidebar 2"
+msgstr ""
+
+#: string.php:76
+msgctxt "custom content portfolio link"
+msgid "View Project"
 msgstr ""

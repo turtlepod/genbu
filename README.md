@@ -10,7 +10,7 @@ It's modular, you can use it as robust parent theme or as theme base for your pr
 
 ### Theme Layout and Sidebar:
 
-Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize and also can be set per post basis using layout meta box.
+Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize.
 * Content (No sidebar)
 * Content / Sidebar 1
 * Sidebar 1 / Content
@@ -50,11 +50,6 @@ Genbu is using editor style, so you'll see what you get in your WordPress visual
 
 You can translate Genbu using provided po and mo file.
 
-### Features Note:
-
-Genbu theme do *not* have:
-* Thumbnail
-* Page Template
 
 ### Links
 
@@ -68,12 +63,26 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 2014 © [Genbu Media](http://genbu.me/). All rights reserved.
 
-## To Do List:
-
-* Better Accessibility Feature
-* Post Format Example (maybe as child theme)
-
 ## Changelog:
+
+### 0.1.4
+* Disable comment error on Page (post type).
+* Add basic support for WooCommerce Plugin.
+* Add basic support for The Events Calendar Plugin.
+* Add basic support for Easy Digital Downloads Plugin.
+* Add basic support for Custom Content Portfolio Plugin.
+* Fix search form (menu) toggle, now using link instead of button.
+* Remove Utility functions from template, add examples in docs folder.
+* Change global for widget num to tamatebako.
+* Fix tag footer to div in entry footer for plural pages.
+* Change header tag to div in comment meta.
+* Fix threaded comments style
+* Add basic support and style for Post Formats.
+* Add thumbnail for post archive.
+* Better layout structure to enable grid/columns in displaying posts list.
+* Add base structure and example for grid and masonry in displaying posts list.
+* Add flexslider and examples in how to use it.
+* Restructure "tamatebako"; better inline docs; remove "edit *" filter.
 
 ### 0.1.3
 * Read more no longer using filter, now using template function.

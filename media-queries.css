@@ -46,6 +46,8 @@
 	.wordpress #sidebar-primary-wrap{
 		margin-right: 0;
 		margin-left: 0;
+		padding-right: 20px;
+		padding-right: 2rem;
 		float: left;
 		width: 100%;
 	}
@@ -62,6 +64,9 @@
 	}
 	.wordpress #sidebar-secondary-wrap{
 		margin-right: 0;
+		margin-left: 0;
+		padding-right: 20px;
+		padding-right: 2rem;
 		width: 100%;
 	}
 }
