@@ -17,14 +17,11 @@ function tamatebako_string( $context ){
 	/* Skip to content (accessibility) */
 	$text['skip-to-content'] = _x( 'Skip to content', 'skip to content (accessibility)', 'genbu' );
 
-	/* Entry Permalink */
-	$text['permalink'] = _x( 'Permalink', 'entry permalink', 'genbu' );
-
 	/* Read More */
 	$text['read-more'] = _x( 'Continue reading', 'content read more', 'genbu' );
 
-	/* Edit Link */
-	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
+	/* Entry Permalink */
+	$text['permalink'] = _x( 'Permalink', 'entry permalink', 'genbu' );
 
 	/* Next, Previous */
 	$text['next'] = _x( 'Next', 'next in pagination and navigation (accessibility)', 'genbu' );
