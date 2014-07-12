@@ -1,6 +1,6 @@
 <?php
 /**
- * Genbu Theme Functions
+ * Theme Functions
 ** ---------------------------- */
 
 /* Load text string used in theme */
