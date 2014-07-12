@@ -4,7 +4,7 @@
  * TAMATEBAKO
  * ------------------------------------------------------------------
  * @author    David Chandra Purnama <david@shellcreeper.com>
- * @version   1.0.0
+ * @version   1.0.1
  * @copyright Genbu Media
  * @link      http://shellcreeper.com
  * @link      http://genbu.me
@@ -14,12 +14,98 @@
  * ABOUT
  * ------------------------------------------------------------------
  * 
- * Tamatebako is a collection of functions and filters
+ * Tamatebako is drop-in code (framework/library) to build theme.
+ * A collection of functions, filters, and files,
  * to easily build theme using Hybrid Core Theme Framework. 
  * The main purpose is to provide most used functions and
  * template functions to allow developer and designer 
  * to get back to what matters the most:
- * developing and designing themes.  
+ * developing and designing themes.
+ * 
+ ********************************************************************
+ * USAGE
+ * ------------------------------------------------------------------
+ * 
+ * "tamatebako.php" should be added and loaded in "includes" folder,
+ * "string.php" also need to exist, with function "tamatebako_string()".
+ * "tamatebako_string()" function is simple array for translation string
+ * used in tamatebako.
+ * theme author should not modify "tamatebako.php" but can modify
+ * "tamatebako_string()" function translation string content.
+ * Hybrid Core need to be loaded in "library" folder.
+ * Tamatebako also load and/or register and/or enqueue scripts and style
+ * when the file is available in theme.
+ * 
+ ********************************************************************
+ * ASSET FILES
+ * ------------------------------------------------------------------
+ * 
+ * These assets files is managed/used by Tamatebako,
+ * but theme can change it as needed just by removing the files not used.
+ * Some files are loaded by default, but Tamatebako will check
+ * if file exist before register, enqueue, or load.
+ * 
+ * CSS:
+ * located in theme "css" folder, except for "media-queries".
+ * Theme can enqueue it using "hybrid-core-styles" theme support.
+ * Other main stylesheet such as "style.css" managed by Hybrid Core library.
+ * - "media-queries"
+ *   file: media-queries.css, media-queries.min.css
+ *   this file located in main/root of theme dir.
+ * - "theme-reset"
+ *   file: reset.css, reset.min.css
+ *   not really a reset, but a base stylesheet including wp-editor fix
+ *   and gallery
+ * - "theme-menus"
+ *   file: menus.css, menus.min.css
+ *   drop down menu with search
+ * - "theme-flexslider"
+ *   file: flexslider.css (including fonts)
+ *   base css for flexslider by woothemes.
+ * - "debug-media-queries"
+ *   file: debug-media-queries.css
+ *   to display break points, need to be loaded using
+ *   "tamatebako-debug" theme support.
+ * 
+ * CSS(manual):
+ * located in theme "css" folder.
+ * stylesheet loaded not using enqueue but added directly in template
+ * using "wp_head" hook.
+ * - ie8.css, ie8.min.css
+ *   if exist, only loaded if browser is Internet Explorer 8.
+ *   theme can add this css file to add browser support for IE8 visitor.
+ * - ie9.css, ie9.min.css
+ *   if exist, only loaded if browser is Internet Explorer 9.
+ *   theme can add this css file to add browser support for IE9 visitor.
+ * 
+ * JS:
+ * located in theme "js" folder
+ * - "theme-fitvids"
+ *   file: fitvids.js, fitvids.min.js
+ *   for responsive video embed, enqueued by default
+ * - "theme-flexslider"
+ *   file: flexslider.js, flexslider.min.js
+ *   not enqueued but registered if exist,
+ *   theme should only enqueue if using slider.
+ * - "theme-js"
+ *   theme main stylesheet, theme can use this to add custom
+ *   javascript or settings for other script.
+ *   this file is enqueued by default if exist.
+ * 
+ * JS (manual):
+ * located in theme "js" folder
+ * javascript loaded not using enqueue but added directly in template.
+ * - html5shiv.js, html5shiv.min.js
+ *   To enable HTML 5 in unsupported browser.
+ *   loaded via "wp_head" hook if file exist.
+ * - respond.js, respond.min.js
+ *   To Enable media queires in unsupported browser.
+ *   loaded via "wp_head" hook if file exist.
+ * - js-status.js
+ *   to check if the javascript is enabled by switching body class
+ *   from "no-js" to "js"
+ *   this added after opening <body> tag, using template function
+ *   "tamatebako_check_js_script()"
  * 
  ********************************************************************
  * TABLE OF CONTENTS
@@ -51,8 +137,26 @@
  *
  * #09 - DEBUG
  *       Helper for easier theme debug.
+ *
+ ********************************************************************
+ * LICENSE
+ * ------------------------------------------------------------------
  * 
- ********************************************************************/
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as 
+ * published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ * Free Software Foundation, Inc.,
+ * 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ * 
+*********************************************************************/
 
 
 
@@ -61,6 +165,7 @@
 
 /**
  * Helper function to get theme version
+ * This function is to properly add version number to scripts and styles.
  * 
  * @since 0.1.0
  */
@@ -89,7 +194,7 @@ add_action( 'after_setup_theme', 'tamatebako_hybrid_core_setup', 5 );
  * - Load "Get the Image" script
  * - Load "Loop Pagination" script
  * - Set Document Title
- * - Change Infinity Simbol to include comment
+ * - Change Infinity Simbol to include comment.
  * 
  * @since 0.1.0
  */
@@ -108,7 +213,6 @@ function tamatebako_hybrid_core_setup(){
 
 	/* Post Formats */
 	add_filter( 'hybrid_aside_infinity', 'tamatebako_aside_infinity' );
-
 }
 
 
@@ -208,13 +312,13 @@ function tamatebako_wp_title( $doctitle ){
 		$doctitle = hybrid_404_title( '', false );
 	}
 
-	/* Add Site Description */
+	/* Add Site Description only in front page */
 	if( is_front_page() ){
 		if ( $site_description ){
 			$doctitle = "{$doctitle}: {$site_description}";
 		}
 	}
-	/* Add Site Title */
+	/* Add Site Title in other pages, for branding and bookmark purpose */
 	else{
 		$doctitle = "{$doctitle} &ndash; {$site_title}";
 	}
@@ -280,7 +384,9 @@ function tamatebako_override_theme_layouts_customize_setup(){
 /**
  * Theme Layouts Customize Register
  * Modified from Hybrid Core Theme Layouts Ext. Customizer.
+ * This function/filter might be removed when this option is available in Hybrid Core
  *
+ * @link https://github.com/justintadlock/hybrid-core/issues/68
  * @author Justin Tadlock <justin@justintadlock.com>
  * @author Sami Keijonen <sami.keijonen@foxnet.fi>
  * @since 0.1.0
@@ -344,6 +450,9 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 /**
  * Post Layout Filter.
  * Problem: If in the future post meta is disabled, user cannot change post layout already set.
+ * This function/filter might be removed when this option available in Hybrid Core.
+ *
+ * @link https://github.com/justintadlock/hybrid-core/issues/67
  * @since 0.1.0
  */
 function tamatebako_filter_layout( $theme_layout ){
@@ -427,6 +536,7 @@ function tamatebako_general_setup(){
 /**
  * Default Excerpt More
  * to add more link to excerpt add template function "tamatebako_read_more()" after "the_excerpt()"
+ * 
  * @since 0.1.0
  */
 function tamatebako_excerpt_more( $more ) {
@@ -443,7 +553,7 @@ function tamatebako_excerpt_more( $more ) {
 function tamatebako_content_more( $more_link, $more_link_text ){
 	$string = tamatebako_string( 'read-more' );
 	if ( !empty( $string ) ){
-		return " &hellip; " . '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span class="more-text">' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
+		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span class="more-text">' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
 	}
 	return $more_link;
 }

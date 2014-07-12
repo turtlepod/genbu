@@ -2,35 +2,37 @@
 
 ## About:
 
-**Author:** David Chandra Purnama ( [@turtlepod](http://twitter.com/turtlepod ) / [shellcreeper.com](http://shellcreeper.com/) )
+**Author:** David Chandra Purnama ( [@turtlepod](http://twitter.com/turtlepod) / [shellcreeper.com](http://shellcreeper.com/) )
 
 Genbu theme is an clean and simple responsive theme built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and [Schema.org](http://schema.org) microdata.
 
 It's modular, you can use it as robust parent theme or as theme base for your project.
 
+More info: [Genbu Theme](http://genbutheme.com/)
+
 ### Theme Layout and Sidebar:
 
 Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize.
-* Content (No sidebar)
+* Content (No Sidebar)
 * Content / Sidebar 1
 * Sidebar 1 / Content
 * Sidebar 2 / Content
 * Content / Sidebar 2
-* Sidebar 2 / Content / Sidebar 1
+* Sidebar 2 / Content / Sidebar 1 (Default)
 * Sidebar 2 / Sidebar 1 / Content
 * Content / Sidebar 1 / Sidebar 2
 * Sidebar 1 / Content / Sidebar 2
 
 Info:
-* *Content*: Main content of the page.
-* *Sidebar 1*: Primary Sidebar (300px wide).
-* *Sidebar 2*: Secondary Sidebar (160px wide).
+* **Content**: Main content of the page.
+* **Sidebar 1**: Primary Sidebar (300px width).
+* **Sidebar 2**: Secondary Sidebar (160px width).
 
 ### Navigation Menus:
 
 Genbu have two navigation menus.
-* *Primary Navigation*: located below header with search form on the right side. On mobile device will use toggle and using menu name as toggle. When not set, it will display link to home page.
-* *Footer Links*: will be displayed as simple links in footer area. If not set, will not displayed.
+* **Primary Navigation**: located below header with search form on the right side. On mobile device will use toggle and using menu name as toggle. When not set, it will display link to home page.
+* **Footer Links**: will be displayed as simple links in footer area. If not set, will not displayed.
 
 ### Custom Background:
 
@@ -39,8 +41,8 @@ Genbu have custom background feature you can set custom background via WP Custom
 ### Custom Header Image:
 
 Genbu have custom background header feature you can set custom header image via WP Customize or header settings page.
-* When displaying the header text, the header image will be used as banner image below site title and description.
-* When not using header text, header image will be used as logo.
+* **As banner image**: when displaying the header text, the header image will be used as banner image below site title and description.
+* **As logo**: when not using header text, header image will be used as logo.
 
 ### Editor Style:
 
@@ -54,7 +56,7 @@ You can translate Genbu using provided po and mo file.
 ### Links
 
 * [Github project page](https://github.com/turtlepod/genbu)
-* [Theme page](http://shellcreeper.com/portfolio/wordpress-theme/genbu-theme-responsive/)
+* [Theme page](http://genbutheme.com/)
 * Need a custom theme or plugin for your WordPress website? [I can help](http://shellcreeper.com/services/).
 
 ## Copyright & license
@@ -64,6 +66,13 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 2014 © [Genbu Media](http://genbu.me/). All rights reserved.
 
 ## Changelog:
+
+### 1.0.1
+* add license.txt
+* update tamatebako to version 1.0.1
+* fix media queries menu, and add dash 1st sub-menu too.
+* update translation file.
+* add class ".comments-section" to "#comments-template" in "comments.php"
 
 ### 1.0.0
 * Push to version 1.0.0
