@@ -1382,7 +1382,7 @@ function tamatebako_comments_error(){
 
 
 /**
- * Display any tipe of Attachment
+ * Display any type of Attachment
  * @since 0.1.0
  */
 function tamatebako_attachment(){
@@ -1541,7 +1541,7 @@ function tamatebako_register_sidebars(){
  */
 function tamatebako_register_menus(){
 
-	/* Get theme-supported sidebars. */
+	/* Get theme-supported menus. */
 	$menus = get_theme_support( 'tamatebako-menus' );
 
 	/* No Support, Return */
