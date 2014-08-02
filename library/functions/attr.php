@@ -55,13 +55,12 @@ add_filter( 'hybrid_attr_comment-content',   'hybrid_attr_comment_content',   5 
  *
  * @since  2.0.0
  * @access public
- * @param  string  $slug        The slug/ID of the element (e.g., 'sidebar').
- * @param  string  $context     A specific context (e.g., 'primary').
- * @param  array   $attributes  Custom attributes to pass in.
+ * @param  string  $slug     The slug/ID of the element (e.g., 'sidebar').
+ * @param  string  $context  A specific context (e.g., 'primary').
  * @return void
  */
-function hybrid_attr( $slug, $context = '', $attributes = array() ) {
-	echo hybrid_get_attr( $slug, $context, $attributes );
+function hybrid_attr( $slug, $context = '' ) {
+	echo hybrid_get_attr( $slug, $context );
 }
 
 /**
@@ -72,15 +71,14 @@ function hybrid_attr( $slug, $context = '', $attributes = array() ) {
  *
  * @since  2.0.0
  * @access public
- * @param  string  $slug        The slug/ID of the element (e.g., 'sidebar').
- * @param  string  $context     A specific context (e.g., 'primary').
- * @param  array   $attributes  Custom attributes to pass in.
+ * @param  string  $slug     The slug/ID of the element (e.g., 'sidebar').
+ * @param  string  $context  A specific context (e.g., 'primary').
  * @return string
  */
-function hybrid_get_attr( $slug, $context = '', $attributes = array() ) {
+function hybrid_get_attr( $slug, $context = '' ) {
 
 	$out    = '';
-	$attr   = apply_filters( "hybrid_attr_{$slug}", $attributes, $context );
+	$attr   = apply_filters( "hybrid_attr_{$slug}", array(), $context );
 
 	if ( empty( $attr ) )
 		$attr['class'] = $slug;
@@ -191,6 +189,12 @@ function hybrid_attr_sidebar( $attr, $context ) {
 
 	$attr['class']     = 'sidebar';
 	$attr['role']      = 'complementary';
+
+	if ( !empty( $context ) ) {
+		/* Translators: The %s is the sidebar name. This is used for the 'aria-label' attribute. */
+		$attr['aria-label'] = esc_attr( sprintf( _x( '%s Sidebar', 'sidebar aria label', 'hybrid-core' ), hybrid_get_sidebar_name( $context ) ) );
+	}
+
 	$attr['itemscope'] = 'itemscope';
 	$attr['itemtype']  = 'http://schema.org/WPSideBar';
 
@@ -211,10 +215,16 @@ function hybrid_attr_menu( $attr, $context ) {
 	if ( !empty( $context ) )
 		$attr['id'] = "menu-{$context}";
 
-	$attr['class']     = 'menu';
-	$attr['role']      = 'navigation';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/SiteNavigationElement';
+	$attr['class']      = 'menu';
+	$attr['role']       = 'navigation';
+
+	if ( !empty( $context ) ) {
+		/* Translators: The %s is the menu name. This is used for the 'aria-label' attribute. */
+		$attr['aria-label'] = esc_attr( sprintf( _x( '%s Menu', 'nav menu aria label', 'hybrid-core' ), hybrid_get_menu_location_name( $context ) ) );
+	}
+
+	$attr['itemscope']  = 'itemscope';
+	$attr['itemtype']   = 'http://schema.org/SiteNavigationElement';
 
 	return $attr;
 }
