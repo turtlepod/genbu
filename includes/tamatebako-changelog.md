@@ -5,6 +5,7 @@
 * remove dots from content more
 * add more inline docs.
 * HTML5 support now added via HC
+* reset css: gallery icon img add hover opacity.
 
 ### 1.0.0
 * first stable release

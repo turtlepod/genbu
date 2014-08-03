@@ -496,6 +496,10 @@ body#tinymce .gallery{
 			-moz-box-sizing:border-box;
 			box-sizing:border-box;
 		}
+		.gallery .gallery-item .gallery-icon a img:hover,
+		.gallery .gallery-item .gallery-icon a img:focus {
+			opacity: 0.8;
+		}
 		.gallery .gallery-item .gallery-caption {
 			font-size: 13px;
 			display: block;
