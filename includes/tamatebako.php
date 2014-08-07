@@ -676,7 +676,7 @@ function tamatebako_register_js(){
  */
 function tamatebako_enqueue_js(){
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.css" ) );
+	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.js" ) );
 	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
 
 	if ( !empty( $fitvids_js ) ){
