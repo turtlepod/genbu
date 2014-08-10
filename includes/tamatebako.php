@@ -584,7 +584,7 @@ function tamatebako_scripts_setup(){
 
 	/* JS */
 	add_action( 'wp_enqueue_scripts', 'tamatebako_register_js' );
-	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
+	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js', 11 );
 
 	/* CSS */
 	add_action( 'wp_enqueue_scripts', 'tamatebako_register_css', 1 );
@@ -657,32 +657,79 @@ function tamatebako_head_script() {
 
 /**
  * Register JS
+ * Scripts registered if available but need to be loaded manually using "wp_enqueue_scripts" hook.
  * @since 0.1.0
  */
 function tamatebako_register_js(){
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$flexslider_js = hybrid_locate_theme_file( array( "js/flexslider{$suffix}.js", "js/flexslider.js" ) );
 
+	/* Debug Suffix */
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+	/**
+	 * Web Font Loader by Google and Typekit
+	 * a javascript library to work with web font.
+	 *
+	 * @link https://developers.google.com/fonts/docs/webfont_loader
+	 * @link https://github.com/typekit/webfontloader
+	 * @link http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js
+	 */
+	$webfontloader_js = hybrid_locate_theme_file( array( "js/webfontloader{$suffix}.js", "js/webfontloader.js" ) );
+	if ( !empty( $webfontloader_js ) ){
+		wp_register_script( 'theme-webfontloader', $webfontloader_js, array(), '1.5.3', true );
+	}
+
+	/**
+	 * Flexslider by WooThemes
+	 * A Responsive jQuery slider toolkit with carousel and thumbnail.
+	 *
+	 * @link http://www.woothemes.com/flexslider/
+	 * @link https://github.com/woothemes/FlexSlider
+	 */
+	$flexslider_js = hybrid_locate_theme_file( array( "js/flexslider{$suffix}.js", "js/flexslider.js" ) );
 	if ( !empty( $flexslider_js ) ){
 		wp_register_script( 'theme-flexslider', $flexslider_js, array( 'jquery' ), '2.2.2', true );
+	}
+
+	/**
+	 * Images Loaded by desandro (Masonry sidekick)
+	 * a javascript library to detect when images have been loaded.
+	 * 
+	 * @link http://imagesloaded.desandro.com/
+	 */
+	$imagesloaded_js = hybrid_locate_theme_file( array( "js/imagesloaded{$suffix}.js", "js/imagesloaded.js" ) );
+	if ( !empty( $imagesloaded_js ) ){
+		wp_register_script( 'theme-imagesloaded', $imagesloaded_js, array(), '3.1.8', true );
 	}
 }
 
 
 /**
  * Enqueue JS
- * Register and Enqueue Scripts
+ * If files available, it will be registered and loaded automatically.
  * @since 0.1.0
  */
 function tamatebako_enqueue_js(){
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.js" ) );
-	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
 
+	/* Debug Suffix */
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+	/**
+	 * Fitvids by Chris Coyier and Paravel 
+	 * A lightweight, easy-to-use jQuery plugin for fluid width video embeds
+	 * 
+	 * @link http://fitvidsjs.com/
+	 * @link https://github.com/davatron5000/FitVids.js/
+	 */
+	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.js" ) );
 	if ( !empty( $fitvids_js ) ){
 		wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
 	}
 
+	/**
+	 * Theme JavaScript (Blank)
+	 * Use this as main theme javascript and setting/config for other script.
+	 */
+	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
 	if ( !empty( $theme_js ) ){
 		wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
 	}
@@ -691,7 +738,7 @@ function tamatebako_enqueue_js(){
 
 /**
  * Register CSS
- * Stylesheet can be loaded using 'hybrid-core-styles' theme support
+ * Stylesheet can be loaded using 'hybrid-core-styles' theme support.
  * @since 0.1.0
  */
 function tamatebako_register_css(){
