@@ -68,6 +68,9 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 ## Changelog:
 
 ### 1.1.0
+* Use Grunt: add package.json and Gruntfile.js
+
+### 1.1.0
 * add license.txt
 * update tamatebako to version 1.0.1
 * fix media queries menu, and add dash 1st sub-menu too.
