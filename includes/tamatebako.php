@@ -1,7 +1,7 @@
 <?php
 /**
  ********************************************************************
- * TAMATEBAKO 1.1.0
+ * TAMATEBAKO 1.2.0
  * for Hybrid Core 2.0.1
  * ------------------------------------------------------------------
  * @author    David Chandra Purnama <david@shellcreeper.com>
@@ -751,16 +751,10 @@ function tamatebako_register_css(){
 	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Flexslider */
-	$flexslider_css = hybrid_locate_theme_file( array( "css/flexslider{$suffix}.css", "css/flexslider.css" ) );
-	if ( !empty( $flexslider_css ) ){
-		wp_register_style( 'theme-flexslider', $flexslider_css, array(), '2.2.2', 'all' );
-	}
-
-	/* Media Queries CSS */
-	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.css", "media-queries.css" ) );
-	if ( !empty( $media_queries_css ) ){
-		wp_register_style( 'media-queries', $media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	/* Theme (all parent) */
+	$theme_css = hybrid_locate_theme_file( array( "theme.css" ) );
+	if ( !empty( $theme_css ) ){
+		wp_register_style( 'theme', $theme_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Reset CSS */
@@ -774,6 +768,19 @@ function tamatebako_register_css(){
 	if ( !empty( $menus_css ) ){
 		wp_register_style( 'theme-menus', $menus_css, array(), tamatebako_theme_version(), 'all' );
 	}
+
+	/* Media Queries CSS */
+	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.css", "media-queries.css" ) );
+	if ( !empty( $media_queries_css ) ){
+		wp_register_style( 'media-queries', $media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	}
+
+	/* Flexslider */
+	$flexslider_css = hybrid_locate_theme_file( array( "css/flexslider{$suffix}.css", "css/flexslider.css" ) );
+	if ( !empty( $flexslider_css ) ){
+		wp_register_style( 'theme-flexslider', $flexslider_css, array(), '2.2.2', 'all' );
+	}
+
 }
 
 

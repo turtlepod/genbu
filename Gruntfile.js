@@ -26,6 +26,13 @@ module.exports = function(grunt) {
 
 		/* === grunt-contrib-cssmin : Minify CSS === */
 		cssmin : {
+			css: {
+				expand: true,
+				cwd: 'css/',
+				dest: 'css/',
+				src: ['*.css', '!*.min.css', '!debug-media-queries.css'],
+				ext: '.min.css'
+			},
 			style: {
 				src: 'style.css',
 				dest: 'style.min.css'
@@ -34,12 +41,15 @@ module.exports = function(grunt) {
 				src: 'media-queries.css',
 				dest: 'media-queries.min.css'
 			},
-			allcss: {
-				expand: true,
-				cwd: 'css/',
-				dest: 'css/',
-				src: ['*.css', '!*.min.css', '!debug-media-queries.css'],
-				ext: '.min.css'
+			theme: {
+				files: {
+					'theme.css': ['css/reset.css', 'css/menus.css', 'style.css', 'media-queries.css' ]
+				}
+			},
+			editor: {
+				files: {
+					'editor-style.css': ['css/reset.css', 'style.css' ]
+				}
 			}
 		}, // end grunt-contrib-cssmin
 
