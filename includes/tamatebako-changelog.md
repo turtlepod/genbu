@@ -1,5 +1,8 @@
 ## Tamatebako Changelog:
 
+### 1.2.0
+* register "theme.css".
+
 ### 1.1.0
 * for HC 2.0.1
 * remove dots from content more
