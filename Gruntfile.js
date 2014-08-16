@@ -158,4 +158,7 @@ module.exports = function(grunt) {
 	/* Register ZIP Build Task */
 	grunt.registerTask( 'zip', [ 'clean', 'copy', 'compress' ] );
 
+	/* Register Clone Build Task */
+	grunt.registerTask( 'clone', [ 'clean', 'copy' ] );
+
 };
