@@ -72,6 +72,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Change stylesheet load method.
 * add editor-style.css (reset.css + style.css)
 * and theme.css (all css loaded in theme into one minified css)
+* use POT file for translation, remove po and mo file.
 
 ### 1.1.0
 * add license.txt
