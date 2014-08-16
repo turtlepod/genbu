@@ -112,7 +112,7 @@ function genbu_setup(){
 	/* While debugging load separate file */
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
 		$editor_css = array(
-			'css/reset.min.css',
+			'css/reset.css',
 			'style.css',
 			tamatebako_google_open_sans_font_url()
 		);
