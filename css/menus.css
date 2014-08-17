@@ -46,6 +46,10 @@
 	left: -9999px;
 	z-index: 99;
 	border-top: 1px solid #ccc;
+	margin-left: -1px;
+}
+.menu-dropdown .sub-menu .sub-menu{
+	margin-left: 0;
 }
 .menu-dropdown li:hover > .sub-menu{
 	left: auto;
