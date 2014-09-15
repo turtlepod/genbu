@@ -75,6 +75,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * use POT file for translation, remove po and mo file.
 * Fix mbile Sub-Menu Toggle (jQuery)
 * Fix Pre element display (overflow) on mobile.
+* Fix Editor Style (WP 4.0 Editor Auto resize feature).
 
 ### 1.1.0
 * add license.txt
