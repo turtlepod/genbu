@@ -3,6 +3,7 @@
 ### 1.2.0
 * register "theme.css". (in css folder) as placeholder to optimize theme assets.
 * Update debug MQ CSS
+* No longer using hybrid_locate_theme_file(). use custom function tamatebako_theme_file();.
 
 ### 1.1.0
 * for HC 2.0.1

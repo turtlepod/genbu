@@ -175,6 +175,101 @@ function tamatebako_theme_version(){
 	return $theme->get( 'Version' );
 }
 
+/**
+ * Helper function to get theme assets file, so child theme can easily override parent theme asset file.
+ * Similar with get_template_part(), but for assets file such as "css" and "js" file.
+ * Minified file also supported.
+ *
+ * @since  1.2.2
+ * @access public
+ * @param  string  $path file path, relative to theme directory.
+ * @param  string  $ext  file extension, e.g. "js" or "css".
+ * @return string  uri to theme file.
+ */
+function tamatebako_theme_file( $path, $ext ){
+
+	/* Debug Mode Status, if debug do not load min file. */
+	$debug = false;
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
+		$debug = true;
+	}
+
+	/* If Child Theme Active */
+	if ( is_child_theme() ){
+
+		/* On debug mode, never load min file. */
+		if ( $debug ){
+			/* return child theme file if exist */
+			if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return parent theme file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return empty string */
+			else{
+				return '';
+			}
+		}
+
+		/* Not debug mode, load min file if exist. */
+		else{
+			/* return child theme min file if exist */
+			if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.min.' . $ext ) ){
+				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.min.' . $ext;
+			}
+			/* return child theme regular file if exist */
+			elseif ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return parent theme min file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.min.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.min.' . $ext;
+			}
+			/* return parent theme regular file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return empty string */
+			else{
+				return '';
+			}
+		}
+	}
+
+	/* No Child Theme Active */
+	else{
+
+		/* On debug mode, never load min file. */
+		if ( $debug ){
+			/* return parent theme file if exist */
+			if ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return empty string */
+			else{
+				return '';
+			}
+		}
+		/* Not debug mode, load min file if exist. */
+		else{
+			/* return parent theme min file if exist */
+			if ( file_exists( trailingslashit( get_template_directory() ) . $path . '.min.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.min.' . $ext;
+			}
+			/* return parent theme regular file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return empty string */
+			else{
+				return '';
+			}
+		}
+	}
+}
+
 
 /* #02 - LOAD HYBRID CORE
 ******************************************/
@@ -624,11 +719,12 @@ function tamatebako_google_merriweather_font_url(){
  * @since  0.1.0
  */
 function tamatebako_head_script() {
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$ie8_css = hybrid_locate_theme_file( array( "css/ie8{$suffix}.css", "css/ie8.css" ) );
-	$ie9_css = hybrid_locate_theme_file( array( "css/ie9{$suffix}.css", "css/ie9.css" ) );
-	$respond_js = hybrid_locate_theme_file( array( "js/respond{$suffix}.js", "js/respond.js" ) );
-	$html5shiv_js = hybrid_locate_theme_file( array( "js/html5shiv{$suffix}.js", "js/html5shiv.js" ) );
+
+	$ie8_css = tamatebako_theme_file( "css/ie8", "css" );
+	$ie9_css = tamatebako_theme_file( "css/ie9", "css" );
+
+	$respond_js = tamatebako_theme_file( "css/respond", "js" );
+	$html5shiv_js = tamatebako_theme_file( "css/html5shiv", "js" );
 ?>
 <?php if ( !empty( $ie8_css ) ) { ?>
 <!--[if IE 8]>
@@ -662,9 +758,6 @@ function tamatebako_head_script() {
  */
 function tamatebako_register_js(){
 
-	/* Debug Suffix */
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
 	/**
 	 * Web Font Loader by Google and Typekit
 	 * a javascript library to work with web font.
@@ -673,7 +766,7 @@ function tamatebako_register_js(){
 	 * @link https://github.com/typekit/webfontloader
 	 * @link http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js
 	 */
-	$webfontloader_js = hybrid_locate_theme_file( array( "js/webfontloader{$suffix}.js", "js/webfontloader.js" ) );
+	$webfontloader_js = tamatebako_theme_file( "js/webfontloader", "js" );
 	if ( !empty( $webfontloader_js ) ){
 		wp_register_script( 'theme-webfontloader', $webfontloader_js, array(), '1.5.3', true );
 	}
@@ -685,7 +778,7 @@ function tamatebako_register_js(){
 	 * @link http://www.woothemes.com/flexslider/
 	 * @link https://github.com/woothemes/FlexSlider
 	 */
-	$flexslider_js = hybrid_locate_theme_file( array( "js/flexslider{$suffix}.js", "js/flexslider.js" ) );
+	$flexslider_js = tamatebako_theme_file( "js/flexslider", "js" );
 	if ( !empty( $flexslider_js ) ){
 		wp_register_script( 'theme-flexslider', $flexslider_js, array( 'jquery' ), '2.2.2', true );
 	}
@@ -696,7 +789,7 @@ function tamatebako_register_js(){
 	 * 
 	 * @link http://imagesloaded.desandro.com/
 	 */
-	$imagesloaded_js = hybrid_locate_theme_file( array( "js/imagesloaded{$suffix}.js", "js/imagesloaded.js" ) );
+	$imagesloaded_js = tamatebako_theme_file( "js/imagesloaded", "js" );
 	if ( !empty( $imagesloaded_js ) ){
 		wp_register_script( 'theme-imagesloaded', $imagesloaded_js, array(), '3.1.8', true );
 	}
@@ -709,10 +802,6 @@ function tamatebako_register_js(){
  * @since 0.1.0
  */
 function tamatebako_enqueue_js(){
-
-	/* Debug Suffix */
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
 	/**
 	 * Fitvids by Chris Coyier and Paravel 
 	 * A lightweight, easy-to-use jQuery plugin for fluid width video embeds
@@ -720,7 +809,7 @@ function tamatebako_enqueue_js(){
 	 * @link http://fitvidsjs.com/
 	 * @link https://github.com/davatron5000/FitVids.js/
 	 */
-	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.js" ) );
+	$fitvids_js = tamatebako_theme_file( "js/fitvids", "js" );
 	if ( !empty( $fitvids_js ) ){
 		wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
 	}
@@ -729,7 +818,7 @@ function tamatebako_enqueue_js(){
 	 * Theme JavaScript (Blank)
 	 * Use this as main theme javascript and setting/config for other script.
 	 */
-	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
+	$theme_js = tamatebako_theme_file( "js/theme", "js" );
 	if ( !empty( $theme_js ) ){
 		wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
 	}
@@ -743,8 +832,6 @@ function tamatebako_enqueue_js(){
  */
 function tamatebako_register_css(){
 
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
 	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
 	wp_register_style( 'theme-open-sans-font', tamatebako_google_open_sans_font_url(), array(), tamatebako_theme_version(), 'all' );
 
@@ -752,31 +839,31 @@ function tamatebako_register_css(){
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
 	/* Theme (all parent merged if exist) */
-	$theme_css = hybrid_locate_theme_file( array( "css/theme{$suffix}.css", "css/theme.css" ) );
+	$theme_css = tamatebako_theme_file( "css/theme", "css" );
 	if ( !empty( $theme_css ) ){
 		wp_register_style( 'theme', $theme_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Reset CSS */
-	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.css", "css/reset.css" ) );
+	$reset_css = tamatebako_theme_file( "css/reset", "css" );
 	if ( !empty( $reset_css ) ){
 		wp_register_style( 'theme-reset', $reset_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Menus CSS */
-	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.css", "css/menus.css" ) );
+	$menus_css = tamatebako_theme_file( "css/menus", "css" );
 	if ( !empty( $menus_css ) ){
 		wp_register_style( 'theme-menus', $menus_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Media Queries CSS */
-	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.css", "media-queries.css" ) );
+	$media_queries_css = tamatebako_theme_file( "media-queries", "css" );
 	if ( !empty( $media_queries_css ) ){
 		wp_register_style( 'media-queries', $media_queries_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Flexslider */
-	$flexslider_css = hybrid_locate_theme_file( array( "css/flexslider{$suffix}.css", "css/flexslider.css" ) );
+	$flexslider_css = tamatebako_theme_file( "css/flexslider", "css" );
 	if ( !empty( $flexslider_css ) ){
 		wp_register_style( 'theme-flexslider', $flexslider_css, array(), '2.2.2', 'all' );
 	}
@@ -999,7 +1086,7 @@ function tamatebako_widget_class( $params ) {
  * @since 0.1.0
  */
 function tamatebako_check_js_script(){
-	$js_status = hybrid_locate_theme_file( array( "js/js-status.js" ) );
+	$js_status = tamatebako_theme_file( "js/js-status", "js" );
 	$script = '';
 	if( !empty( $js_status ) ) {
 		$script = '<script src="' . $js_status . '" type="text/javascript"></script>';
