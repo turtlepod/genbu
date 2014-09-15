@@ -67,6 +67,9 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 ## Changelog:
 
+### 1.2.1
+* Update minified.
+
 ### 1.2.0
 * Use Grunt (private use): node_modules folder, package.json, and Gruntfile.js is not added in theme.
 * Change stylesheet load method.
