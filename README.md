@@ -74,6 +74,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * and theme.css (all css loaded in theme into one minified css)
 * use POT file for translation, remove po and mo file.
 * Fix mbile Sub-Menu Toggle (jQuery)
+* Fix Pre element display (overflow) on mobile.
 
 ### 1.1.0
 * add license.txt

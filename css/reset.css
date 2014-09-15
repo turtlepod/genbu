@@ -186,6 +186,7 @@ a {
 }
 /* Preformatted, Code */
 pre {
+	word-wrap: normal;
 	overflow:auto;
 	font:1em Monaco,monospace,Courier,"Courier New";
 	padding: 1.5em;
