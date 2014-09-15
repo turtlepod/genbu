@@ -751,8 +751,8 @@ function tamatebako_register_css(){
 	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Theme (all parent) */
-	$theme_css = hybrid_locate_theme_file( array( "theme.css" ) );
+	/* Theme (all parent merged if exist) */
+	$theme_css = hybrid_locate_theme_file( array( "css/theme{$suffix}.css", "css/theme.css" ) );
 	if ( !empty( $theme_css ) ){
 		wp_register_style( 'theme', $theme_css, array(), tamatebako_theme_version(), 'all' );
 	}

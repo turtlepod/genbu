@@ -68,11 +68,12 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 ## Changelog:
 
 ### 1.2.0
-* Use Grunt: add package.json and Gruntfile.js
+* Use Grunt (private use): node_modules folder, package.json, and Gruntfile.js is not added in theme.
 * Change stylesheet load method.
 * add editor-style.css (reset.css + style.css)
 * and theme.css (all css loaded in theme into one minified css)
 * use POT file for translation, remove po and mo file.
+* Fix mbile Sub-Menu Toggle (jQuery)
 
 ### 1.1.0
 * add license.txt

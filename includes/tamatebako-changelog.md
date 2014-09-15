@@ -1,7 +1,8 @@
 ## Tamatebako Changelog:
 
 ### 1.2.0
-* register "theme.css".
+* register "theme.css". (in css folder) as placeholder to optimize theme assets.
+* Update debug MQ CSS
 
 ### 1.1.0
 * for HC 2.0.1

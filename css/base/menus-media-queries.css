@@ -40,6 +40,11 @@
 	.mobile-menu-active .menu-dropdown li:hover > .sub-menu{
 		left: auto;
 	}
+	/* sub menu on mobile device */
+	.mobile-menu-active .menu-dropdown li:hover > .sub-menu,
+	.mobile-menu-active .menu-dropdown li.focus > .sub-menu{
+		left: auto;
+	}
 
 	/* Menu Toggle */
 	.menu-toggle{

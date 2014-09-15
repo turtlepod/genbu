@@ -20,9 +20,9 @@ function genbu_setup(){
 
 	/* === DEBUG === */
 	$debug_args = array(
-		'mobile'         => 0,
-		'no-js'          => 1,
-		'media-queries'  => 1,
+		'mobile'         => 1,
+		'no-js'          => 0,
+		'media-queries'  => 0,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );
 
@@ -77,46 +77,23 @@ function genbu_setup(){
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
 	/* === Load Stylesheet === */
-
-	/* Default stylesheet loaded */
 	$style_args = array(
 		'theme-open-sans-font',
 		'dashicons',
-		'theme',
+		'theme-reset',
+		'theme-menus',
+		'parent',
+		'style',
+		'media-queries'
 	);
-	/* load "style" if it's child theme. */
-	if ( is_child_theme() ) {
-		$style_args[] = 'style';
-	}
-	/* While debuging load separate file. */
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
-		$style_args = array(
-			'theme-open-sans-font',
-			'dashicons',
-			'theme-reset',
-			'theme-menus',
-			'parent',
-			'style',
-			'media-queries'
-		);
-	}
 	add_theme_support( 'hybrid-core-styles', $style_args );
 
 	/* === Editor Style === */
-
-	/* Editor Stylesheet loaded */
 	$editor_css = array(
-		'editor-style.css',
+		'css/reset.css',
+		'style.css',
 		tamatebako_google_open_sans_font_url()
 	);
-	/* While debugging load separate file */
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
-		$editor_css = array(
-			'css/reset.css',
-			'style.css',
-			tamatebako_google_open_sans_font_url()
-		);
-	}
 	add_editor_style( $editor_css );
 
 	/* === Customizer Mobile View === */
