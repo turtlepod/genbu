@@ -1,6 +1,6 @@
 <?php
 /**
- * Genbu Theme Functions
+ * Theme Functions
 ** ---------------------------- */
 
 /* Load text string used in theme */
@@ -20,9 +20,9 @@ function genbu_setup(){
 
 	/* === DEBUG === */
 	$debug_args = array(
-		'mobile'         => 0,
-		'no-js'          => 1,
-		'media-queries'  => 1,
+		'mobile'         => 1,
+		'no-js'          => 0,
+		'media-queries'  => 0,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );
 
@@ -90,7 +90,7 @@ function genbu_setup(){
 
 	/* === Editor Style === */
 	$editor_css = array(
-		'css/reset.min.css',
+		'css/reset.css',
 		'style.css',
 		tamatebako_google_open_sans_font_url()
 	);

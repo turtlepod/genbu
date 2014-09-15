@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   HybridCore
- * @version   2.0.0-beta-2
+ * @version   2.0.1
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2014, Justin Tadlock
  * @link      http://themehybrid.com/hybrid-core
@@ -104,7 +104,7 @@ if ( !class_exists( 'Hybrid' ) ) {
 		function constants() {
 
 			/* Sets the framework version number. */
-			define( 'HYBRID_VERSION', '2.0.0' );
+			define( 'HYBRID_VERSION', '2.0.1' );
 
 			/* Sets the path to the parent theme directory. */
 			define( 'THEME_DIR', get_template_directory() );
@@ -253,7 +253,7 @@ if ( !class_exists( 'Hybrid' ) ) {
 		function theme_support() {
 
 			/* Adds core WordPress HTML5 support. */
-			add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
+			add_theme_support( 'html5', array( 'caption', 'comment-form', 'comment-list', 'gallery', 'search-form' ) );
 
 			/* Remove support for the the Breadcrumb Trail extension if the plugin is installed. */
 			if ( function_exists( 'breadcrumb_trail' ) || class_exists( 'Breadcrumb_Trail' ) )
@@ -364,12 +364,6 @@ if ( !class_exists( 'Hybrid' ) ) {
 
 			/* Load the Random Custom Background extension if supported. */
 			require_if_theme_supports( 'random-custom-background', trailingslashit( HYBRID_EXTENSIONS ) . 'random-custom-background.php' );
-
-			/* Load the Color Palette extension if supported. */
-			require_if_theme_supports( 'color-palette', trailingslashit( HYBRID_EXTENSIONS ) . 'color-palette.php' );
-
-			/* Load the Theme Fonts extension if supported. */
-			require_if_theme_supports( 'theme-fonts', trailingslashit( HYBRID_EXTENSIONS ) . 'theme-fonts.php' );
 		}
 
 		/**
@@ -410,8 +404,11 @@ if ( !class_exists( 'Hybrid' ) ) {
 			remove_action( 'wp_head', 'wp_generator' );
 			add_action( 'wp_head', 'wp_generator', 1 );
 
-			/* Make text widgets and term descriptions shortcode aware. */
+			/* Make text widgets shortcode aware. */
 			add_filter( 'widget_text', 'do_shortcode' );
+
+			/* Don't strip tags on single post titles. */
+			remove_filter( 'single_post_title', 'strip_tags' );
 
 			/* Use same default filters as 'the_content' with a little more flexibility. */
 			add_filter( 'hybrid_loop_description', array( $wp_embed, 'run_shortcode' ),   5 );

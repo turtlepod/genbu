@@ -186,6 +186,7 @@ a {
 }
 /* Preformatted, Code */
 pre {
+	word-wrap: normal;
 	overflow:auto;
 	font:1em Monaco,monospace,Courier,"Courier New";
 	padding: 1.5em;
@@ -417,8 +418,7 @@ body {
 		font-family: 'Open Sans','Trebuchet MS', sans-serif;
 		background: #fff;
 		color: #444;
-		margin: 0 auto;
-		padding: 20px 20px 0;
+		margin: 20px;
 		border: none;
 		max-width: 100%;
 	}
@@ -495,6 +495,10 @@ body#tinymce .gallery{
 			-webkit-box-sizing:border-box;
 			-moz-box-sizing:border-box;
 			box-sizing:border-box;
+		}
+		.gallery .gallery-item .gallery-icon a img:hover,
+		.gallery .gallery-item .gallery-icon a img:focus {
+			opacity: 0.8;
 		}
 		.gallery .gallery-item .gallery-caption {
 			font-size: 13px;

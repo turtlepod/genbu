@@ -1,0 +1,145 @@
+# Copyright (C) 2014 David Chandra Purnama
+# This file is distributed under the GNU General Public License v2.0 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Genbu 1.2.0\n"
+"Report-Msgid-Bugs-To: http://genbu.me/contact/\n"
+"POT-Creation-Date: 2014-08-16 16:55:41+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: David Chandra <david@shellcreeper.com>\n"
+"X-Generator: grunt-wp-i18n 0.4.7\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: ../includes\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_attr_e;esc_attr__;esc_html_e;esc_html__;__ngettext:1,2;_n:1,2;__"
+"ngettext_noop:1,2;_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_"
+"noop:4c,1,2;\n"
+"X-Textdomain-Support: yes\n"
+
+#. Theme Name of the plugin/theme
+msgid "Genbu"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://genbutheme.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Rock-solid responsive WordPress theme with 9 layouts, perfect for any site."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "David Chandra Purnama"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://shellcreeper.com"
+msgstr ""
+
+#: includes/string.php:15
+msgctxt "paged title tag"
+msgid "%1$s Page %2$s"
+msgstr ""
+
+#: includes/string.php:18
+msgctxt "skip to content (accessibility)"
+msgid "Skip to content"
+msgstr ""
+
+#: includes/string.php:21
+msgctxt "content read more"
+msgid "Continue reading"
+msgstr ""
+
+#: includes/string.php:24
+msgctxt "entry permalink"
+msgid "Permalink"
+msgstr ""
+
+#: includes/string.php:27
+msgctxt "next in pagination and navigation (accessibility)"
+msgid "Next"
+msgstr ""
+
+#: includes/string.php:28
+msgctxt "previous in pagination and navigation (accessibility)"
+msgid "Previous"
+msgstr ""
+
+#: includes/string.php:31
+msgctxt "search text"
+msgid "Search&hellip;"
+msgstr ""
+
+#: includes/string.php:32
+msgctxt "search button (accessibility)"
+msgid "Search"
+msgstr ""
+
+#: includes/string.php:33
+msgctxt "expand search form button (accessibility)"
+msgid "Expand Search Form"
+msgstr ""
+
+#: includes/string.php:36
+msgctxt "comments notice"
+msgid "Comments are closed, but trackbacks and pingbacks are open."
+msgstr ""
+
+#: includes/string.php:37
+msgctxt "comments notice"
+msgid "Comments are closed."
+msgstr ""
+
+#: includes/string.php:40
+msgctxt "404 title"
+msgid "404 Not Found"
+msgstr ""
+
+#: includes/string.php:41
+msgctxt "404 content"
+msgid "Apologies, but no entries were found."
+msgstr ""
+
+#: includes/string.php:44
+msgctxt "theme layouts"
+msgid "Global Layout"
+msgstr ""
+
+#: includes/string.php:45
+msgctxt "theme layouts"
+msgid "Layout"
+msgstr ""
+
+#: includes/string.php:68
+msgctxt "nav menu location"
+msgid "Navigation"
+msgstr ""
+
+#: includes/string.php:69
+msgctxt "nav menu location"
+msgid "Footer Links"
+msgstr ""
+
+#: includes/string.php:72
+msgctxt "sidebar name"
+msgid "Sidebar 1"
+msgstr ""
+
+#: includes/string.php:73
+msgctxt "sidebar name"
+msgid "Sidebar 2"
+msgstr ""
+
+#: includes/string.php:76
+msgctxt "custom content portfolio link"
+msgid "View Project"
+msgstr ""

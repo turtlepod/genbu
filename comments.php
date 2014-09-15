@@ -4,7 +4,7 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 	return;
 ?>
 
-<section id="comments-template">
+<section id="comments-template" class="comments-section">
 
 	<?php if ( have_comments() ) : // Check if there are any comments. ?>
 

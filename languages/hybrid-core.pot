@@ -1,0 +1,366 @@
+# Copyright (C) 2014 David Chandra Purnama
+# This file is distributed under the GNU General Public License v2.0 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hybrid Core 2\n"
+"Report-Msgid-Bugs-To: http://themehybrid.com/contact/\n"
+"POT-Creation-Date: 2014-08-16 08:00:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Justin Tadlock <justin@justintadlock.com>\n"
+"X-Generator: grunt-wp-i18n 0.4.7\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: ../library\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: "
+"__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c;_nc:4c,1,2;_"
+"x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Textdomain-Support: yes\n"
+
+#: library/admin/meta-box-post-template.php:48
+msgid "Template"
+msgstr ""
+
+#: library/admin/theme-settings.php:134 library/admin/theme-settings.php:199
+#. Translators: %s is the theme name.
+msgid "%s Theme Settings"
+msgstr ""
+
+#: library/admin/theme-settings.php:135
+msgid "Theme Settings"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:154
+#: library/classes/hybrid-media-meta.php:282
+#: library/functions/template-media.php:102
+#. Translators: Media dimensions - 1 is width and 2 is height.
+msgid "%1$s &#215; %2$s"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:155
+#: library/classes/hybrid-media-meta.php:282
+msgid "Dimensions"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:161
+msgid "Date"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:165
+msgid "Camera"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:169
+msgid "Aperture"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:174
+#. Translators: Camera focal length.
+msgid "%s mm"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:174
+msgid "Focal Length"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:180
+msgid "International Organization for Standardization"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:180
+msgid "ISO"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:199
+#. Translators: Camera shutter speed. "sec" is an abbreviation for "seconds".
+msgid "%s sec"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:199
+msgid "Shutter Speed"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:248
+#: library/classes/hybrid-media-meta.php:285
+msgid "File Name"
+msgstr ""
+
+#: library/classes/hybrid-media-meta.php:256
+#: library/classes/hybrid-media-meta.php:293
+msgid "File Type"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:178
+msgid "Browse:"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:179
+msgid "Home"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:180
+#: library/functions/template-general.php:513
+msgid "404 Not Found"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:181
+#: library/functions/template-general.php:339
+msgid "Archives"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:183
+#: library/functions/template-general.php:494
+#. Translators: %s is the search query. The HTML entities are opening and
+#. closing curly quotes.
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:185
+#. Translators: %s is the page number.
+msgid "Page %s"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:187
+#: library/functions/template-general.php:455
+#. Translators: Minute archive title. %s is the minute time format.
+msgid "Minute %s"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:189
+#. Translators: Weekly archive title. %s is the week date format.
+msgid "Week %s"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:1135
+#: library/extensions/breadcrumb-trail.php:1171
+#: library/extensions/breadcrumb-trail.php:1188
+#: library/extensions/breadcrumb-trail.php:1219
+msgid "Edit"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:1163
+msgid "Split"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:1167
+msgid "Merge"
+msgstr ""
+
+#: library/extensions/post-stylesheets.php:286
+msgid "Stylesheet"
+msgstr ""
+
+#: library/extensions/theme-layouts.php:458
+#: library/extensions/theme-layouts.php:565
+#: library/extensions/theme-layouts.php:650
+msgid "Layout"
+msgstr ""
+
+#: library/extensions/theme-layouts.php:683
+msgid "Global Layout"
+msgstr ""
+
+#: library/functions/head.php:149
+#. Translators: 1 is the page title. 2 is the page number.
+msgid "%1$s Page %2$s"
+msgstr ""
+
+#: library/functions/media.php:32
+msgid "Post Thumbnail"
+msgstr ""
+
+#: library/functions/media.php:53
+msgid "File Size"
+msgstr ""
+
+#: library/functions/media.php:54
+msgid "Mime Type"
+msgstr ""
+
+#: library/functions/media.php:55
+msgid "Run Time"
+msgstr ""
+
+#: library/functions/media.php:60
+msgid "Genre"
+msgstr ""
+
+#: library/functions/media.php:61
+msgid "Year"
+msgstr ""
+
+#: library/functions/media.php:62
+msgid "Composer"
+msgstr ""
+
+#: library/functions/media.php:63
+msgid "Track"
+msgstr ""
+
+#: library/functions/media.php:66
+msgid "Lyrics"
+msgstr ""
+
+#: library/functions/template-general.php:55
+msgid "State-of-the-art semantic personal publishing platform"
+msgstr ""
+
+#: library/functions/template-general.php:55
+msgid "WordPress"
+msgstr ""
+
+#: library/functions/template-general.php:82
+#: library/functions/template-general.php:115
+#. Translators: Theme name.
+msgid "%s WordPress Theme"
+msgstr ""
+
+#: library/functions/template-general.php:305
+msgid "You are browsing the search results for &#8220;%s&#8221;"
+msgstr ""
+
+#: library/functions/template-general.php:311
+msgid "You are browsing the site archives by time."
+msgstr ""
+
+#: library/functions/template-general.php:314
+#: library/functions/template-general.php:317
+#: library/functions/template-general.php:320
+msgid "You are browsing the site archives for %s."
+msgstr ""
+
+#: library/functions/template-general.php:323
+msgid "You are browsing the site archives."
+msgstr ""
+
+#: library/functions/template-general.php:397
+#. Translators: 1 is the week number and 2 is the year.
+msgid "Week %1$s of %2$s"
+msgstr ""
+
+#: library/functions/utility.php:88
+#. Translators: Used as a placeholder for untitled posts on non-singular views.
+msgid "(Untitled)"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Genbu"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://genbutheme.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Rock-solid responsive WordPress theme with 9 layouts, perfect for any site."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "David Chandra Purnama"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://shellcreeper.com"
+msgstr ""
+
+#: library/classes/customize-control-background-image.php:49
+msgctxt "theme customizer tab"
+msgid "Default"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:716
+#: library/functions/template-general.php:474
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:733
+#: library/functions/template-general.php:455
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:750
+#: library/functions/template-general.php:435
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:766
+#: library/extensions/breadcrumb-trail.php:795
+#: library/extensions/breadcrumb-trail.php:822
+#: library/extensions/breadcrumb-trail.php:849
+#: library/extensions/breadcrumb-trail.php:1036
+#: library/functions/template-general.php:377
+#: library/functions/template-general.php:397
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:767
+#: library/extensions/breadcrumb-trail.php:823
+#: library/extensions/breadcrumb-trail.php:1040
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:768
+#: library/extensions/breadcrumb-trail.php:1044
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: library/functions/template-general.php:416
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
+#: library/extensions/breadcrumb-trail.php:796
+#: library/functions/template-general.php:397
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: library/extensions/theme-layouts.php:363
+#. Translators: Default theme layout option.
+msgctxt "theme layout"
+msgid "Default"
+msgstr ""
+
+#: library/functions/attr.php:195
+#. Translators: The %s is the sidebar name. This is used for the 'aria-label'
+#. attribute.
+msgctxt "sidebar aria label"
+msgid "%s Sidebar"
+msgstr ""
+
+#: library/functions/attr.php:223
+#. Translators: The %s is the menu name. This is used for the 'aria-label'
+#. attribute.
+msgctxt "nav menu aria label"
+msgid "%s Menu"
+msgstr ""
+
+#: library/functions/attr.php:440
+#. Translators: Post date/time "title" attribute.
+msgctxt "post time format"
+msgid "l, F j, Y, g:i a"
+msgstr ""
+
+#: library/functions/attr.php:561
+#. Translators: Comment date/time "title" attribute.
+msgctxt "comment time format"
+msgid "l, F j, Y, g:i a"
+msgstr ""
+
+#: library/functions/template-post.php:144
+#. Translators: Separates tags, categories, etc. when displaying a post.
+msgctxt "taxonomy terms separator"
+msgid ", "
+msgstr ""
