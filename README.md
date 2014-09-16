@@ -74,6 +74,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Fix content error notice (404 pages).
 * Add skip to content in plugins template files.
 * Quick fix of sub menu toggle.
+* Now using GIT and no longer SVN
 
 ### 1.2.1
 * Update minified.
