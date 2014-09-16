@@ -2,19 +2,17 @@
 
 <div id="container">
 
+	<?php tamatebako_skip_to_content(); ?>
+
 	<?php get_template_part( 'site-header' ); ?>
 
 	<?php hybrid_get_menu( 'primary' ); ?>
 
 	<div id="main">
 
-		<?php //hybrid_get_sidebar( 'secondary' ); ?>
-
 		<div class="main-inner">
 
 			<div class="main-wrap">
-
-				<?php //hybrid_get_sidebar( 'primary' ); ?>
 
 				<main <?php hybrid_attr( 'content' ); ?>>
 

@@ -70,6 +70,9 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 ### 1.2.2
 * use tamatebako_theme_file() and not hybrid_locate_theme_file().
 * change hook "genbu_after_theme_setup" to "genbu_after_setup_theme".
+* Clean up content folder, add singular template for all post format.
+* Fix content error notice (404 pages).
+* Add skip to content in plugins template files.
 
 ### 1.2.1
 * Update minified.

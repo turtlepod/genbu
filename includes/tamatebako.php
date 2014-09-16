@@ -1455,19 +1455,21 @@ function tamatebako_entry_nav(){
  */
 function tamatebako_content_error(){
 ?>
-<article <?php hybrid_attr( 'post' ); ?>>
-	<div class="entry-wrap">
+<div class="content-entry-wrap">
+	<article id="post-0" class="entry">
+		<div class="entry-wrap">
 
-		<header class="entry-header">
-			<h1 class="entry-title"><?php echo tamatebako_string( 'error' ); ?></h1>
-		</header><!-- .entry-header -->
+			<header class="entry-header">
+				<h1 class="entry-title"><?php echo tamatebako_string( 'error' ); ?></h1>
+			</header><!-- .entry-header -->
 
-		<div <?php hybrid_attr( 'entry-content' ); ?>>
-			<?php echo wpautop( tamatebako_string( 'error-msg' ) ); ?>
-		</div><!-- .entry-content -->
+			<div <?php hybrid_attr( 'entry-content' ); ?>>
+				<?php echo wpautop( tamatebako_string( 'error-msg' ) ); ?>
+			</div><!-- .entry-content -->
 
-	</div><!-- .entry-wrap -->
-</article><!-- .entry -->
+		</div><!-- .entry-wrap -->
+	</article><!-- .entry -->
+</div><!-- .content-entry-wrap -->
 <?php
 }
 

@@ -10,13 +10,9 @@
 
 	<div id="main">
 
-		<?php //hybrid_get_sidebar( 'secondary' ); ?>
-
 		<div class="main-inner">
 
 			<div class="main-wrap">
-
-				<?php //hybrid_get_sidebar( 'primary' ); ?>
 
 				<main <?php hybrid_attr( 'content' ); ?>>
 
