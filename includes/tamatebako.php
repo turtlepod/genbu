@@ -197,15 +197,23 @@ function tamatebako_theme_file( $path, $ext ){
 	/* If Child Theme Active */
 	if ( is_child_theme() ){
 
-		/* On debug mode, never load min file. */
+		/* On debug mode, load non min file, first. */
 		if ( $debug ){
 			/* return child theme file if exist */
 			if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.' . $ext ) ){
 				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.' . $ext;
 			}
-			/* return parent theme file if exist */
-			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
-				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
+			/* return child theme min file if exist */
+			elseif ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.min.' . $ext ) ){
+				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.min.' . $ext;
+			}
+			/* return child theme regular file if exist */
+			elseif ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return parent theme min file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.min.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.min.' . $ext;
 			}
 			/* return empty string */
 			else{
@@ -241,11 +249,15 @@ function tamatebako_theme_file( $path, $ext ){
 	/* No Child Theme Active */
 	else{
 
-		/* On debug mode, never load min file. */
+		/* On debug mode, load non min file, first. */
 		if ( $debug ){
 			/* return parent theme file if exist */
 			if ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
 				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
+			}
+			/* return parent theme min file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.min.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.min.' . $ext;
 			}
 			/* return empty string */
 			else{
@@ -838,10 +850,18 @@ function tamatebako_register_css(){
 	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Theme (all parent merged if exist) */
+	/* Parent Theme CSS (all parent merged if exist) */
 	$theme_css = tamatebako_theme_file( "css/theme", "css" );
 	if ( !empty( $theme_css ) ){
 		wp_register_style( 'theme', $theme_css, array(), tamatebako_theme_version(), 'all' );
+	}
+
+	/* Child Theme CSS (all child merged if exist) */
+	if ( is_child_theme() ){
+		$child_theme_css = tamatebako_theme_file( "css/child-theme", "css" );
+		if ( !empty( $child_theme_css ) ){
+			wp_register_style( 'child-theme', $child_theme_css, array(), tamatebako_theme_version(), 'all' );
+		}
 	}
 
 	/* Reset CSS */

@@ -6,6 +6,7 @@
 * No longer using hybrid_locate_theme_file(). use custom function tamatebako_theme_file();.
 * add conditional for template replacement for content error.
 * Wrap content_error with content-entry-wrap div and use hard code div.
+* Register css/child-theme{.min}.css if child theme active.
 
 ### 1.1.0
 * for HC 2.0.1
