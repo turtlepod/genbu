@@ -75,6 +75,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add skip to content in plugins template files.
 * Quick fix of sub menu toggle.
 * Now using GIT and no longer SVN
+* Add grunt file to ignore list.
 
 ### 1.2.1
 * Update minified.
