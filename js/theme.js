@@ -97,7 +97,9 @@ jQuery( document ).ready( function($) {
 	/* Body class status */
 	if ( $("body").hasClass("wp-is-mobile") ){
 		$("body").addClass("mobile-menu-active");
-		theme_mobile_sub_menu_toggle();
+		if ( $("body").hasClass("mobile-menu-active") ){
+			theme_mobile_sub_menu_toggle();
+		}
 	}
 	/* Load Function */
 	$( window ).resize( function(){

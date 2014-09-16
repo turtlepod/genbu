@@ -73,6 +73,7 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Clean up content folder, add singular template for all post format.
 * Fix content error notice (404 pages).
 * Add skip to content in plugins template files.
+* Quick fix of sub menu toggle.
 
 ### 1.2.1
 * Update minified.
