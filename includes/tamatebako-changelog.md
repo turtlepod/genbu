@@ -1,7 +1,6 @@
 ## Tamatebako Changelog:
 
 ### 1.2.0
-* register "theme.css". (in css folder) as placeholder to optimize theme assets.
 * Update debug MQ CSS
 * No longer using hybrid_locate_theme_file(). use custom function tamatebako_theme_file();.
 * add conditional for template replacement for content error.
