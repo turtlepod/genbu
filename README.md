@@ -77,6 +77,8 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Now using GIT and no longer SVN
 * Fix Tamatebako, see includes/tamatebako-changelog.md for detail.
 * Update Hybrid Core to version 2.0.2
+* Remove wp_link_pages args in content/*.
+* Remove all blank index.html
 
 ### 1.2.1
 * Update minified.
