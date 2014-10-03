@@ -12,7 +12,7 @@ More info: [Genbu Theme](http://genbutheme.com/)
 
 ### Theme Layout and Sidebar:
 
-Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize.
+Genbu is powered with 9 Layout, You can set the layout globally via WordPress customizer or using Layout Meta Box in post edit screen.
 * Content (No Sidebar)
 * Content / Sidebar 1
 * Sidebar 1 / Content
@@ -40,7 +40,7 @@ Genbu have custom background feature you can set custom background via WP Custom
 
 ### Custom Header Image:
 
-Genbu have custom background header feature you can set custom header image via WP Customize or header settings page.
+Genbu have custom header feature you can set custom header image via WP Customize or header settings page.
 * **As banner image**: when displaying the header text, the header image will be used as banner image below site title and description.
 * **As logo**: when not using header text, header image will be used as logo.
 
