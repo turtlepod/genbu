@@ -75,6 +75,8 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add skip to content in plugins template files.
 * Quick fix of sub menu toggle.
 * Now using GIT and no longer SVN
+* Fix Tamatebako, see includes/tamatebako-changelog.md for detail.
+* Update Hybrid Core to version 2.0.2
 
 ### 1.2.1
 * Update minified.

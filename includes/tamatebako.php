@@ -1,8 +1,8 @@
 <?php
 /**
  ********************************************************************
- * TAMATEBAKO 1.2.0
- * for Hybrid Core 2.0.1
+ * TAMATEBAKO 1.2.2
+ * for Hybrid Core 2.0.2
  * ------------------------------------------------------------------
  * @author    David Chandra Purnama <david@shellcreeper.com>
  * @version   1.1.0
@@ -344,6 +344,11 @@ function tamatebako_doctitle(){ ?>
  */
 function tamatebako_wp_title( $doctitle ){
 
+	/* Do not filter RSS feed title */
+	if( is_feed() ){
+		return $doctitle;
+	}
+
 	/* Variable */
 	$site_title = get_bloginfo( 'name' );
 	$site_description = get_bloginfo( 'description', 'display' );
@@ -428,7 +433,7 @@ function tamatebako_wp_title( $doctitle ){
 	}
 	/* Add Site Title in other pages, for branding and bookmark purpose */
 	else{
-		$doctitle = "{$doctitle} &ndash; {$site_title}";
+		$doctitle = "{$doctitle} &#150; {$site_title}";
 	}
 
 	/* If the current page is a paged. */
