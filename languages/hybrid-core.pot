@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hybrid Core 2\n"
 "Report-Msgid-Bugs-To: http://themehybrid.com/contact/\n"
-"POT-Creation-Date: 2014-09-15 12:13:38+00:00\n"
+"POT-Creation-Date: 2014-10-03 04:01:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,14 +38,14 @@ msgid "Theme Settings"
 msgstr ""
 
 #: library/classes/hybrid-media-meta.php:154
-#: library/classes/hybrid-media-meta.php:282
+#: library/classes/hybrid-media-meta.php:284
 #: library/functions/template-media.php:102
 #. Translators: Media dimensions - 1 is width and 2 is height.
 msgid "%1$s &#215; %2$s"
 msgstr ""
 
 #: library/classes/hybrid-media-meta.php:155
-#: library/classes/hybrid-media-meta.php:282
+#: library/classes/hybrid-media-meta.php:284
 msgid "Dimensions"
 msgstr ""
 
@@ -78,22 +78,22 @@ msgstr ""
 msgid "ISO"
 msgstr ""
 
-#: library/classes/hybrid-media-meta.php:199
+#: library/classes/hybrid-media-meta.php:201
 #. Translators: Camera shutter speed. "sec" is an abbreviation for "seconds".
 msgid "%s sec"
 msgstr ""
 
-#: library/classes/hybrid-media-meta.php:199
+#: library/classes/hybrid-media-meta.php:201
 msgid "Shutter Speed"
 msgstr ""
 
-#: library/classes/hybrid-media-meta.php:248
-#: library/classes/hybrid-media-meta.php:285
+#: library/classes/hybrid-media-meta.php:250
+#: library/classes/hybrid-media-meta.php:287
 msgid "File Name"
 msgstr ""
 
-#: library/classes/hybrid-media-meta.php:256
-#: library/classes/hybrid-media-meta.php:293
+#: library/classes/hybrid-media-meta.php:258
+#: library/classes/hybrid-media-meta.php:295
 msgid "File Type"
 msgstr ""
 
@@ -354,7 +354,7 @@ msgctxt "post time format"
 msgid "l, F j, Y, g:i a"
 msgstr ""
 
-#: library/functions/attr.php:561
+#: library/functions/attr.php:565
 #. Translators: Comment date/time "title" attribute.
 msgctxt "comment time format"
 msgid "l, F j, Y, g:i a"
