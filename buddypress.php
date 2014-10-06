@@ -2,6 +2,8 @@
 
 <div id="container">
 
+	<?php tamatebako_skip_to_content(); ?>
+
 	<?php get_template_part( 'site-header' ); ?>
 
 	<?php hybrid_get_menu( 'primary' ); ?>

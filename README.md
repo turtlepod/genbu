@@ -12,7 +12,7 @@ More info: [Genbu Theme](http://genbutheme.com/)
 
 ### Theme Layout and Sidebar:
 
-Genbu is powered with 9 Layout, You can set the layout globally via WordPress customize.
+Genbu is powered with 9 Layout, You can set the layout globally via WordPress customizer or using Layout Meta Box in post edit screen.
 * Content (No Sidebar)
 * Content / Sidebar 1
 * Sidebar 1 / Content
@@ -40,7 +40,7 @@ Genbu have custom background feature you can set custom background via WP Custom
 
 ### Custom Header Image:
 
-Genbu have custom background header feature you can set custom header image via WP Customize or header settings page.
+Genbu have custom header feature you can set custom header image via WP Customize or header settings page.
 * **As banner image**: when displaying the header text, the header image will be used as banner image below site title and description.
 * **As logo**: when not using header text, header image will be used as logo.
 
@@ -66,6 +66,19 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 2014 © [Genbu Media](http://genbu.me/). All rights reserved.
 
 ## Changelog:
+
+### 1.2.2
+* use tamatebako_theme_file() and not hybrid_locate_theme_file().
+* change hook "genbu_after_theme_setup" to "genbu_after_setup_theme".
+* Clean up content folder, add singular template for all post format.
+* Fix content error notice (404 pages).
+* Add skip to content in plugins template files.
+* Quick fix of sub menu toggle.
+* Now using GIT and no longer SVN
+* Fix Tamatebako, see includes/tamatebako-changelog.md for detail.
+* Update Hybrid Core to version 2.0.2
+* Remove wp_link_pages args in content/*.
+* Remove all blank index.html
 
 ### 1.2.1
 * Update minified.

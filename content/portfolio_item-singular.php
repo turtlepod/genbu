@@ -9,7 +9,7 @@
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
 			<?php the_content(); ?>
 			<?php genbu_ccp_project_link(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="wp-link-pages">' ) ); ?>
+			<?php wp_link_pages(); ?>
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">

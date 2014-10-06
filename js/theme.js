@@ -51,7 +51,7 @@ jQuery( document ).ready( function($) {
 	 * on hi-res mobile device/touch device.
 	 * Using hover is not the best for sub-menu.
 	 */
-	function genbu_mobile_sub_menu_toggle(){
+	function theme_mobile_sub_menu_toggle(){
 
 		/* Foreach parent menu item */
 		$( ".menu-container .menu-item-has-children" ).each( function () {
@@ -97,12 +97,14 @@ jQuery( document ).ready( function($) {
 	/* Body class status */
 	if ( $("body").hasClass("wp-is-mobile") ){
 		$("body").addClass("mobile-menu-active");
-		genbu_mobile_sub_menu_toggle();
+		if ( $("body").hasClass("mobile-menu-active") ){
+			theme_mobile_sub_menu_toggle();
+		}
 	}
 	/* Load Function */
 	$( window ).resize( function(){
 		if ( $("body").hasClass("mobile-menu-active") ){
-			genbu_mobile_sub_menu_toggle();
+			theme_mobile_sub_menu_toggle();
 		}
 	});
 
@@ -113,4 +115,3 @@ jQuery( document ).ready( function($) {
 	});
 
 });
-

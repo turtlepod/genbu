@@ -249,4 +249,4 @@ function genbu_ccp_project_link(){
 }
 
 
-do_action( 'genbu_after_theme_setup' );
+do_action( 'genbu_after_setup_theme' );
