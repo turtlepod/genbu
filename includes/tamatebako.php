@@ -207,9 +207,9 @@ function tamatebako_theme_file( $path, $ext ){
 			elseif ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.min.' . $ext ) ){
 				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.min.' . $ext;
 			}
-			/* return child theme regular file if exist */
-			elseif ( file_exists( trailingslashit( get_stylesheet_directory() ) . $path . '.' . $ext ) ){
-				return trailingslashit( get_stylesheet_directory_uri() ) . $path . '.' . $ext;
+			/* return parent theme regular file if exist */
+			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.' . $ext ) ){
+				return trailingslashit( get_template_directory_uri() ) . $path . '.' . $ext;
 			}
 			/* return parent theme min file if exist */
 			elseif ( file_exists( trailingslashit( get_template_directory() ) . $path . '.min.' . $ext ) ){
@@ -1577,60 +1577,9 @@ function tamatebako_attachment_image(){
 /* #07 - UTILLITY
 ******************************************/
 
-
-/**
- * Set Layout
- * @param $new_layout string
- * @since 0.1.0
- */
-function tamatebako_set_layout( $new_layout ){
-	/* using anon function in PHP 5.3 */
-	if ( version_compare( PHP_VERSION, '5.3.0' ) >= 0 ) {
-		$filter_layout = function( $layout ) use( $new_layout ){
-			return $new_layout;
-		};
-		add_filter( 'theme_mod_theme_layout', $filter_layout );
-	}
-}
-
-
-/**
- * Set Template Dir
- * @param $old_dir string
- * @param $new_dir string
- * @since 0.1.0
- */
-function tamatebako_set_template_dir( $new_dir, $old_dir ){
-	/* using anon function in PHP 5.3 */
-	if ( version_compare( PHP_VERSION, '5.3.0' ) >= 0 ) {
-		$filter_dir = function( $dir ) use( $new_dir, $old_dir ){
-			if ( $dir == $old_dir ){
-				return $new_dir;
-			}
-			return $dir;
-		};
-		add_filter( 'tamatebako_get_template_dir', $filter_dir );
-	}
-}
-
-
-/**
- * Add Body Classes
- * @param $new_classes array
- * @since 0.1.0
- */
-function tamatebako_add_body_class( $new_classes ){
-	/* using anon function in PHP 5.3 */
-	if ( version_compare( PHP_VERSION, '5.3.0' ) >= 0 ) {
-		$add_classes = function( $classes ) use( $new_classes ){
-			foreach( $new_classes as $new_class ){
-				$classes[] = $new_class;
-			}
-			$classes = array_unique( $classes );
-			return $classes;
-		};
-		add_filter( 'body_class', $add_classes );
-	}
+/* Load Utillity function */
+if ( version_compare( PHP_VERSION, '5.3.0' ) >= 0 ) {
+	require_once( trailingslashit( get_template_directory() ) . 'includes/utillity.php' );
 }
 
 

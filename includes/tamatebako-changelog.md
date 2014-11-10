@@ -1,5 +1,9 @@
 ## Tamatebako Changelog:
 
+### 1.2.3
+* Fix bug get theme file in debug mode.
+* fix php 5.2 error, utillity function is now in separate php file.
+
 ### 1.2.2
 * Fix RSS Error: change &ndash; to &#150; reported by Jon Evans ( http://tuxtweaks.com ) 24th Sept 2014, via email.
 * Do not filter wp_title when viewing feed, but keep using numeric html entities anyway.
