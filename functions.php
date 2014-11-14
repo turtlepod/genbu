@@ -20,8 +20,7 @@ function genbu_setup(){
 
 	/* === DEBUG === */
 	$debug_args = array(
-		'mobile'         => 1,
-		'no-js'          => 0,
+		'mobile'         => 0,
 		'media-queries'  => 0,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );
@@ -77,22 +76,26 @@ function genbu_setup(){
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
 	/* === Load Stylesheet === */
+	
+	//dev:
 	$style_args = array(
 		'theme-open-sans-font',
 		'dashicons',
 		'theme-reset',
 		'theme-menus',
-		'parent',
-		'style',
-		'media-queries'
+		'theme',
+		'media-queries',
+		'style'
 	);
+
+	$style_args = array( 'theme-open-sans-font', 'dashicons', 'parent', 'style' );
 	add_theme_support( 'hybrid-core-styles', $style_args );
 
 	/* === Editor Style === */
 	$editor_css = array(
-		'css/reset.css',
-		'style.css',
-		tamatebako_google_open_sans_font_url()
+		tamatebako_google_open_sans_font_url(),
+		'css/reset.min.css',
+		'style.min.css'
 	);
 	add_editor_style( $editor_css );
 

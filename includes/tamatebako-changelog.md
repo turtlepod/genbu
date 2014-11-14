@@ -1,8 +1,12 @@
 ## Tamatebako Changelog:
 
-### 1.2.3
+### 2.0.0
 * Fix bug get theme file in debug mode.
-* fix php 5.2 error, utillity function is now in separate php file.
+* Fix php 5.2 error, utillity function is now in separate php file.
+* Remove Head Script: ie8 css, ie9 css, HTML5SHIV js, Respond js. No longer support dinosaur browser. RWRRR!
+* Remove Opera Mini body class.
+* Remove all debug functionality.
+* js status now using print instead of using js file.
 
 ### 1.2.2
 * Fix RSS Error: change &ndash; to &#150; reported by Jon Evans ( http://tuxtweaks.com ) 24th Sept 2014, via email.

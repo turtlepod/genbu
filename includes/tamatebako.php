@@ -1,11 +1,11 @@
 <?php
 /**
  ********************************************************************
- * TAMATEBAKO 1.2.2
- * for Hybrid Core 2.0.2
+ * TAMATEBAKO 2.0.0
+ * for Hybrid Core 2.0.3
  * ------------------------------------------------------------------
  * @author    David Chandra Purnama <david@shellcreeper.com>
- * @version   1.1.0
+ * @version   2.0.0
  * @copyright Genbu Media
  * @link      http://shellcreeper.com
  * @link      http://genbu.me
@@ -68,17 +68,6 @@
  *   to display break points, need to be loaded using
  *   "tamatebako-debug" theme support.
  * 
- * CSS(manual):
- * located in theme "css" folder.
- * stylesheet loaded not using enqueue but added directly in template
- * using "wp_head" hook.
- * - ie8.css, ie8.min.css
- *   if exist, only loaded if browser is Internet Explorer 8.
- *   theme can add this css file to add browser support for IE8 visitor.
- * - ie9.css, ie9.min.css
- *   if exist, only loaded if browser is Internet Explorer 9.
- *   theme can add this css file to add browser support for IE9 visitor.
- * 
  * JS:
  * located in theme "js" folder
  * - "theme-fitvids"
@@ -96,12 +85,6 @@
  * JS (manual):
  * located in theme "js" folder
  * javascript loaded not using enqueue but added directly in template.
- * - html5shiv.js, html5shiv.min.js
- *   To enable HTML 5 in unsupported browser.
- *   loaded via "wp_head" hook if file exist.
- * - respond.js, respond.min.js
- *   To Enable media queires in unsupported browser.
- *   loaded via "wp_head" hook if file exist.
  * - js-status.js
  *   to check if the javascript is enabled by switching body class
  *   from "no-js" to "js"
@@ -136,9 +119,6 @@
  * #08 - REGISTER THEME SUPPORT
  *       Several theme support for faster development.
  *
- * #09 - DEBUG
- *       Helper for easier theme debug.
- *
  ********************************************************************
  * LICENSE
  * ------------------------------------------------------------------
@@ -161,7 +141,7 @@
 
 
 
-/* #01 - HELPER FUNTIONS
+/* #01 - HELPER FUNCTIONS
 ******************************************/
 
 /**
@@ -691,9 +671,6 @@ add_action( 'after_setup_theme', 'tamatebako_scripts_setup', 5 );
  */
 function tamatebako_scripts_setup(){
 
-	/* Head Script */
-	add_action( 'wp_head', 'tamatebako_head_script' );
-
 	/* JS */
 	add_action( 'wp_enqueue_scripts', 'tamatebako_register_js' );
 	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js', 11 );
@@ -725,46 +702,6 @@ function tamatebako_google_open_sans_font_url(){
 function tamatebako_google_merriweather_font_url(){
 	$font_url = add_query_arg( 'family', urlencode( 'Merriweather:400,300italic,300,400italic,700,700italic,900,900italic' ), "//fonts.googleapis.com/css" );
 	return $font_url;
-}
-
-
-/**
- * Head Script.
- * Load style via "wp_head" hook, for non-supported browser
- * @link   https://github.com/scottjehl/Respond
- * @link   https://github.com/aFarkas/html5shiv
- * @since  0.1.0
- */
-function tamatebako_head_script() {
-
-	$ie8_css = tamatebako_theme_file( "css/ie8", "css" );
-	$ie9_css = tamatebako_theme_file( "css/ie9", "css" );
-
-	$respond_js = tamatebako_theme_file( "css/respond", "js" );
-	$html5shiv_js = tamatebako_theme_file( "css/html5shiv", "js" );
-?>
-<?php if ( !empty( $ie8_css ) ) { ?>
-<!--[if IE 8]>
-<link rel="stylesheet" type="text/css" href="<?php echo $ie8_css; ?>" media="screen" />
-<![endif]-->
-<?php } ?>
-<?php if ( !empty( $ie9_css ) ) { ?>
-<!--[if IE 9]>
-<link rel="stylesheet" type="text/css" href="<?php echo $ie9_css; ?>" media="screen" />
-<![endif]-->
-<?php } ?>
-<?php if( !empty( $respond_js ) && !empty( $html5shiv_js ) ){ ?>
-<!-- Enables media queries and html5 in some unsupported browsers. -->
-<!--[if (lt IE 9) & (!IEMobile)]>
-<?php if( !empty( $respond_js ) ){ ?>
-<script type="text/javascript" src="<?php echo $respond_js; ?>"></script>
-<?php } ?>
-<?php if( !empty( $html5shiv_js ) ){ ?>
-<script type="text/javascript" src="<?php echo $html5shiv_js; ?>"></script>
-<?php } ?>
-<![endif]-->
-<?php } ?>
-<?php
 }
 
 
@@ -868,9 +805,15 @@ function tamatebako_register_css(){
 	}
 
 	/* Media Queries CSS */
-	$media_queries_css = tamatebako_theme_file( "media-queries", "css" );
+	$media_queries_css = tamatebako_theme_file( "css/media-queries", "css" );
 	if ( !empty( $media_queries_css ) ){
 		wp_register_style( 'media-queries', $media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	}
+
+	/* Debug Media Queries */
+	$debug_mq_css = tamatebako_theme_file( "css/debug-media-queries", "css" );
+	if ( !empty( $debug_mq_css ) ){
+		wp_register_style( 'debug-mq', $debug_mq_css, array(), tamatebako_theme_version(), 'all' );
 	}
 
 	/* Flexslider */
@@ -967,11 +910,6 @@ function tamatebako_body_class( $classes ){
 	/* Mobile visitor class */
 	if ( wp_is_mobile() ){
 		$classes[] = 'wp-is-mobile';
-
-		/* Visitor using Opera Mini browser: opera mini browser do not use custom fonts. */
-		if ( strpos( $_SERVER['HTTP_USER_AGENT'], 'Opera Mini' ) !== false ){
-			$classes[] = 'wp-is-opera-mini';
-		}
 	}
 	/* Non-mobile visitor/using desktop browser */
 	else{
@@ -1097,14 +1035,11 @@ function tamatebako_widget_class( $params ) {
  * @since 0.1.0
  */
 function tamatebako_check_js_script(){
-	$js_status = tamatebako_theme_file( "js/js-status", "js" );
-	$script = '';
-	if( !empty( $js_status ) ) {
-		$script = '<script src="' . $js_status . '" type="text/javascript"></script>';
-	}
-	return apply_filters( 'tamatebako_check_js_script', $script );
+	$script  = '<script type="text/javascript">';
+	$script .= "document.body.className = document.body.className.replace('no-js','js');";
+	$script .= '</script>';
+	echo apply_filters( 'tamatebako_check_js_script', $script );
 }
-
 
 /**
  * Skip to Content Link (accessibility)
@@ -1773,125 +1708,6 @@ function tamatebako_customize_mobile_view_style(){
 </style>
 <?php
 }
-
-
-/* #09 - DEBUG
-******************************************/
-
-
-/* Hook to theme setup */
-add_action( 'after_setup_theme', 'tamatebako_theme_debug_setup', 20 );
-
-
-/**
- * Debug Setup Function
- * @since 0.1.0
- */
-function tamatebako_theme_debug_setup(){
-
-	$debug = get_theme_support( 'tamatebako-debug' );
-
-	if ( isset( $debug[0] ) ){
-		$test = $debug[0];
-
-		/* add "wp-is-mobile" body class  */
-		if ( isset( $test['mobile'] ) && $test['mobile'] ){
-			add_filter( 'body_class', 'tamatebako_debug_mobile_body_class' );
-		}
-
-		/* "js-disabled": dequeue theme.js script */
-		if ( isset( $test['no-js'] ) && $test['no-js'] ){
-			add_filter( 'tamatebako_check_js_script', '__return_false' );
-			remove_action( 'wp_enqueue_scripts', 'hybrid_enqueue_scripts', 5 );
-			remove_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
-			add_action( 'wp_print_scripts', 'tamatebako_debug_no_js' );
-		}
-
-		/* display media queries width */
-		if ( isset( $test['media-queries'] ) && $test['media-queries'] ){
-			add_action( 'wp_enqueue_scripts', 'tamatebako_debug_enqueue_media_queries', 20 );
-		}
-	}
-}
-
-
-/**
- * Debug Mobile Body Class
- * @since 0.1.0
- */
-function tamatebako_debug_mobile_body_class( $classes ){
-	$classes[] = 'wp-is-mobile';
-	return $classes;
-}
-
-
-/**
- * Debug No JS
- * @since 0.1.0
- */
-function tamatebako_debug_no_js(){
-	if ( !is_admin() ){
-		wp_dequeue_script( 'jquery' );
-	}
-}
-
-
-/**
- * Enqueue Media Queries Debug CSS
- * @since 0.1.0
- */
-function tamatebako_debug_enqueue_media_queries(){
-	wp_enqueue_style( 'debug-media-queries', trailingslashit( get_template_directory_uri() ) . 'css/debug-media-queries.css', array(), tamatebako_theme_version(), 'all' );
-}
-
-
-/**
- * Pretty Debug Data
- * @link http://chrisbratlien.com/prettier-php-debug-messages-continued/
- * @since 0.1.0
- */
-function tmdd( $obj, $label = '' ) {  
-
-	$data = json_encode(print_r($obj,true));
-	?>
-	<style type="text/css">
-		#bsdLogger {
-			position: inherit;
-			bottom:0;
-			border: 3px solid #ffa601;
-			padding: 6px;
-			background: white;
-			color: #444;
-			z-index: 999;
-			font-size: 1.25em;
-			width: 980px;
-			overflow: scroll;
-			margin: 50px auto 0 auto;
-		}
-	</style>    
-	<script type="text/javascript">
-	var doStuff = function(){
-		var obj = <?php echo $data; ?>;
-		var logger = document.getElementById('bsdLogger');
-		if (!logger) {
-			logger = document.createElement('div');
-			logger.id = 'bsdLogger';
-			document.body.appendChild(logger);
-		}
-		////console.log(obj);
-		var pre = document.createElement('pre');
-		var h2 = document.createElement('h2');
-		pre.innerHTML = obj;
-
-		h2.innerHTML = '<?php echo addslashes($label); ?>';
-		logger.appendChild(h2);
-		logger.appendChild(pre);      
-	};
-	window.addEventListener ("DOMContentLoaded", doStuff, false);
-	</script>
-	<?php
-}
-
 
 /* Hook to override tamatebako setup hook. */
 do_action( 'tamatebako_after_setup' );

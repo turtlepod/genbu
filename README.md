@@ -52,6 +52,27 @@ Genbu is using editor style, so you'll see what you get in your WordPress visual
 
 You can translate Genbu using provided po and mo file.
 
+### CSS files used in this theme (in order):
+* Open Sans: via Google Font
+* Dashicons: part of WordPress.
+* Theme Reset (set default for element styling): located at /css/reset.min.css
+* Theme Menus (menu navigation base style): located at /css/menus.min.css
+* Main Stylesheet: located at /css/style.min.css
+* Media Queries (responsive/mobile style): located at /media-queries.min.css
+
+### JS files used in this theme:
+* jQuery (required library): part of WordPress
+* JS Status (to check if javascript is enabled in browser): located at js/js-status.js 
+* Fitvids (responsive video library): js/fitvids.min.js
+* Main Script: located at /js/theme.min.js
+
+### Editor CSS files used in this theme (in order):
+* Open Sans: via Google Font
+* Theme Reset (set default for element styling): located at /css/reset.min.css
+* Main Stylesheet: located at /css/style.min.css (if using child theme, child theme style.css will also loaded)
+
+### CSS and JS Override
+Child theme can override parent theme CSS and JS by creating the file(s) in the same location except for main stylesheet, parent theme style{.min}.css, external script such as Google Font, and scripts bundled in WordPress such as Dashicons.
 
 ### Links
 
@@ -66,6 +87,13 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 2014 © [Genbu Media](http://genbu.me/). All rights reserved.
 
 ## Changelog:
+
+### 1.2.3
+* update to Hybrid Core version 2.0.3
+* update Tamatebako to version 1.2.3
+* remove unused scripts and style. child theme should add it themselves (for version compatibility). sorry for this :(
+* Editor Style now using minified stylesheet.
+* Add jQuery mobile browser detection.
 
 ### 1.2.2
 * use tamatebako_theme_file() and not hybrid_locate_theme_file().
