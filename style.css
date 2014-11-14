@@ -12,13 +12,13 @@
 **/
 
 /* "theme-reset" */
-@import url( "css/reset.min.css" );
+@import url( "css/reset.css" );
 
 /* "theme-menus" */
-@import url( "css/menus.min.css" );
+@import url( "css/menus.css" );
 
 /* "theme" */
-@import url( "css/theme.min.css" );
+@import url( "css/theme.css" );
 
 /* "media-queries" */
-@import url( "css/media-queries.min.css" );
+@import url( "css/media-queries.css" );
