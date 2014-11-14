@@ -1,3 +1,4 @@
-node_modules
-_zip
+/node_modules
 /_zip
+/package.json
+/Gruntfile.js
