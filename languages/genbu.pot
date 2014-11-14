@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Genbu 1.2.2\n"
+"Project-Id-Version: Genbu 1.3.0\n"
 "Report-Msgid-Bugs-To: http://genbu.me/contact/\n"
-"POT-Creation-Date: 2014-10-06 13:09:26+00:00\n"
+"POT-Creation-Date: 2014-11-14 23:53:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -120,26 +120,71 @@ msgid "Layout"
 msgstr ""
 
 #: includes/string.php:68
+msgctxt "layout"
+msgid "Content"
+msgstr ""
+
+#: includes/string.php:69
+msgctxt "layout"
+msgid "Content / Sidebar 1"
+msgstr ""
+
+#: includes/string.php:70
+msgctxt "layout"
+msgid "Sidebar 1 / Content"
+msgstr ""
+
+#: includes/string.php:71
+msgctxt "layout"
+msgid "Sidebar 2 / Content"
+msgstr ""
+
+#: includes/string.php:72
+msgctxt "layout"
+msgid "Content / Sidebar 2"
+msgstr ""
+
+#: includes/string.php:73
+msgctxt "layout"
+msgid "Sidebar 2 / Content / Sidebar 1"
+msgstr ""
+
+#: includes/string.php:74
+msgctxt "layout"
+msgid "Sidebar 2 / Sidebar 1 / Content"
+msgstr ""
+
+#: includes/string.php:75
+msgctxt "layout"
+msgid "Content / Sidebar 1 / Sidebar 2"
+msgstr ""
+
+#: includes/string.php:76
+msgctxt "layout"
+msgid "Sidebar 1 / Content / Sidebar 2"
+msgstr ""
+
+#: includes/string.php:79
 msgctxt "nav menu location"
 msgid "Navigation"
 msgstr ""
 
-#: includes/string.php:69
+#: includes/string.php:80
 msgctxt "nav menu location"
 msgid "Footer Links"
 msgstr ""
 
-#: includes/string.php:72
+#: includes/string.php:83
 msgctxt "sidebar name"
 msgid "Sidebar 1"
 msgstr ""
 
-#: includes/string.php:73
+#: includes/string.php:84
 msgctxt "sidebar name"
 msgid "Sidebar 2"
 msgstr ""
 
-#: includes/string.php:76
+#: includes/string.php:87
 msgctxt "custom content portfolio link"
 msgid "View Project"
 msgstr ""
