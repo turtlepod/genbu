@@ -42,17 +42,17 @@ function genbu_setup(){
 	/* === Theme Layouts === */
 	$layouts = array(
 		/* One Column */
-		'content' => 'Content',
+		'content' => genbu_string( 'layout-c' ),
 		/* Two Columns */
-		'content-sidebar1' => 'Content / Sidebar 1',
-		'sidebar1-content' => 'Sidebar 1 / Content',
-		'sidebar2-content' => 'Sidebar 2 / Content',
-		'content-sidebar2' => 'Content / Sidebar 2',
+		'content-sidebar1' => genbu_string( 'layout-c-s1' ),
+		'sidebar1-content' => genbu_string( 'layout-s1-c' ),
+		'sidebar2-content' => genbu_string( 'layout-s2-c' ),
+		'content-sidebar2' => genbu_string( 'layout-c-s2' ),
 		/* Three Columns */
-		'sidebar2-content-sidebar1' => 'Sidebar 2 / Content / Sidebar 1', /* Default */
-		'sidebar2-sidebar1-content' => 'Sidebar 2 / Sidebar 1 / Content',
-		'content-sidebar1-sidebar2' => 'Content / Sidebar 1 / Sidebar 2',
-		'sidebar1-content-sidebar2' => 'Sidebar 1 / Content / Sidebar 2',
+		'sidebar2-content-sidebar1' => genbu_string( 'layout-s2-c-s1' ), /* Default */
+		'sidebar2-sidebar1-content' => genbu_string( 'layout-s2-s1-c' ),
+		'content-sidebar1-sidebar2' => genbu_string( 'layout-c-s1-s2' ),
+		'sidebar1-content-sidebar2' => genbu_string( 'layout-s1-c-s2' ),
 	);
 	$layouts_args = array(
 		'default'   => 'sidebar2-content-sidebar1',
@@ -85,7 +85,7 @@ function genbu_setup(){
 		'theme-menus',
 		'theme',
 		'media-queries',
-		'style'
+		//'debug-media-queries'
 	);
 
 	$style_args = array( 'theme-open-sans-font', 'dashicons', 'parent', 'style' );
@@ -95,7 +95,7 @@ function genbu_setup(){
 	$editor_css = array(
 		tamatebako_google_open_sans_font_url(),
 		'css/reset.min.css',
-		'style.min.css'
+		'css/editor.css'
 	);
 	add_editor_style( $editor_css );
 
