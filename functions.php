@@ -76,27 +76,45 @@ function genbu_setup(){
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
 	/* === Load Stylesheet === */
-	
-	//dev:
-	$style_args = array(
-		'theme-open-sans-font',
-		'dashicons',
-		'theme-reset',
-		'theme-menus',
-		'theme',
-		'media-queries',
-		//'debug-media-queries'
-	);
-
-	$style_args = array( 'theme-open-sans-font', 'dashicons', 'parent', 'style' );
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
+		$style_args = array(
+			'theme-open-sans-font',
+			'dashicons',
+			'theme-reset',
+			'theme-menus',
+			'theme',
+			'media-queries',
+			'debug-media-queries'
+		);
+		if ( is_child_theme() ){
+			$style_args[] = 'style';
+		}
+	}
+	else{
+		$style_args = array(
+			'theme-open-sans-font',
+			'dashicons',
+			'parent',
+			'style'
+		);
+	}
 	add_theme_support( 'hybrid-core-styles', $style_args );
 
 	/* === Editor Style === */
-	$editor_css = array(
-		tamatebako_google_open_sans_font_url(),
-		'css/reset.min.css',
-		'css/editor.css'
-	);
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
+		$editor_css = array(
+			tamatebako_google_open_sans_font_url(),
+			'css/reset.min.css',
+			'css/editor.css'
+		);
+	}
+	else{
+		$editor_css = array(
+			tamatebako_google_open_sans_font_url(),
+			'css/reset.css',
+			'css/editor.css'
+		);
+	}
 	add_editor_style( $editor_css );
 
 	/* === Customizer Mobile View === */
