@@ -1,7 +1,7 @@
 /**
  * Theme Name:  Genbu
  * Theme URI:   http://genbutheme.com/
- * Description: Rock-solid responsive WordPress theme with 9 layouts, perfect for any site.
+ * Description: Rock-solid responsive WordPress theme with 9 layouts, perfect for any site. Genbu is light-weight with only 35kb of CSS and 5kb of JS.
  * Version:     1.3.0
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
@@ -10,6 +10,8 @@
  * License:     GNU General Public License v2.0 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 **/
+
+/* NOTE: this stylesheets is not loaded, the one loaded is the minified version style.min.css */
 
 /* "theme-reset" */
 @import url( "css/reset.css" );
