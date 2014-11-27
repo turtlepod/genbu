@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   HybridCore
- * @version   2.0.2
+ * @version   2.0.3
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2014, Justin Tadlock
  * @link      http://themehybrid.com/hybrid-core
@@ -104,7 +104,7 @@ if ( !class_exists( 'Hybrid' ) ) {
 		function constants() {
 
 			/* Sets the framework version number. */
-			define( 'HYBRID_VERSION', '2.0.2' );
+			define( 'HYBRID_VERSION', '2.0.3' );
 
 			/* Sets the path to the parent theme directory. */
 			define( 'THEME_DIR', get_template_directory() );
@@ -313,8 +313,8 @@ if ( !class_exists( 'Hybrid' ) ) {
 			/* Load the theme settings functions if supported. */
 			require_if_theme_supports( 'hybrid-core-theme-settings', trailingslashit( HYBRID_FUNCTIONS ) . 'settings.php' );
 
-			/* Load the shortcodes if supported. */
-			require_if_theme_supports( 'hybrid-core-shortcodes', trailingslashit( HYBRID_FUNCTIONS ) . 'shortcodes.php' );
+			/* DAVID: Load the shortcodes if supported. */
+			//require_if_theme_supports( 'hybrid-core-shortcodes', trailingslashit( HYBRID_FUNCTIONS ) . 'shortcodes.php' );
 
 			/* Load the template hierarchy if supported. */
 			require_if_theme_supports( 'hybrid-core-template-hierarchy', trailingslashit( HYBRID_FUNCTIONS ) . 'template-hierarchy.php' );

@@ -20,8 +20,7 @@ function genbu_setup(){
 
 	/* === DEBUG === */
 	$debug_args = array(
-		'mobile'         => 1,
-		'no-js'          => 0,
+		'mobile'         => 0,
 		'media-queries'  => 0,
 	);
 	//add_theme_support( 'tamatebako-debug', $debug_args );
@@ -43,17 +42,17 @@ function genbu_setup(){
 	/* === Theme Layouts === */
 	$layouts = array(
 		/* One Column */
-		'content' => 'Content',
+		'content' => genbu_string( 'layout-c' ),
 		/* Two Columns */
-		'content-sidebar1' => 'Content / Sidebar 1',
-		'sidebar1-content' => 'Sidebar 1 / Content',
-		'sidebar2-content' => 'Sidebar 2 / Content',
-		'content-sidebar2' => 'Content / Sidebar 2',
+		'content-sidebar1' => genbu_string( 'layout-c-s1' ),
+		'sidebar1-content' => genbu_string( 'layout-s1-c' ),
+		'sidebar2-content' => genbu_string( 'layout-s2-c' ),
+		'content-sidebar2' => genbu_string( 'layout-c-s2' ),
 		/* Three Columns */
-		'sidebar2-content-sidebar1' => 'Sidebar 2 / Content / Sidebar 1', /* Default */
-		'sidebar2-sidebar1-content' => 'Sidebar 2 / Sidebar 1 / Content',
-		'content-sidebar1-sidebar2' => 'Content / Sidebar 1 / Sidebar 2',
-		'sidebar1-content-sidebar2' => 'Sidebar 1 / Content / Sidebar 2',
+		'sidebar2-content-sidebar1' => genbu_string( 'layout-s2-c-s1' ), /* Default */
+		'sidebar2-sidebar1-content' => genbu_string( 'layout-s2-s1-c' ),
+		'content-sidebar1-sidebar2' => genbu_string( 'layout-c-s1-s2' ),
+		'sidebar1-content-sidebar2' => genbu_string( 'layout-s1-c-s2' ),
 	);
 	$layouts_args = array(
 		'default'   => 'sidebar2-content-sidebar1',
@@ -77,23 +76,45 @@ function genbu_setup(){
 	add_theme_support( 'tamatebako-menus', $menus_args );
 
 	/* === Load Stylesheet === */
-	$style_args = array(
-		'theme-open-sans-font',
-		'dashicons',
-		'theme-reset',
-		'theme-menus',
-		'parent',
-		'style',
-		'media-queries'
-	);
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
+		$style_args = array(
+			'theme-open-sans-font',
+			'dashicons',
+			'theme-reset',
+			'theme-menus',
+			'theme',
+			'media-queries',
+			'debug-media-queries'
+		);
+		if ( is_child_theme() ){
+			$style_args[] = 'style';
+		}
+	}
+	else{
+		$style_args = array(
+			'theme-open-sans-font',
+			'dashicons',
+			'parent',
+			'style'
+		);
+	}
 	add_theme_support( 'hybrid-core-styles', $style_args );
 
 	/* === Editor Style === */
-	$editor_css = array(
-		'css/reset.css',
-		'style.css',
-		tamatebako_google_open_sans_font_url()
-	);
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ){
+		$editor_css = array(
+			tamatebako_google_open_sans_font_url(),
+			'css/reset.min.css',
+			'css/editor.css'
+		);
+	}
+	else{
+		$editor_css = array(
+			tamatebako_google_open_sans_font_url(),
+			'css/reset.css',
+			'css/editor.css'
+		);
+	}
 	add_editor_style( $editor_css );
 
 	/* === Customizer Mobile View === */

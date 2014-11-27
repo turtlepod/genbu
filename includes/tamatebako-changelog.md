@@ -1,5 +1,14 @@
 ## Tamatebako Changelog:
 
+### 2.0.0
+* Fix bug get theme file in debug mode.
+* Fix php 5.2 error, utillity function is now in separate php file.
+* Remove Head Script: ie8 css, ie9 css, HTML5SHIV js, Respond js. No longer support dinosaur browser. RWRRR!
+* Remove Opera Mini body class.
+* Remove all debug functionality.
+* js status now using print instead of using js file.
+* Add new js for child theme `child-theme-js`. this added so child theme can easily add js without overriding parent theme js.
+
 ### 1.2.2
 * Fix RSS Error: change &ndash; to &#150; reported by Jon Evans ( http://tuxtweaks.com ) 24th Sept 2014, via email.
 * Do not filter wp_title when viewing feed, but keep using numeric html entities anyway.

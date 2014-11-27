@@ -1,0 +1,40 @@
+body{
+	font-size: 14px;
+	font-size: 1.4rem;
+	background: #fff;
+}
+a{
+	color: #21759B;
+}
+a:hover,
+a:focus {
+	color: #444;
+}
+ul{
+	list-style: circle;
+}
+/* Blockquotes */
+blockquote, q{
+	position: relative;
+	padding: 0 0 0 20px;
+	padding: 0 0 0 2rem;
+}
+blockquote:before,
+q:before{
+	content: "\f122";
+	font-family: "dashicons";
+	color: #ccc;
+	position: absolute;
+	left: 0;
+	-webkit-font-smoothing: antialiased;
+}
+/* Forms */
+label{
+}
+/* Pre, Code */
+pre{
+	background-color: #eee;
+}
+code{
+	background: #eee;
+}

@@ -64,6 +64,17 @@ function genbu_string( $context ){
 	/* Open Sesame ! */
 	$text = array();
 
+	/* Layouts */
+	$text['layout-c'] = _x( 'Content', 'layout', 'genbu' );
+	$text['layout-c-s1'] = _x( 'Content / Sidebar 1', 'layout', 'genbu' );
+	$text['layout-s1-c'] = _x( 'Sidebar 1 / Content', 'layout', 'genbu' );
+	$text['layout-s2-c'] = _x( 'Sidebar 2 / Content', 'layout', 'genbu' );
+	$text['layout-c-s2'] = _x( 'Content / Sidebar 2', 'layout', 'genbu' );
+	$text['layout-s2-c-s1'] = _x( 'Sidebar 2 / Content / Sidebar 1', 'layout', 'genbu' );
+	$text['layout-s2-s1-c'] = _x( 'Sidebar 2 / Sidebar 1 / Content', 'layout', 'genbu' );
+	$text['layout-c-s1-s2'] = _x( 'Content / Sidebar 1 / Sidebar 2', 'layout', 'genbu' );
+	$text['layout-s1-c-s2'] = _x( 'Sidebar 1 / Content / Sidebar 2', 'layout', 'genbu' );
+
 	/* Register Menus */
 	$text['menu-primary-name'] = _x( 'Navigation', 'nav menu location', 'genbu' );
 	$text['menu-footer-name'] = _x( 'Footer Links', 'nav menu location', 'genbu' );
